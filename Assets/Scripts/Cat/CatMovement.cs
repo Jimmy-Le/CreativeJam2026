@@ -7,26 +7,30 @@ public class CatMovement : MonoBehaviour
 {
     [SerializeField] public InputActionAsset inputActions;
     [SerializeField] public Transform catBody;
-    public Vector2 catPosition;
+    public Vector2Int catPosition;
     private InputAction cat_move;
-    private Vector2 direction;
-    private float speed = 10f;
+    // TODO: ANimation speed
+    //private float speed = 10f;
+    private Board board;
 
     void Awake()
     {
         cat_move = inputActions.FindAction("Move");
+        board = FindAnyObjectByType<Board>();
     }
 
     void Update()
     {
-        if(cat_move.WasPressedThisFrame())    // TODO, Move by tile
+        if (cat_move.WasPressedThisFrame())
         {
-            direction = cat_move.ReadValue<Vector2>();
+            if (board == null) return;
+            Vector2 direction = cat_move.ReadValue<Vector2>();
 
-                catBody.Translate( direction.x * speed * Time.deltaTime, direction.y * speed * Time.deltaTime, 0, Space.World);
+            Vector2 newCatPosition = board.CatMove(ref catPosition, direction);
+            if (newCatPosition == -Vector2.one) return;
 
-                
-
+            // TODO: animate
+            catBody.position = newCatPosition;
         }
     }
 
@@ -36,11 +40,9 @@ public class CatMovement : MonoBehaviour
     {
         BlockBase block = collision.gameObject.GetComponent<BlockBase>();
 
-        if(block != null)
+        if (block != null)
         {
             block.ability.Activate();
         }
     }
-
-    
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent (typeof(SpriteRenderer))]
-public class Tile : MonoBehaviour
+public class ButtonTile : Tile
 {
     public GameObject tileComponent;
     public Vector2 tilePosition;

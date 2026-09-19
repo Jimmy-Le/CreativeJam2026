@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,11 +6,18 @@ using UnityEngine;
 public class Level : ScriptableObject
 {
     public int BoardSize;
-    public List<Tile> levelTilesToGenerate = new();
+    public List<TileAndChild> levelTilesToGenerate = new();
 
     private void OnEnable()
     {
         if (levelTilesToGenerate.Count % BoardSize != 0 || BoardSize <= 0 || levelTilesToGenerate.Count <= 0)
             Debug.Log($"Incorrect board size for level {this.name}");
     }
+}
+
+[Serializable]
+public struct TileAndChild
+{
+    public Tile tile;
+    public GameObject tileComponent;
 }
