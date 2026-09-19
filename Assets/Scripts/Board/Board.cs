@@ -1,12 +1,13 @@
 using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Overlays;
 using UnityEngine;
+using static Unity.Collections.AllocatorManager;
 
 public class Board : MonoBehaviour
 {
-    [SerializeField] private VoidEvent boardGenerated;
-
     [SerializeField] private List<Level> levels;
     [SerializeReference] private int initialLevel = 0;
     public float spacing = 2f;
@@ -37,6 +38,7 @@ public class Board : MonoBehaviour
                 Tile tile = level.levelTilesToGenerate[i + (j * boardSize)].tile.GetComponent<Tile>();
                 if (tile == null) continue;
 
+                tile.tileIndex = new Vector2Int(i, j);
                 tile.tilePosition = GetTilePosition(i, j);
 
                 Tile tileObject = Instantiate(tile, tile.tilePosition, Quaternion.identity, this.transform);
@@ -53,8 +55,6 @@ public class Board : MonoBehaviour
                 board[i, j] = tileObject;
             }
         }
-
-        boardGenerated.Raise(Unit.Default);
     }
 
     private Vector2 GetTilePosition(int x, int y)
@@ -79,8 +79,8 @@ public class Board : MonoBehaviour
         board[catPosition.x, catPosition.y].tileComponent = null;
         cat.transform.SetParent(board[newCatPosition.x, newCatPosition.y].transform);
 
-        board[newCatPosition.x, newCatPosition.y].OnStep();
         catPosition = newCatPosition;
+        board[newCatPosition.x, newCatPosition.y].OnStep();
         return GetTilePosition(newCatPosition.x, newCatPosition.y);
     }
 
@@ -103,6 +103,25 @@ public class Board : MonoBehaviour
         block.transform.position = GetTilePosition(newBlockPosition.x, newBlockPosition.y);
 
         board[newBlockPosition.x, newBlockPosition.y].OnStep();
+    }
+
+    public void Teleport(TeleportTile initialTile, TeleportTile destinationTile)
+    {
+        GameObject tpItem = initialTile.tileComponent;
+        CatMovement catMovement = tpItem.GetComponent<CatMovement>();
+        
+        if (catMovement == null) return;
+
+        board[destinationTile.tileIndex.x, destinationTile.tileIndex.y].tileComponent = tpItem;
+        board[initialTile.tileIndex.x, initialTile.tileIndex.y].tileComponent = null;
+        tpItem.transform.SetParent(board[destinationTile.tileIndex.x, destinationTile.tileIndex.y].transform);
+        tpItem.transform.position = destinationTile.tilePosition;
+
+        Debug.Log($"{destinationTile.tileIndex.x}, {destinationTile.tileIndex.y}");
+
+        catMovement.catPosition = new Vector2Int(destinationTile.tileIndex.x, destinationTile.tileIndex.y);
+        catMovement.catBody.position = destinationTile.tilePosition;
+        Debug.Log($"{catMovement.catPosition}, {catMovement.catBody.position}");
     }
 
     public void TriggerTile(int x, int y, Vector2Int direction)

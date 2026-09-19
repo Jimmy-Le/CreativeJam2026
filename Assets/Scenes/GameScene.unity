@@ -149,7 +149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbdbbd0f265bbd74f86b213935c6d35c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Board
-  boardGenerated: {fileID: 11400000, guid: 2dc9dcfca6e98f14f9c2494e223a34b9, type: 2}
   levels:
   - {fileID: 11400000, guid: 9665accbc3bcee84a98981a1ece827ba, type: 2}
   - {fileID: 11400000, guid: 6291aa345bfa44641821ddd97c948be8, type: 2}
@@ -379,7 +378,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1187859572}
-  - component: {fileID: 1187859571}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -387,34 +385,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1187859571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1187859570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64cf5e1d2403dcb4980de30e620f076c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::VoidEventListener
-  gameEvent: {fileID: 11400000, guid: 2dc9dcfca6e98f14f9c2494e223a34b9, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
 --- !u!4 &1187859572
 Transform:
   m_ObjectHideFlags: 0

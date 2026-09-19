@@ -5,6 +5,7 @@ public class Tile : MonoBehaviour
 {
     public GameObject tileComponent;
     public Vector2 tilePosition;
+    public Vector2Int tileIndex;
 
     void Awake()
     {
