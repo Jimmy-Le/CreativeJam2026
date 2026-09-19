@@ -19,9 +19,8 @@ public class CatMovement : MonoBehaviour
 
 
     public Vector2Int catPosition;
-    private InputAction cat_move;
-    // TODO: ANimation speed
-    //private float speed = 10f;
+    //// TODO: ANimation speed
+    ////private float speed = 10f;
     private Board board;
 
     void Awake()
