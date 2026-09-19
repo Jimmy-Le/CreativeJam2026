@@ -152,6 +152,7 @@ MonoBehaviour:
   boardGenerated: {fileID: 11400000, guid: 2dc9dcfca6e98f14f9c2494e223a34b9, type: 2}
   levels:
   - {fileID: 11400000, guid: 9665accbc3bcee84a98981a1ece827ba, type: 2}
+  - {fileID: 11400000, guid: 6291aa345bfa44641821ddd97c948be8, type: 2}
   initialLevel: 0
   spacing: 1.15
 --- !u!224 &468670214

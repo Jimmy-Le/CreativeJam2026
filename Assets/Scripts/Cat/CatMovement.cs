@@ -53,7 +53,6 @@ public class CatMovement : MonoBehaviour
 
         SpriteRenderer spriteRenderer = GetComponentInParent<SpriteRenderer>();
 
-        animator.StopRecording();
         if (direction.x < 0)
         {
             spriteRenderer.flipX = true;
