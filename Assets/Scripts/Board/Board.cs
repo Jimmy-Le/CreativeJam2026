@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.Overlays;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using static Unity.Collections.AllocatorManager;
 
 public class Board : MonoBehaviour
@@ -23,6 +24,11 @@ public class Board : MonoBehaviour
 
     private void GenerateBoard(Level level)
     {
+        for (int i = this.gameObject.transform.childCount - 1; i >= 0; i--)
+        {
+            Destroy(this.gameObject.transform.GetChild(i).gameObject);
+        }
+
         boardSize = level.BoardSize;
 
         float tileScale = level.levelTilesToGenerate[0].tile.transform.localScale.x;
@@ -47,7 +53,10 @@ public class Board : MonoBehaviour
                 {
                     CatMovement catMovement = level.levelTilesToGenerate[i + (j * boardSize)].tileComponent.GetComponent<CatMovement>();
                     if (catMovement != null)
+                    {
                         catMovement.catPosition = new Vector2Int(i, j);
+                        catMovement.stepCounter = level.stepsAllowed;
+                    }
 
                     tileObject.tileComponent = Instantiate(level.levelTilesToGenerate[i + (j * boardSize)].tileComponent, tile.tilePosition, Quaternion.identity, tileObject.transform);
                 }
@@ -93,8 +102,9 @@ public class Board : MonoBehaviour
             newBlockPosition.y <= -1 ||
             newBlockPosition.x >= boardSize ||
             newBlockPosition.y >= boardSize ||
-            board[newBlockPosition.x, newBlockPosition.y].tileComponent != null)
-            return;
+            board[newBlockPosition.x, newBlockPosition.y].tileComponent != null ||
+            board[newBlockPosition.x, newBlockPosition.y].gameObject.CompareTag("MoveBlockBan"))
+                return;
 
         GameObject block = board[blockPosition.x, blockPosition.y].tileComponent;
         board[newBlockPosition.x, newBlockPosition.y].tileComponent = block;
@@ -140,5 +150,12 @@ public class Board : MonoBehaviour
 
             blockBase.ability.Activate(data);
         }
+    }
+
+    public void CatCleanUp(Vector2Int oldPosition, Vector2Int startPosition)
+    {
+        GameObject cat = board[oldPosition.x, oldPosition.y].tileComponent;
+        board[startPosition.x, startPosition.y].tileComponent = cat;
+        board[oldPosition.x, oldPosition.y].tileComponent = null;
     }
 }
