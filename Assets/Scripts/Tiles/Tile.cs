@@ -12,5 +12,8 @@ public class Tile : MonoBehaviour
             Instantiate(tileComponent, this.transform.position, Quaternion.identity, this.transform);
     }
 
-    public virtual void OnStep() { }
+    public virtual void OnStep() 
+    {
+        Debug.Log("step");
+    }
 }

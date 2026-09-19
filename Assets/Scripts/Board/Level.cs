@@ -18,6 +18,6 @@ public class Level : ScriptableObject
 [Serializable]
 public struct TileAndChild
 {
-    public Tile tile;
+    public GameObject tile;
     public GameObject tileComponent;
 }
