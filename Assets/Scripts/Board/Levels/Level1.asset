@@ -32,9 +32,9 @@ MonoBehaviour:
     tileComponent: {fileID: 0}
   - tile: {fileID: 2369205349206821115, guid: 2d5928b9f0ca4a645a891109889bc560, type: 3}
     tileComponent: {fileID: 0}
-  - tile: {fileID: 2369205349206821115, guid: 2d5928b9f0ca4a645a891109889bc560, type: 3}
+  - tile: {fileID: 2369205349206821115, guid: f57cecfee33a2ff48a049226757363bd, type: 3}
     tileComponent: {fileID: 2797812712494996239, guid: b55f6fc5508b062439569017929a4816, type: 3}
-  - tile: {fileID: 2369205349206821115, guid: 2d5928b9f0ca4a645a891109889bc560, type: 3}
+  - tile: {fileID: 2369205349206821115, guid: f57cecfee33a2ff48a049226757363bd, type: 3}
     tileComponent: {fileID: 0}
   - tile: {fileID: 2369205349206821115, guid: 2d5928b9f0ca4a645a891109889bc560, type: 3}
     tileComponent: {fileID: 0}

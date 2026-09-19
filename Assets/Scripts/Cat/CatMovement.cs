@@ -19,6 +19,7 @@ public class CatMovement : MonoBehaviour
         board = FindAnyObjectByType<Board>();
     }
 
+
     void Update()
     {
         if (cat_move.WasPressedThisFrame())
@@ -44,5 +45,10 @@ public class CatMovement : MonoBehaviour
         {
             block.ability.Activate();
         }
+    }
+
+    public void Explode()
+    {
+
     }
 }

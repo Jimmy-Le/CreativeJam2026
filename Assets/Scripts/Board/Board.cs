@@ -83,8 +83,8 @@ public class Board : MonoBehaviour
         return GetTilePosition(newCatPosition.x, newCatPosition.y);
     }
 
-    public void TriggerTile()
+    public void TriggerTile(int x, int y)
     {
-
+        if (board[x, y].tileComponent as 
     }
 }
