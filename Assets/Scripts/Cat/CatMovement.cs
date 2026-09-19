@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class CatMovement : MonoBehaviour
 {
-    [SerializeField] public InputActionAsset inputActions;
+    [SerializeField] public InputSystem_Actions inputActions;
     [SerializeField] public Transform catBody;
     public Vector2Int catPosition;
     private InputAction cat_move;
@@ -15,24 +16,34 @@ public class CatMovement : MonoBehaviour
 
     void Awake()
     {
-        cat_move = inputActions.FindAction("Move");
+        inputActions = new InputSystem_Actions();
         board = FindAnyObjectByType<Board>();
     }
 
-
-    void Update()
+    void OnEnable()
     {
-        if (cat_move.WasPressedThisFrame())
-        {
-            if (board == null) return;
-            Vector2 direction = cat_move.ReadValue<Vector2>();
+        inputActions.Player.Enable();
+        inputActions.Player.Move.performed += MoveCat;
+        inputActions.Player.Explode.performed += Explode;
+    }
 
-            Vector2 newCatPosition = board.CatMove(ref catPosition, direction);
-            if (newCatPosition == -Vector2.one) return;
+    void OnDisable()
+    {
+        inputActions.Player.Disable();
+        inputActions.Player.Move.performed -= MoveCat;
+        inputActions.Player.Explode.performed -= Explode;
+    }
 
-            // TODO: animate
-            catBody.position = newCatPosition;
-        }
+    private void MoveCat(InputAction.CallbackContext context)
+    {
+        if (board == null) return;
+        Vector2 direction = cat_move.ReadValue<Vector2>();
+
+        Vector2 newCatPosition = board.CatMove(ref catPosition, direction);
+        if (newCatPosition == -Vector2.one) return;
+
+        // TODO: animate
+        catBody.position = newCatPosition;
     }
 
     // TODO, Convert this into Explode()
@@ -47,8 +58,11 @@ public class CatMovement : MonoBehaviour
         }
     }
 
-    public void Explode()
+    public void Explode(InputAction.CallbackContext context)
     {
-
+        board.TriggerTile(catPosition.x + 1, catPosition.y);
+        board.TriggerTile(catPosition.x - 1, catPosition.y);
+        board.TriggerTile(catPosition.x, catPosition.y + 1);
+        board.TriggerTile(catPosition.x, catPosition.y - 1);
     }
 }
