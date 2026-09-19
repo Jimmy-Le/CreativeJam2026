@@ -83,7 +83,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 1628143481475131280, guid: c6bab38aa363bf44392aadd00103edd4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -107,10 +107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c77bb5d3121fa446b6d75f25edf14af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CatMovement
-  inputActions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   catBody: {fileID: 253954918312416103}
   animator: {fileID: 6554047805415530866}
-  catPosition: {x: 2, y: 1}
+  catPosition: {x: 1, y: 1}
 --- !u!70 &1258880442956449631
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

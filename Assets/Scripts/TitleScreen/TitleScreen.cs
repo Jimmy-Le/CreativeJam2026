@@ -21,9 +21,14 @@ public class TitleScreen : MonoBehaviour
         {
             instance = this;
         }
-        inputActions = new InputSystem_Actions();
+        
 
 
+    }
+
+    void Start()
+    {
+        inputActions = FindAnyObjectByType<CatMovement>().inputActions;
     }
 
 
@@ -60,6 +65,9 @@ public class TitleScreen : MonoBehaviour
     public void CloseAllPanels()
     {
         creditsPanel.SetActive(false);
+        quitPanel.SetActive(false);
+        optionsPanel.SetActive(false);
+        playPanel.SetActive(false);
         inputActions.Player.Enable();
     }
 
