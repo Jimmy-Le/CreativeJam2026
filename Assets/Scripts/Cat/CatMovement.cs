@@ -7,6 +7,16 @@ public class CatMovement : MonoBehaviour
 {
     [SerializeField] public InputActionAsset inputActions;
     [SerializeField] public Transform catBody;
+    [SerializeField] public Animator animator;
+
+    // Cache Trigger ID For performance apparently
+    private static readonly int MoveSideHash = Animator.StringToHash("MoveSide");
+    private static readonly int MoveUpHas = Animator.StringToHash("MoveUp");
+    private static readonly int MoveDownHash = Animator.StringToHash("MoveDown");
+    private static readonly int ExplodeHash = Animator.StringToHash("onExplode");
+    private static readonly int UnExplodeHash = Animator.StringToHash("onReverse");
+
+
     public Vector2Int catPosition;
     private InputAction cat_move;
     // TODO: ANimation speed
@@ -31,6 +41,7 @@ public class CatMovement : MonoBehaviour
             if (newCatPosition == -Vector2.one) return;
 
             // TODO: animate
+            animator.SetTrigger(MoveSideHash);
             catBody.position = newCatPosition;
         }
     }
