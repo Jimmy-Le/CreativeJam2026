@@ -12,10 +12,5 @@ public class Tile : MonoBehaviour
             Instantiate(tileComponent, this.transform.position, Quaternion.identity, this.transform);
     }
 
-    public virtual void OnStep()
-    {
-        // TODO on step logic
-        // solid logic, button logic, player logic etc.
-
-    }
+    public virtual void OnStep() { }
 }

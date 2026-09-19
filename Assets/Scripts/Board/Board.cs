@@ -85,6 +85,16 @@ public class Board : MonoBehaviour
 
     public void TriggerTile(int x, int y)
     {
-       // if (board[x, y].tileComponent as BlockBase != null) {
+        if (x <= -1 || y <= -1 || x >= boardSize || y >= boardSize || board[x, y].tileComponent == null)
+            return;
+
+        BlockBase blockBase = board[x, y].tileComponent.GetComponent<BlockBase>();
+        if (blockBase != null)
+        {
+            Dictionary<string, object> data = new Dictionary<string, object>();
+            data.Add("blockBase", blockBase);
+
+            blockBase.ability.Activate(data);
+        }
     }
 }
