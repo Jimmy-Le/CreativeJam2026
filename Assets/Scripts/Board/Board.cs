@@ -85,6 +85,6 @@ public class Board : MonoBehaviour
 
     public void TriggerTile(int x, int y)
     {
-        if (board[x, y].tileComponent as 
+       // if (board[x, y].tileComponent as BlockBase != null) {
     }
 }
