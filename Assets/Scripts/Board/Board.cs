@@ -83,7 +83,27 @@ public class Board : MonoBehaviour
         return GetTilePosition(newCatPosition.x, newCatPosition.y);
     }
 
-    public void TriggerTile(int x, int y)
+    public void MoveBlock(Vector2Int blockPosition, Vector2 moveDirection)
+    {
+        Vector2Int newBlockPosition = blockPosition + new Vector2Int(Mathf.FloorToInt(moveDirection.x), -Mathf.FloorToInt(moveDirection.y));
+
+        Debug.Log($"yaya {moveDirection}");
+        // if x or y are -1 or x or y are boardSize + 1
+        if (newBlockPosition.x <= -1 ||
+            newBlockPosition.y <= -1 ||
+            newBlockPosition.x >= boardSize ||
+            newBlockPosition.y >= boardSize ||
+            board[newBlockPosition.x, newBlockPosition.y].tileComponent != null)
+            return;
+
+        GameObject block = board[blockPosition.x, blockPosition.y].tileComponent;
+        board[newBlockPosition.x, newBlockPosition.y].tileComponent = block;
+        board[blockPosition.x, blockPosition.y].tileComponent = null;
+        block.transform.SetParent(board[newBlockPosition.x, newBlockPosition.y].transform);
+        block.transform.position = GetTilePosition(newBlockPosition.x, newBlockPosition.y);
+    }
+
+    public void TriggerTile(int x, int y, Vector2Int direction)
     {
         if (x <= -1 || y <= -1 || x >= boardSize || y >= boardSize || board[x, y].tileComponent == null)
             return;
@@ -93,6 +113,9 @@ public class Board : MonoBehaviour
         {
             Dictionary<string, object> data = new Dictionary<string, object>();
             data.Add("blockBase", blockBase);
+            data.Add("board", this);
+            data.Add("blockPosition", new Vector2Int(x, y));
+            data.Add("direction", direction);
 
             blockBase.ability.Activate(data);
         }

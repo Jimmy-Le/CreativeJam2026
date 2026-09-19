@@ -7,10 +7,9 @@ public class MoveAbility : BlockAbility
 {
     public override void Activate(Dictionary<string, object> options)
     {
-        // play poof animation
-        //blockBase.GetComponentInParent<SpriteRenderer>()
-
-        //// when animation is done.
-        //Destroy(blockBase.transform.gameObject);
+        Board board = (Board)options["board"];
+        Vector2Int blockPosition = (Vector2Int)options["blockPosition"];
+        Vector2Int direction = (Vector2Int)options["direction"];
+        board.MoveBlock(blockPosition, direction);
     }
 }
