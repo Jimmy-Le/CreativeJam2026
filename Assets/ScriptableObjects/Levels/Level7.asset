@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b191bad9521ab464eadb108b71dc8eb9, type: 3}
   m_Name: Level7
   m_EditorClassIdentifier: Assembly-CSharp::Level
-  framePicture: {fileID: -4870093070313631401, guid: 585bcf7f8966321489e7515e9eb8ac36, type: 3}
-  levelPicture: {fileID: -1971174531, guid: ba7087b9555627943851deb803a4c64e, type: 3}
+  framePicture: {fileID: -6340947107778117071, guid: 5ecf97a630e51a14198825cc28c7b4ce, type: 3}
+  levelPicture: {fileID: -5668005837551725102, guid: 6e6b48208d5c5c343875d4b0c0603cf4, type: 3}
   levelName: Back to the Past
   stepsAllowed: 9
   BoardSize: 9
