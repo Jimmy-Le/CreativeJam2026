@@ -100,7 +100,7 @@ MonoBehaviour:
     tileComponent: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: 7428da4860c278148be983b4ca4bed9b, type: 3}
     tileComponent: {fileID: 0}
-  - tile: {fileID: 3861399046625819917, guid: 529abbf2ca70bda44aabc165a28d3b5c, type: 3}
+  - tile: {fileID: 3861399046625819917, guid: c86eaaebf37046f4ab4913778915572f, type: 3}
     tileComponent: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: 529abbf2ca70bda44aabc165a28d3b5c, type: 3}
     tileComponent: {fileID: 0}

@@ -36,7 +36,7 @@ MonoBehaviour:
     tileComponent: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: 461341ae2e4d15940bcaf72894114094, type: 3}
     tileComponent: {fileID: 0}
-  - tile: {fileID: 3861399046625819917, guid: 40ccbe52cc9aff34ca5f4ddb6d2bfbea, type: 3}
+  - tile: {fileID: 3861399046625819917, guid: 9a658c6271fa77e43a8f820fd9d554fd, type: 3}
     tileComponent: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: 529abbf2ca70bda44aabc165a28d3b5c, type: 3}
     tileComponent: {fileID: 0}
