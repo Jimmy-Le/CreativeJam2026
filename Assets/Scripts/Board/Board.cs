@@ -83,8 +83,6 @@ public class Board : MonoBehaviour
         else
             newCatPosition = catPosition + new Vector2Int(Mathf.FloorToInt(moveDirection.x), -Mathf.FloorToInt(moveDirection.y));
 
-
-
         // if x or y are -1 or x or y are boardSize + 1
         if (newCatPosition.x <= -1 ||
             newCatPosition.y <= -1 ||
