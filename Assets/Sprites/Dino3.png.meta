@@ -196,10 +196,10 @@ TextureImporter:
       name: Dino3_3
       rect:
         serializedVersion: 2
-        x: 232
-        y: 232
-        width: 232
-        height: 232
+        x: 238
+        y: 248
+        width: 209
+        height: 206
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
