@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37e3fb9962c7fd24881948538f273eb4, type: 3}
-  m_Name: BoardGenerated
+  m_Name: ExplodeCatEvent
   m_EditorClassIdentifier: Assembly-CSharp::VoidEvent
