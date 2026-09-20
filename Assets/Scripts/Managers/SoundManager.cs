@@ -6,10 +6,22 @@ public class SoundManager : MonoBehaviour
 {
     public enum SoundType
     {
-        Move,
-        Explode,
-        Rewind
+        Break,
+        Drag,
+        Error,
+        GlassBreak,
+        AnalogTime,
+        DinoCountdown,
+        LaboratoryTheme,
+        MenuCat,
+        Walk,
+        Click,
+        Clock,
+        Meow,
+        Reverse
     }
+
+
     [SerializeField] private SoundList[] soundList;
     public static SoundManager instance;
 
