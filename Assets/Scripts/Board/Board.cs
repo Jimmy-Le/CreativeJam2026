@@ -11,6 +11,7 @@ public class Board : MonoBehaviour
 {
     [SerializeField] public List<Level> levels;
     [SerializeReference] public int initialLevel = 0;
+    public int currentLevel = 0;
     public float spacing = 2f;
     public Vector2 initialPosition;
 
@@ -20,6 +21,7 @@ public class Board : MonoBehaviour
     private void Start()
     {
         GenerateBoard(levels[initialLevel]);
+        currentLevel = initialLevel;
     }
 
     public void GenerateBoard(Level level)
@@ -66,6 +68,7 @@ public class Board : MonoBehaviour
                 board[i, j] = tileObject;
             }
         }
+
     }
 
     public Vector2 GetTilePosition(int x, int y)
