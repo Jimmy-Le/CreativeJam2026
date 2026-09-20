@@ -80,7 +80,6 @@ public class GameUIScript : MonoBehaviour
         board.GenerateBoard(board.levels[board.currentLevel]);
         cat = FindAnyObjectByType<CatMovement>();
         cat.currentStep = 0; 
-        DisplayStepsLeft();
 
 
     }
