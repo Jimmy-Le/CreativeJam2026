@@ -30,7 +30,8 @@ public class GameUIScript : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        SoundManager.PlaySound(SoundManager.SoundType.LaboratoryTheme);
+        //SoundManager.PlaySound(SoundManager.SoundType.LaboratoryTheme);
+        
 
     }
 
@@ -44,6 +45,7 @@ public class GameUIScript : MonoBehaviour
         LoadLevelSelect();
         OpenLevelSelect();
         CloseAllPanels();
+        GameUIScript.Instance.PlayMusic();
 
     }
 
@@ -98,12 +100,16 @@ public class GameUIScript : MonoBehaviour
         float animationLength3 = cat.animator.GetCurrentAnimatorStateInfo(0).length;
         cat.currentStep = 0;
         SoundManager.PlaySound(SoundManager.SoundType.Click);
+        PlayMusic();
         DisplayStepsLeft();
         CloseAllPanels();
     }
 
     public void PlayMusic()
     {
+        SoundManager.instance.audioSource.Stop();
+
+
         if (board.currentLevel < 3)
         {
             SoundManager.PlaySound(SoundManager.SoundType.LaboratoryTheme);
@@ -129,6 +135,8 @@ public class GameUIScript : MonoBehaviour
             newItem.Initialize(level, counter);
             counter++;
         }
+
+        
         LayoutRebuilder.ForceRebuildLayoutImmediate(levelSpawnLocation as RectTransform);
         Canvas.ForceUpdateCanvases();
     }

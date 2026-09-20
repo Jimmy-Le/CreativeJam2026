@@ -132,6 +132,7 @@ public class CatMovement : MonoBehaviour
         animator.Play("CatIdle");
         for (int i = movementSteps.Count - 1; i >= 0; i--) 
         {
+            SoundManager.PlaySound(SoundManager.SoundType.Reverse,0.2f);
             await Tween.Position(catBody, startValue: catBody.position, endValue: movementSteps[i], duration: moveAnimationDuration * 0.5f, ease: Ease.Linear);
         }
         movementSteps.Clear();

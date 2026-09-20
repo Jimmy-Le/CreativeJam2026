@@ -725,6 +725,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9665accbc3bcee84a98981a1ece827ba, type: 2}
   - {fileID: 11400000, guid: 6291aa345bfa44641821ddd97c948be8, type: 2}
   - {fileID: 11400000, guid: 6cdffcc8d22fdc648b10fa296dffe8bc, type: 2}
+  - {fileID: 11400000, guid: 43d29ca772afc584d9f35a495853e077, type: 2}
   initialLevel: 0
   LevelCompleteEvent: {fileID: 11400000, guid: b811563f8932e5b4d98a1b1ff37182a2, type: 2}
   currentLevel: 0
@@ -2791,8 +2792,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 335.7, y: -92.664}
-  m_SizeDelta: {x: 284.138, y: 85.896}
+  m_AnchoredPosition: {x: 546.4726, y: -92.664}
+  m_SizeDelta: {x: 705.683, y: 85.896}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1718031413
 CanvasRenderer:
