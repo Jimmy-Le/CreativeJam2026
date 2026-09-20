@@ -22,7 +22,7 @@ public class GameUIScript : MonoBehaviour
 
 
     // Level Select
-    [SerializeField] public List<Level> allLevels;
+    //[SerializeField] public List<Level> allLevels;
     [SerializeField] public GameObject levelPrefab;
     [SerializeField] public Transform levelSpawnLocation;
 
@@ -40,6 +40,9 @@ public class GameUIScript : MonoBehaviour
         inputActions = cat.inputActions;
         DisplayStepsLeft();
         levelText.text = board.levels[board.currentLevel].levelName;
+        LoadLevelSelect();
+        OpenLevelSelect();
+        CloseAllPanels();
     }
 
 
@@ -77,18 +80,30 @@ public class GameUIScript : MonoBehaviour
         DisplayStepsLeft();
     }
 
+    public void LoadLevel(int levelIndex)
+    {
+        board.GenerateBoard(board.levels[levelIndex]);
+        board.currentLevel = levelIndex;
+        cat = FindAnyObjectByType<CatMovement>();
+        
+        DisplayStepsLeft();
+        CloseAllPanels();
+    }
+
     public void LoadLevelSelect()
     {
 
         ClearLevelSelector();
 
-
-        foreach (Level level in allLevels)
+        int counter = 0;
+        foreach (Level level in board.levels)
         {
             LevelSelectObject newItem = Instantiate(levelPrefab, levelSpawnLocation, levelSpawnLocation).GetComponent<LevelSelectObject>();
-            newItem.Initialize(level);
+            newItem.Initialize(level, counter);
+            counter++;
         }
         LayoutRebuilder.ForceRebuildLayoutImmediate(levelSpawnLocation as RectTransform);
+        Canvas.ForceUpdateCanvases();
     }
 
     public void ClearLevelSelector()

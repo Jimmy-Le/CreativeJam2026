@@ -1,12 +1,13 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TitleScreen : MonoBehaviour
 {
     public static TitleScreen instance;
 
-
+    [SerializeField] private GameObject TitleScreenPanel;
     [SerializeField] public GameObject creditsPanel;
     [SerializeField] public GameObject quitPanel;
     [SerializeField] public GameObject optionsPanel;
@@ -41,9 +42,9 @@ public class TitleScreen : MonoBehaviour
 
     public void DisplayOptions()
     {
-        //CloseAllPanels();
-        //inputActions.Player.Disable();
-        //optionsPanel.SetActive(true);
+        CloseAllPanels();
+        inputActions.Player.Disable();
+        optionsPanel.SetActive(true);
     }
 
 
@@ -69,7 +70,10 @@ public class TitleScreen : MonoBehaviour
         optionsPanel.SetActive(false);
         playPanel.SetActive(false);
         inputActions.Player.Enable();
+
     }
+
+  
 
 
     public void Quit()

@@ -101,7 +101,7 @@ public class CatMovement : MonoBehaviour
         catBody.position = newCatPosition;
 
         currentStep++;
-        GameUIScript.Instance.DisplayStepsLeft();
+        GameUIScript.Instance?.DisplayStepsLeft();
         if (currentStep >= stepCounter)
             ExplodeEvent(Unit.Default);
     }
@@ -126,7 +126,7 @@ public class CatMovement : MonoBehaviour
         catPosition = startPosition;
         catBody.position = startWorldPosition;
         currentStep = 0;
-        GameUIScript.Instance.DisplayStepsLeft();
+        GameUIScript.Instance?.DisplayStepsLeft();
         inputActions.Player.Enable();
     }
 
