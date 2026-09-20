@@ -7,6 +7,7 @@ public class DoorTile : Tile
     [SerializeField] private BoolEvent buttonUpdateEvent;
     [SerializeField] private VoidEvent LevelCompleteEvent;
     [SerializeField] private int pressedButtonsRequired = 1;
+    [SerializeField] private SpriteRenderer doorSpriteRenderer;
     private int unlockProgress;
     private bool doorIsUnlocked = false;
     private GameObject cache;
@@ -32,10 +33,10 @@ public class DoorTile : Tile
 
         if (unlockProgress >= pressedButtonsRequired)
         {
-            // TODO Swap door sprite
             doorIsUnlocked = true;
             cache = tileComponent;
             tileComponent.SetActive(false);
+            doorSpriteRenderer.enabled = false;
             tileComponent = null;
             Debug.Log(cache);
         }
@@ -43,6 +44,7 @@ public class DoorTile : Tile
         { 
             tileComponent = cache;
             tileComponent.SetActive(true);
+            doorSpriteRenderer.enabled = true;
         }
     }
 

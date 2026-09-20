@@ -73,7 +73,6 @@ public class CatMovement : MonoBehaviour
     {
         if (board == null) return;
         Vector2 direction = context.ReadValue<Vector2>();
-        Debug.Log("a" + isBoosted);
         Vector2 newCatPosition = board.CatMove(ref catPosition, direction, ref isBoosted);
         if (newCatPosition == -Vector2.one) return;
 
