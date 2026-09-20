@@ -1,6 +1,8 @@
 using NUnit.Framework;
+using PrimeTween;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEditor.Overlays;
 using UnityEngine;
@@ -16,6 +18,7 @@ public class Board : MonoBehaviour
     public float spacing = 2f;
     public Vector2 initialPosition;
 
+    [SerializeField] public GameObject loadingScreen;
     public Tile[,] board;
     public int boardSize;
 
@@ -40,13 +43,28 @@ public class Board : MonoBehaviour
         currentLevel++;
 
         if (currentLevel < levels.Count)
+        {
+            loadingScreen.SetActive(true);
             GameUIScript.Instance.LoadLevel(currentLevel);
+            Tween.Delay(duration: 1f, onComplete: () =>
+            {
+                GameUIScript.Instance.RestartLevel();
+                
+                loadingScreen.SetActive(false);
+            });
+
+            //GameUIScript.Instance.RestartLevel();
+        }
+            
         else
             Debug.Log("GameOver");
+
+
     }
 
     public void GenerateBoard(Level level)
     {
+
         for (int i = this.gameObject.transform.childCount - 1; i >= 0; i--)
         {
             Destroy(this.gameObject.transform.GetChild(i).gameObject);
@@ -197,5 +215,15 @@ public class Board : MonoBehaviour
         //board[startPosition.x, startPosition.y].tileComponent = cat;          // Moved This Down
         board[oldPosition.x, oldPosition.y].tileComponent = null;
         board[startPosition.x, startPosition.y].tileComponent = cat;
+    }
+
+    public bool CheckIfDoor(Vector2Int playerPos)
+    {
+       if(board[playerPos.x, playerPos.y].GetComponent<DoorTile>() != null)
+        {
+            return true;
+        }
+
+       return false;
     }
 }

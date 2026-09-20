@@ -110,6 +110,7 @@ public class CatMovement : MonoBehaviour
         isMoving = false;
 
         board.TriggerBoardAtPos(catPosition);
+        
         currentStep++;
         GameUIScript.Instance?.DisplayStepsLeft();
         if (currentStep >= stepCounter)

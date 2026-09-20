@@ -14,7 +14,14 @@ public class ExplodeAbility : BlockAbility
         
         blockBase = (BlockBase)options["blockBase"];
         blockBase.GetComponentInParent<SpriteRenderer>().enabled = false;
+
         animator = blockBase.GetComponentInParent<Animator>();
+
+        if(animator == null)
+        {
+            animator = blockBase.GetComponentInChildren<Animator>();
+        }
+        
         
 
         animator.Play("Poof");

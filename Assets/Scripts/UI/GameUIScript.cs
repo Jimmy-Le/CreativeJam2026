@@ -26,6 +26,7 @@ public class GameUIScript : MonoBehaviour
     [SerializeField] public GameObject levelPrefab;
     [SerializeField] public Transform levelSpawnLocation;
 
+
     public CatMovement cat;
 
     void Awake()
@@ -70,29 +71,37 @@ public class GameUIScript : MonoBehaviour
 
     public void DisplayStepsLeft()
     {
+
         actionsLeftText.text = (cat.stepCounter - cat.currentStep) + "";
+        //actionsLeftText.text = (cat.stepCounter - cat.currentStep) + "";
+
     }
 
     public void RestartLevel()
     {
-        board.GenerateBoard(board.levels[board.initialLevel]);
+        board.GenerateBoard(board.levels[board.currentLevel]);
         cat = FindAnyObjectByType<CatMovement>();
+        cat.currentStep = 0; 
         DisplayStepsLeft();
+
+
     }
 
     public void LoadLevel(int levelIndex)
     {
+
         board.GenerateBoard(board.levels[levelIndex]);
-        board.currentLevel = levelIndex;
+        //board.currentLevel = levelIndex;
         cat = FindAnyObjectByType<CatMovement>();
-        
+        float animationLength3 = cat.animator.GetCurrentAnimatorStateInfo(0).length;
+        cat.currentStep = 0;
+
         DisplayStepsLeft();
         CloseAllPanels();
     }
 
     public void LoadLevelSelect()
     {
-
         ClearLevelSelector();
 
         int counter = 0;
@@ -112,6 +121,11 @@ public class GameUIScript : MonoBehaviour
         {
             Destroy(levelSpawnLocation.GetChild(i).gameObject);
         }
+    }
+
+    public void ForceIdle()
+    {
+        cat.animator.Play("CatIdle");
     }
 
 
