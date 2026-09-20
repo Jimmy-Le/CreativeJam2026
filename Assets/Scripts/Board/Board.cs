@@ -71,9 +71,19 @@ public class Board : MonoBehaviour
         return new Vector2(x * spacing - initialPosition.x, -y * spacing + initialPosition.y);
     }
 
-    public Vector2 CatMove(ref Vector2Int catPosition, Vector2 moveDirection)
+    public Vector2 CatMove(ref Vector2Int catPosition, Vector2 moveDirection, ref bool isBoosted)
     {
-        Vector2Int newCatPosition = catPosition + new Vector2Int(Mathf.FloorToInt(moveDirection.x), -Mathf.FloorToInt(moveDirection.y));
+        Vector2Int newCatPosition;
+
+        if (isBoosted)
+        {
+            newCatPosition = catPosition + new Vector2Int(Mathf.FloorToInt(moveDirection.x) * 2, -Mathf.FloorToInt(moveDirection.y) * 2);
+            isBoosted = false;
+        }
+        else
+            newCatPosition = catPosition + new Vector2Int(Mathf.FloorToInt(moveDirection.x), -Mathf.FloorToInt(moveDirection.y));
+
+
 
         // if x or y are -1 or x or y are boardSize + 1
         if (newCatPosition.x <= -1 ||

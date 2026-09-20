@@ -110,6 +110,8 @@ MonoBehaviour:
   catBody: {fileID: 253954918312416103}
   animator: {fileID: 6554047805415530866}
   explodeCatEvent: {fileID: 11400000, guid: 27b7570e31522ca4eb4a1277e2ca82cb, type: 2}
+  skipBoostEvent: {fileID: 11400000, guid: bcfe597fc0221da459c7eed0242405d7, type: 2}
+  stepCounter: 0
   catPosition: {x: 2, y: 1}
 --- !u!70 &1258880442956449631
 CapsuleCollider2D:

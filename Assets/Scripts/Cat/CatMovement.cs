@@ -11,6 +11,7 @@ public class CatMovement : MonoBehaviour
     [SerializeField] public Transform catBody;
     [SerializeField] public Animator animator;
     [SerializeField] private VoidEvent explodeCatEvent;
+    [SerializeField] private VoidEvent skipBoostEvent;
     public int stepCounter = 0;
     private int currentStep = 0;
 
@@ -27,6 +28,7 @@ public class CatMovement : MonoBehaviour
     private Board board;
     private Vector2Int startPosition;
     private Vector2 startWorldPosition;
+    private bool isBoosted = false;
 
     void Awake()
     {
@@ -46,6 +48,7 @@ public class CatMovement : MonoBehaviour
         inputActions.Player.Move.performed += MoveCat;
         inputActions.Player.Explode.performed += Explode;
         explodeCatEvent.OnEventRaised += ExplodeEvent;
+        skipBoostEvent.OnEventRaised += EnableBoost;
     }
 
     void OnDisable()
@@ -54,14 +57,21 @@ public class CatMovement : MonoBehaviour
         inputActions.Player.Move.performed -= MoveCat;
         inputActions.Player.Explode.performed -= Explode;
         explodeCatEvent.OnEventRaised -= ExplodeEvent;
+        skipBoostEvent.OnEventRaised -= EnableBoost;
+    }
+
+    private void EnableBoost(Unit data)
+    {
+        isBoosted = true;
+        Debug.Log(isBoosted);
     }
 
     private void MoveCat(InputAction.CallbackContext context)
     {
         if (board == null) return;
         Vector2 direction = context.ReadValue<Vector2>();
-
-        Vector2 newCatPosition = board.CatMove(ref catPosition, direction);
+        Debug.Log("a" + isBoosted);
+        Vector2 newCatPosition = board.CatMove(ref catPosition, direction, ref isBoosted);
         if (newCatPosition == -Vector2.one) return;
 
         SpriteRenderer spriteRenderer = GetComponentInParent<SpriteRenderer>();
