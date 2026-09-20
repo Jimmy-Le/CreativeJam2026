@@ -11,6 +11,7 @@ public class Board : MonoBehaviour
 {
     [SerializeField] public List<Level> levels;
     [SerializeReference] public int initialLevel = 0;
+    [SerializeField] private VoidEvent LevelCompleteEvent;
     public int currentLevel = 0;
     public float spacing = 2f;
     public Vector2 initialPosition;
@@ -22,6 +23,26 @@ public class Board : MonoBehaviour
     {
         GenerateBoard(levels[initialLevel]);
         currentLevel = initialLevel;
+    }
+
+    void OnEnable()
+    {
+        LevelCompleteEvent.OnEventRaised += NextLevel;
+    }
+
+    void OnDisable()
+    {
+        LevelCompleteEvent.OnEventRaised -= NextLevel;
+    }
+
+    public void NextLevel(Unit data)
+    {
+        currentLevel++;
+
+        if (currentLevel < levels.Count)
+            GameUIScript.Instance.LoadLevel(currentLevel);
+        else
+            Debug.Log("GameOver");
     }
 
     public void GenerateBoard(Level level)
@@ -94,16 +115,21 @@ public class Board : MonoBehaviour
             newCatPosition.x >= boardSize ||
             newCatPosition.y >= boardSize ||
             board[newCatPosition.x, newCatPosition.y].tileComponent != null)
-            return -Vector2.one;
-
+            return new Vector2(1000, 1000);
+        Debug.Log("herhehe");
         GameObject cat = board[catPosition.x, catPosition.y].tileComponent;
         board[newCatPosition.x, newCatPosition.y].tileComponent = cat;
         board[catPosition.x, catPosition.y].tileComponent = null;
         cat.transform.SetParent(board[newCatPosition.x, newCatPosition.y].transform);
 
         catPosition = newCatPosition;
-        board[newCatPosition.x, newCatPosition.y].OnStep();
+        
         return GetTilePosition(newCatPosition.x, newCatPosition.y);
+    }
+
+    public void TriggerBoardAtPos(Vector2Int pos)
+    {
+        board[pos.x, pos.y].OnStep();
     }
 
     public void MoveBlock(Vector2Int blockPosition, Vector2 moveDirection)

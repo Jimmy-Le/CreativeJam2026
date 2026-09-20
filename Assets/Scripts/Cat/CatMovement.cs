@@ -1,5 +1,7 @@
+using PrimeTween;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
@@ -13,6 +15,7 @@ public class CatMovement : MonoBehaviour
     [SerializeField] public Animator animator;
     [SerializeField] private VoidEvent explodeCatEvent;
     [SerializeField] private VoidEvent skipBoostEvent;
+    [SerializeField] private float moveAnimationDuration = 0.35f;
     public int stepCounter = 0;
     public int currentStep = 0;
 
@@ -26,12 +29,13 @@ public class CatMovement : MonoBehaviour
     private static readonly int MoveLeftHash = Animator.StringToHash("MoveSideLeft");
 
     public Vector2Int catPosition;
-    //// TODO: ANimation speed
-    ////private float speed = 10f;
     private Board board;
     private Vector2Int startPosition;
     private Vector2 startWorldPosition;
     private bool isBoosted = false;
+    private bool isMoving = false;
+
+    private List<Vector2> movementSteps = new();
 
     void Awake()
     {
@@ -43,6 +47,7 @@ public class CatMovement : MonoBehaviour
     {
         startPosition = catPosition;
         startWorldPosition = catBody.position;
+        movementSteps.Add(startWorldPosition);
     }
 
     void OnEnable()
@@ -69,15 +74,17 @@ public class CatMovement : MonoBehaviour
         Debug.Log(isBoosted);
     }
 
-    private void MoveCat(InputAction.CallbackContext context)
+    private async void MoveCat(InputAction.CallbackContext context)
     {
-        if (board == null) return;
+        if (board == null || isMoving) return;
         Vector2 direction = context.ReadValue<Vector2>();
         Vector2 newCatPosition = board.CatMove(ref catPosition, direction, ref isBoosted);
-        if (newCatPosition == -Vector2.one) return;
+        if (newCatPosition == new Vector2(1000, 1000)) return;
 
+        Debug.Log($"why {newCatPosition}, {Vector2.negativeInfinity}");
+        movementSteps.Add(newCatPosition);
         SpriteRenderer spriteRenderer = GetComponentInParent<SpriteRenderer>();
-
+        isMoving = true;
         if (direction.x < 0)
         {
             //spriteRenderer.flipX = true;
@@ -96,9 +103,13 @@ public class CatMovement : MonoBehaviour
         {
             animator.SetTrigger(MoveDownHash);
         }
+        await Tween.Position(catBody, startValue: catBody.position, endValue: newCatPosition, duration: moveAnimationDuration, ease: Ease.Linear).OnComplete(() =>
+        {
+            animator.Play("CatIdle");
+        });
+        isMoving = false;
 
-        catBody.position = newCatPosition;
-
+        board.TriggerBoardAtPos(catPosition);
         currentStep++;
         GameUIScript.Instance?.DisplayStepsLeft();
         if (currentStep >= stepCounter)
@@ -108,14 +119,21 @@ public class CatMovement : MonoBehaviour
     private void ExplodeEvent(Unit data)
     {
         inputActions.Player.Disable();
+        TriggerAdjacentTiles();
         animator.SetTrigger(ExplodeHash);       // THis animation calls the RespawnCat() Function at the end of its animation frame
     }
 
 
 
-    public void Explode()
+    public async void Explode()
     {
-        TriggerAdjacentTiles();
+        animator.Play("CatIdle");
+        for (int i = movementSteps.Count - 1; i >= 0; i--) 
+        {
+            await Tween.Position(catBody, startValue: catBody.position, endValue: movementSteps[i], duration: moveAnimationDuration * 0.5f, ease: Ease.Linear);
+        }
+        movementSteps.Clear();
+        movementSteps.Add(startWorldPosition);
         RespawnCat();  
     }
 
