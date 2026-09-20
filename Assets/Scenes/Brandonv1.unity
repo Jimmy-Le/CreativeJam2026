@@ -624,9 +624,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Board
   levels:
-  - {fileID: 11400000, guid: 43d29ca772afc584d9f35a495853e077, type: 2}
-  - {fileID: 11400000, guid: 6291aa345bfa44641821ddd97c948be8, type: 2}
   - {fileID: 11400000, guid: 9665accbc3bcee84a98981a1ece827ba, type: 2}
+  - {fileID: 11400000, guid: 6291aa345bfa44641821ddd97c948be8, type: 2}
+  - {fileID: 11400000, guid: 43d29ca772afc584d9f35a495853e077, type: 2}
   initialLevel: 0
   currentLevel: 0
   spacing: 1
