@@ -40,7 +40,7 @@ public class SoundManager : MonoBehaviour
         AudioClip[] clips = instance.soundList[(int)sound].sounds;
         AudioClip randomClip = clips[UnityEngine.Random.Range(0,clips.Length)];
        
-        instance.audioSource.PlayOneShot(randomClip, volume);
+        instance.audioSource.PlayOneShot(randomClip, volume * PlayerPrefs.GetFloat("masterVolume", 0.8f));
     }
 
 #if UNITY_EDITOR

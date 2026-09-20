@@ -3166,7 +3166,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1498909585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3268,6 +3268,7 @@ MonoBehaviour:
   settingsPanel: {fileID: 0}
   levelSelectPanel: {fileID: 0}
   board: {fileID: 0}
+  cat: {fileID: 0}
 --- !u!1 &1518285005
 GameObject:
   m_ObjectHideFlags: 0

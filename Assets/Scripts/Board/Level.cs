@@ -5,6 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Level", menuName = "Scriptable Objects/Level")]
 public class Level : ScriptableObject
 {
+    [SerializeField] public Sprite framePicture;
+    [SerializeField] public Sprite levelPicture;
+    [SerializeField] public string levelName;
+
     public int stepsAllowed = 3;
     public int BoardSize;
     public List<TileAndChild> levelTilesToGenerate = new();
