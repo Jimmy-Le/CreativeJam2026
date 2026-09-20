@@ -38,8 +38,8 @@ MonoBehaviour:
     tileComponent: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: 6e216564fa67ed54c92883ca5eb62950, type: 3}
     tileComponent: {fileID: 0}
-  - tile: {fileID: 3861399046625819917, guid: 38dd59f2434919c47b1a8451208f8030, type: 3}
-    tileComponent: {fileID: 417639052295603915, guid: fe7f48b560a9cf24caa986a0dad1ee9a, type: 3}
+  - tile: {fileID: 3861399046625819917, guid: d30252a41fe34c54888e2983fe753a07, type: 3}
+    tileComponent: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: e9c222e39c8aa1a4b942d191da83300b, type: 3}
     tileComponent: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: e20c9229f1937174489c500d17a634e4, type: 3}
@@ -78,7 +78,7 @@ MonoBehaviour:
     tileComponent: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: e21d6bbc0fd292f499869fab52a8a581, type: 3}
     tileComponent: {fileID: 0}
-  - tile: {fileID: 3861399046625819917, guid: 0daa1abe94b9cd84d8624d7e75a8796a, type: 3}
+  - tile: {fileID: 3861399046625819917, guid: 86a8b3d1484327a48b7507c9b5af1493, type: 3}
     tileComponent: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: 86a8b3d1484327a48b7507c9b5af1493, type: 3}
     tileComponent: {fileID: 0}

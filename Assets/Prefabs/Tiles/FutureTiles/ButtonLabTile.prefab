@@ -308,6 +308,7 @@ MonoBehaviour:
   tileIndex: {x: 0, y: 0}
   buttonUpdateEvent: {fileID: 11400000, guid: e7dcc96c3e1a133428f9bba1e770dfe9, type: 2}
   isButtonPressed: 0
+  iconSpriteRenderer: {fileID: 8139078575702425406}
 --- !u!1 &4472195444415392606
 GameObject:
   m_ObjectHideFlags: 0

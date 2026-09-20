@@ -33,6 +33,7 @@ public class CatMovement : MonoBehaviour
     private Vector2Int startPosition;
     private Vector2 startWorldPosition;
     private bool isBoosted = false;
+    private bool isMoving = false;
 
     private List<Vector2> movementSteps = new();
 
@@ -75,14 +76,15 @@ public class CatMovement : MonoBehaviour
 
     private async void MoveCat(InputAction.CallbackContext context)
     {
-        if (board == null) return;
+        if (board == null || isMoving) return;
         Vector2 direction = context.ReadValue<Vector2>();
         Vector2 newCatPosition = board.CatMove(ref catPosition, direction, ref isBoosted);
-        if (newCatPosition == Vector2.negativeInfinity) return;
+        if (newCatPosition == new Vector2(1000, 1000)) return;
 
+        Debug.Log($"why {newCatPosition}, {Vector2.negativeInfinity}");
         movementSteps.Add(newCatPosition);
         SpriteRenderer spriteRenderer = GetComponentInParent<SpriteRenderer>();
-
+        isMoving = true;
         if (direction.x < 0)
         {
             //spriteRenderer.flipX = true;
@@ -105,7 +107,9 @@ public class CatMovement : MonoBehaviour
         {
             animator.Play("CatIdle");
         });
+        isMoving = false;
 
+        board.TriggerBoardAtPos(catPosition);
         currentStep++;
         GameUIScript.Instance?.DisplayStepsLeft();
         if (currentStep >= stepCounter)
@@ -128,6 +132,8 @@ public class CatMovement : MonoBehaviour
         {
             await Tween.Position(catBody, startValue: catBody.position, endValue: movementSteps[i], duration: moveAnimationDuration * 0.5f, ease: Ease.Linear);
         }
+        movementSteps.Clear();
+        movementSteps.Add(startWorldPosition);
         RespawnCat();  
     }
 
