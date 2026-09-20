@@ -21,7 +21,7 @@ MonoBehaviour:
   - tile: {fileID: 5820070423202133586, guid: 5a22fad964514a0448710b1fd713c6c2, type: 3}
     tileComponent: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
-    tileComponent: {fileID: 0}
+    tileComponent: {fileID: 7752738519818554307, guid: 3778c1bc88ffcb04da1569934272e1af, type: 3}
   - tile: {fileID: 5820070423202133586, guid: cd7234a447a46f84a9e814882f85063e, type: 3}
     tileComponent: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
