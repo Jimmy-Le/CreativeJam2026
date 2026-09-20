@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
@@ -13,7 +14,7 @@ public class CatMovement : MonoBehaviour
     [SerializeField] private VoidEvent explodeCatEvent;
     [SerializeField] private VoidEvent skipBoostEvent;
     public int stepCounter = 0;
-    private int currentStep = 0;
+    public int currentStep = 0;
 
     // Cache Trigger ID For performance apparently
     private static readonly int MoveSideHash = Animator.StringToHash("MoveSide");
@@ -21,6 +22,8 @@ public class CatMovement : MonoBehaviour
     private static readonly int MoveDownHash = Animator.StringToHash("MoveDown");
     private static readonly int ExplodeHash = Animator.StringToHash("onExplode");
     private static readonly int UnExplodeHash = Animator.StringToHash("onReverse");
+
+    private static readonly int MoveLeftHash = Animator.StringToHash("MoveSideLeft");
 
     public Vector2Int catPosition;
     //// TODO: ANimation speed
@@ -78,12 +81,12 @@ public class CatMovement : MonoBehaviour
 
         if (direction.x < 0)
         {
-            spriteRenderer.flipX = true;
-            animator.SetTrigger(MoveSideHash);
+            //spriteRenderer.flipX = true;
+            animator.SetTrigger(MoveLeftHash);
         }
         else if (direction.x > 0)
         {
-            spriteRenderer.flipX = true;
+            //spriteRenderer.flipX = false;
             animator.SetTrigger(MoveSideHash);
         }
         else if (direction.y < 0)
@@ -104,17 +107,37 @@ public class CatMovement : MonoBehaviour
 
     private void ExplodeEvent(Unit data)
     {
-        animator.SetTrigger(ExplodeHash);
-        board.TriggerTile(catPosition.x + 1, catPosition.y, new Vector2Int(1, 0));
-        board.TriggerTile(catPosition.x - 1, catPosition.y, new Vector2Int(-1, 0));
-        board.TriggerTile(catPosition.x, catPosition.y + 1, new Vector2Int(0, -1));
-        board.TriggerTile(catPosition.x, catPosition.y - 1, new Vector2Int(0, 1));
+        inputActions.Player.Disable();
+        animator.SetTrigger(ExplodeHash);       // THis animation calls the RespawnCat() Function at the end of its animation frame
+    }
 
+
+
+    public void Explode()
+    {
+        TriggerAdjacentTiles();
+        RespawnCat();  
+    }
+
+    public void RespawnCat()
+    {
         board.CatCleanUp(catPosition, startPosition);
         catPosition = startPosition;
         catBody.position = startWorldPosition;
         currentStep = 0;
+        inputActions.Player.Enable();
     }
+
+
+    public void TriggerAdjacentTiles()
+    {
+        board.TriggerTile(catPosition.x + 1, catPosition.y, new Vector2Int(1, 0));
+        board.TriggerTile(catPosition.x - 1, catPosition.y, new Vector2Int(-1, 0));
+        board.TriggerTile(catPosition.x, catPosition.y + 1, new Vector2Int(0, -1));
+        board.TriggerTile(catPosition.x, catPosition.y - 1, new Vector2Int(0, 1));
+    }
+
+    
 
     public void Explode(InputAction.CallbackContext context)
     {
