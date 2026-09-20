@@ -20,9 +20,9 @@ public class ExplodeAbility : BlockAbility
         {
             animator = blockBase.GetComponentInChildren<Animator>();
         }
-        
-        
 
+
+        SoundManager.PlaySound(SoundManager.SoundType.GlassBreak);
         animator.Play("Poof");
         float animationLength = animator.GetCurrentAnimatorStateInfo(0).length;
         //// when animation is done.

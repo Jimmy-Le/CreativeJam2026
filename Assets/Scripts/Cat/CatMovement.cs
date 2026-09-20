@@ -74,7 +74,12 @@ public class CatMovement : MonoBehaviour
         if (board == null || isMoving) return;
         Vector2 direction = context.ReadValue<Vector2>();
         Vector2 newCatPosition = board.CatMove(ref catPosition, direction, ref isBoosted);
-        if (newCatPosition == new Vector2(1000, 1000)) return;
+        if (newCatPosition == new Vector2(1000, 1000))
+        {
+            SoundManager.PlaySound(SoundManager.SoundType.Error, 0.4f);
+            return;
+        }
+            
 
         Debug.Log($"why {newCatPosition}, {Vector2.negativeInfinity}");
         movementSteps.Add(newCatPosition);
@@ -103,7 +108,7 @@ public class CatMovement : MonoBehaviour
             animator.Play("CatIdle");
         });
         isMoving = false;
-
+        SoundManager.PlaySound(SoundManager.SoundType.Walk, 0.5f);
         board.TriggerBoardAtPos(catPosition);
         
         currentStep++;
@@ -116,6 +121,7 @@ public class CatMovement : MonoBehaviour
     {
         inputActions.Player.Disable();
         TriggerAdjacentTiles();
+        SoundManager.PlaySound(SoundManager.SoundType.Break);
         animator.SetTrigger(ExplodeHash);       // THis animation calls the RespawnCat() Function at the end of its animation frame
     }
 
@@ -140,6 +146,7 @@ public class CatMovement : MonoBehaviour
         catBody.position = startWorldPosition;
         currentStep = 0;
         GameUIScript.Instance?.DisplayStepsLeft();
+        SoundManager.PlaySound(SoundManager.SoundType.Meow);
         inputActions.Player.Enable();
     }
 
