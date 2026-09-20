@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 4066912163020722310}
   - component: {fileID: 2369205349206821115}
   m_Layer: 0
-  m_Name: FlowerBottomEmptyHouseTile
+  m_Name: LampBottomWallHouseTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f051ea60d551e64580028bccb993ad9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tile
-  tileComponent: {fileID: 0}
+  tileComponent: {fileID: 417639052295603915, guid: 5a70ae8a110e81141a7e5dd91fbfc5d1, type: 3}
   tilePosition: {x: 0, y: 0}
   tileIndex: {x: 0, y: 0}
 --- !u!1 &8214915244512761892
@@ -281,7 +281,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -7627261345010905763, guid: 2ebc014f4967e0d468420834dcdd6f92, type: 3}
+  m_Sprite: {fileID: 1232833080, guid: e65b2fac7c57e7444b85223ea9a57cb5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

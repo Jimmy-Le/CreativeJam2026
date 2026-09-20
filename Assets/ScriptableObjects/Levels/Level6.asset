@@ -1,0 +1,148 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b191bad9521ab464eadb108b71dc8eb9, type: 3}
+  m_Name: Level6
+  m_EditorClassIdentifier: Assembly-CSharp::Level
+  framePicture: {fileID: -4870093070313631401, guid: 585bcf7f8966321489e7515e9eb8ac36, type: 3}
+  levelPicture: {fileID: -1971174531, guid: ba7087b9555627943851deb803a4c64e, type: 3}
+  levelName: Binge Watching
+  stepsAllowed: 8
+  BoardSize: 8
+  levelTilesToGenerate:
+  - tile: {fileID: 3861399046625819917, guid: 0fd2555082a93264ea27770ad93a0245, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 0}
+    tileComponent: {fileID: 0}
