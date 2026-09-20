@@ -94,7 +94,7 @@ public class Board : MonoBehaviour
             newCatPosition.x >= boardSize ||
             newCatPosition.y >= boardSize ||
             board[newCatPosition.x, newCatPosition.y].tileComponent != null)
-            return -Vector2.one;
+            return Vector2.negativeInfinity;
 
         GameObject cat = board[catPosition.x, catPosition.y].tileComponent;
         board[newCatPosition.x, newCatPosition.y].tileComponent = cat;

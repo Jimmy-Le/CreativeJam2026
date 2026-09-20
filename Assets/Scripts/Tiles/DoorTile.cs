@@ -8,6 +8,7 @@ public class DoorTile : Tile
     [SerializeField] private VoidEvent LevelCompleteEvent;
     [SerializeField] private int pressedButtonsRequired = 1;
     [SerializeField] private SpriteRenderer doorSpriteRenderer;
+    [SerializeField] private bool unlockOnDefault = false;
     private int unlockProgress;
     private bool doorIsUnlocked = false;
     private GameObject cache;
@@ -22,8 +23,23 @@ public class DoorTile : Tile
         buttonUpdateEvent.OnEventRaised -= CheckDoorUnlock;
     }
 
+    void Start()
+    {
+        if(unlockOnDefault)
+        {
+            doorIsUnlocked = true;
+            cache = tileComponent;
+            tileComponent.SetActive(false);
+            doorSpriteRenderer.enabled = false;
+            tileComponent = null;
+            Debug.Log(cache);
+        }
+    }
+
     private void CheckDoorUnlock(bool buttonUpdate)
     {
+        if (unlockOnDefault) return;
+
         if (buttonUpdate)
             unlockProgress++;
         else
