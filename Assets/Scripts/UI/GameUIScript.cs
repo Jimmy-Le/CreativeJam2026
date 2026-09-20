@@ -74,6 +74,7 @@ public class GameUIScript : MonoBehaviour
     {
 
         actionsLeftText.text = (cat.stepCounter - cat.currentStep) + "";
+        LayoutRebuilder.ForceRebuildLayoutImmediate(actionsLeftText.transform as RectTransform);
         //actionsLeftText.text = (cat.stepCounter - cat.currentStep) + "";
 
     }
@@ -81,6 +82,7 @@ public class GameUIScript : MonoBehaviour
     public void RestartLevel()
     {
         board.GenerateBoard(board.levels[board.currentLevel]);
+        levelText.text = board.levels[board.currentLevel].levelName;
         cat = FindAnyObjectByType<CatMovement>();
         cat.currentStep = 0; 
 
