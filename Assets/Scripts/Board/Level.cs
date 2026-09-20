@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Level", menuName = "Scriptable Objects/Level")]
 public class Level : ScriptableObject
 {
+    public int stepsAllowed = 3;
     public int BoardSize;
     public List<TileAndChild> levelTilesToGenerate = new();
 
@@ -18,6 +19,6 @@ public class Level : ScriptableObject
 [Serializable]
 public struct TileAndChild
 {
-    public Tile tile;
+    public GameObject tile;
     public GameObject tileComponent;
 }

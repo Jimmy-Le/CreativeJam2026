@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6434518597865776285}
   - component: {fileID: 4066912163020722310}
-  - component: {fileID: 2369205349206821115}
+  - component: {fileID: -9217541615648729670}
   m_Layer: 0
-  m_Name: Tile
+  m_Name: TeleportBTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9433962, g: 0.20914915, b: 0.25314265, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -92,7 +92,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &2369205349206821115
+--- !u!114 &-9217541615648729670
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,7 +101,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3861399046625819917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f051ea60d551e64580028bccb993ad9, type: 3}
+  m_Script: {fileID: 11500000, guid: a2ab6561904430843bdd66451ee451d6, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Tile
+  m_EditorClassIdentifier: Assembly-CSharp::TeleportTile
   tileComponent: {fileID: 0}
+  tilePosition: {x: 0, y: 0}
+  tileIndex: {x: 0, y: 0}
+  destinationTeleportalTile: {fileID: -9217541615648729670, guid: a933b22d11ccc054a8eae5f53f9067db, type: 3}

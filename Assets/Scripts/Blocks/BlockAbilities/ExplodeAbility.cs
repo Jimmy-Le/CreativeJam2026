@@ -8,7 +8,7 @@ public class ExplodeAbility : BlockAbility
     public override void Activate(Dictionary<string, object> options)
     {
         // play poof animation
-        GameObject blockBase = (GameObject)options["blockBase"];
+        BlockBase blockBase = (BlockBase)options["blockBase"];
         blockBase.GetComponentInParent<SpriteRenderer>().enabled = false;
 
         // when animation is done.

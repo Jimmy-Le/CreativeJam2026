@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6434518597865776285}
   - component: {fileID: 4066912163020722310}
-  - component: {fileID: 2369205349206821115}
+  - component: {fileID: -6096594672467511108}
   m_Layer: 0
-  m_Name: Tile 1
-  m_TagString: Untagged
+  m_Name: SpikeTile
+  m_TagString: MoveBlockBan
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.5849056, g: 0.30624774, b: 0.54577214, a: 1}
+  m_Color: {r: 0.2264151, g: 0.11498695, b: 0.033107866, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -92,7 +92,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &2369205349206821115
+--- !u!114 &-6096594672467511108
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,8 +101,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3861399046625819917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f051ea60d551e64580028bccb993ad9, type: 3}
+  m_Script: {fileID: 11500000, guid: 92e26b62968fb994eb89018737bf63af, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Tile
+  m_EditorClassIdentifier: Assembly-CSharp::SpikeTile
   tileComponent: {fileID: 0}
   tilePosition: {x: 0, y: 0}
+  tileIndex: {x: 0, y: 0}
+  explodeCatEvent: {fileID: 11400000, guid: 27b7570e31522ca4eb4a1277e2ca82cb, type: 2}

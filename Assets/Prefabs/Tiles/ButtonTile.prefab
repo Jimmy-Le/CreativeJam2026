@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6434518597865776285}
   - component: {fileID: 4066912163020722310}
-  - component: {fileID: 2369205349206821115}
+  - component: {fileID: -4591378220201575184}
   m_Layer: 0
   m_Name: ButtonTile
   m_TagString: Untagged
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8297703, g: 0.3537736, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -92,7 +92,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &2369205349206821115
+--- !u!114 &-4591378220201575184
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,7 +101,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3861399046625819917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f051ea60d551e64580028bccb993ad9, type: 3}
+  m_Script: {fileID: 11500000, guid: d0dd8f9ef9d228c4cb1de242f484b610, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Tile
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonTile
   tileComponent: {fileID: 0}
+  tilePosition: {x: 0, y: 0}
+  buttonUpdateEvent: {fileID: 11400000, guid: e7dcc96c3e1a133428f9bba1e770dfe9, type: 2}

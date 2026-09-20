@@ -107,9 +107,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c77bb5d3121fa446b6d75f25edf14af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CatMovement
-  inputActions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   catBody: {fileID: 253954918312416103}
   animator: {fileID: 6554047805415530866}
+  explodeCatEvent: {fileID: 11400000, guid: 27b7570e31522ca4eb4a1277e2ca82cb, type: 2}
+  skipBoostEvent: {fileID: 11400000, guid: bcfe597fc0221da459c7eed0242405d7, type: 2}
+  stepCounter: 0
   catPosition: {x: 2, y: 1}
 --- !u!70 &1258880442956449631
 CapsuleCollider2D:

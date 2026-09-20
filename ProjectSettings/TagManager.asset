@@ -3,15 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - MoveBlockBan
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Cat
+  - 
   - Water
   - UI
-  - Blocks
+  - 
   - 
   - 
   - 
