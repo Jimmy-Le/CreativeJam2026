@@ -1,0 +1,148 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b191bad9521ab464eadb108b71dc8eb9, type: 3}
+  m_Name: Level5
+  m_EditorClassIdentifier: Assembly-CSharp::Level
+  framePicture: {fileID: -4870093070313631401, guid: 585bcf7f8966321489e7515e9eb8ac36, type: 3}
+  levelPicture: {fileID: -1971174531, guid: ba7087b9555627943851deb803a4c64e, type: 3}
+  levelName: Binge Watching
+  stepsAllowed: 8
+  BoardSize: 8
+  levelTilesToGenerate:
+  - tile: {fileID: 3861399046625819917, guid: 461341ae2e4d15940bcaf72894114094, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 1a8e50ecb8a3ba84c9f5d986249338cd, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 1a8e50ecb8a3ba84c9f5d986249338cd, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 1a8e50ecb8a3ba84c9f5d986249338cd, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 1a8e50ecb8a3ba84c9f5d986249338cd, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 1a8e50ecb8a3ba84c9f5d986249338cd, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 1a8e50ecb8a3ba84c9f5d986249338cd, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 8b029748e9e95104b9528065728a9143, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 461341ae2e4d15940bcaf72894114094, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 40ccbe52cc9aff34ca5f4ddb6d2bfbea, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 529abbf2ca70bda44aabc165a28d3b5c, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 529abbf2ca70bda44aabc165a28d3b5c, type: 3}
+    tileComponent: {fileID: 7752738519818554307, guid: f5110af4a230cf84b936164a7334fefa, type: 3}
+  - tile: {fileID: 3861399046625819917, guid: 529abbf2ca70bda44aabc165a28d3b5c, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: e0c9b45fde0f50f44b4beffc0bf6cd24, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 1a8e50ecb8a3ba84c9f5d986249338cd, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 8b029748e9e95104b9528065728a9143, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 461341ae2e4d15940bcaf72894114094, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 529abbf2ca70bda44aabc165a28d3b5c, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 529abbf2ca70bda44aabc165a28d3b5c, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 529abbf2ca70bda44aabc165a28d3b5c, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 529abbf2ca70bda44aabc165a28d3b5c, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 529abbf2ca70bda44aabc165a28d3b5c, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 37024016e74e7fa4bb2b5b8e5619b147, type: 3}
+    tileComponent: {fileID: 417639052295603915, guid: fe7f48b560a9cf24caa986a0dad1ee9a, type: 3}
+  - tile: {fileID: 3861399046625819917, guid: 8b029748e9e95104b9528065728a9143, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 461341ae2e4d15940bcaf72894114094, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 529abbf2ca70bda44aabc165a28d3b5c, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 529abbf2ca70bda44aabc165a28d3b5c, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 529abbf2ca70bda44aabc165a28d3b5c, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 529abbf2ca70bda44aabc165a28d3b5c, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 8c84b608b85119c4892df1eb9c45f06a, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 120ecf49240da464a879a042e8473dcf, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 8b029748e9e95104b9528065728a9143, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 461341ae2e4d15940bcaf72894114094, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 529abbf2ca70bda44aabc165a28d3b5c, type: 3}
+    tileComponent: {fileID: 7752738519818554307, guid: f5110af4a230cf84b936164a7334fefa, type: 3}
+  - tile: {fileID: 3861399046625819917, guid: 529abbf2ca70bda44aabc165a28d3b5c, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 60ce04c94a4129a4cb6ff0e60ea1364a, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: c8f70ddf9d4f2d146abd4d7e9169d7c1, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 529abbf2ca70bda44aabc165a28d3b5c, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 529abbf2ca70bda44aabc165a28d3b5c, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 8b029748e9e95104b9528065728a9143, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 461341ae2e4d15940bcaf72894114094, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 8f5baee335d23da458cdacddb44a53db, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 529abbf2ca70bda44aabc165a28d3b5c, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 2d36ddf95096a184892e138196611b9e, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 529abbf2ca70bda44aabc165a28d3b5c, type: 3}
+    tileComponent: {fileID: 7752738519818554307, guid: f5110af4a230cf84b936164a7334fefa, type: 3}
+  - tile: {fileID: 3861399046625819917, guid: 529abbf2ca70bda44aabc165a28d3b5c, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 660ab3f1cdc87ae498e47d925ffbafd1, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 8b029748e9e95104b9528065728a9143, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 461341ae2e4d15940bcaf72894114094, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: d66fd7b40732e4c4d9f1c781313a1d9b, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 529abbf2ca70bda44aabc165a28d3b5c, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 529abbf2ca70bda44aabc165a28d3b5c, type: 3}
+    tileComponent: {fileID: 2797812712494996239, guid: b55f6fc5508b062439569017929a4816, type: 3}
+  - tile: {fileID: 3861399046625819917, guid: 529abbf2ca70bda44aabc165a28d3b5c, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 529abbf2ca70bda44aabc165a28d3b5c, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: b606b571b36683e48ad74c6c2716b7f3, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 8b029748e9e95104b9528065728a9143, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 727759341c76fb046b0a6dbcee9c03e9, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: b092118299af5594a988ac5e13284c4f, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: b092118299af5594a988ac5e13284c4f, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: b092118299af5594a988ac5e13284c4f, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: b092118299af5594a988ac5e13284c4f, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: b092118299af5594a988ac5e13284c4f, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: b092118299af5594a988ac5e13284c4f, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: c91eee94e49503e4889aed0d73a6ff8e, type: 3}
+    tileComponent: {fileID: 0}
