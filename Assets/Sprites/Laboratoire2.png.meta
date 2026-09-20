@@ -1,0 +1,1055 @@
+fileFormatVersion: 2
+guid: 585bcf7f8966321489e7515e9eb8ac36
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7766699994723250444
+    second: Laboratoire2_0
+  - first:
+      213: -3675813751214014269
+    second: Laboratoire2_1
+  - first:
+      213: -2247170253229600325
+    second: Laboratoire2_2
+  - first:
+      213: 3731009200513969257
+    second: Laboratoire2_3
+  - first:
+      213: -5957178068357397168
+    second: Laboratoire2_4
+  - first:
+      213: -1177554003338026488
+    second: Laboratoire2_5
+  - first:
+      213: -4870093070313631401
+    second: Laboratoire2_6
+  - first:
+      213: 2788359153324119478
+    second: Laboratoire2_7
+  - first:
+      213: 1556496540392761301
+    second: Laboratoire2_8
+  - first:
+      213: -960217770111797745
+    second: Laboratoire2_9
+  - first:
+      213: 2622890824546667636
+    second: Laboratoire2_10
+  - first:
+      213: 276842172575514576
+    second: Laboratoire2_11
+  - first:
+      213: -2413657260691733098
+    second: Laboratoire2_12
+  - first:
+      213: 8787512323356336177
+    second: Laboratoire2_13
+  - first:
+      213: 1660032793025804441
+    second: Laboratoire2_14
+  - first:
+      213: 300635645922121097
+    second: Laboratoire2_15
+  - first:
+      213: 6453887036493403167
+    second: Laboratoire2_16
+  - first:
+      213: -3832176977300702828
+    second: Laboratoire2_17
+  - first:
+      213: 701616454190318906
+    second: Laboratoire2_18
+  - first:
+      213: 1003753013627584518
+    second: Laboratoire2_19
+  - first:
+      213: -4511110136380470251
+    second: Laboratoire2_20
+  - first:
+      213: -3391221981739468807
+    second: Laboratoire2_21
+  - first:
+      213: 8685892032590019611
+    second: Laboratoire2_22
+  - first:
+      213: -1535422086602771920
+    second: Laboratoire2_23
+  - first:
+      213: -2406444324412774691
+    second: Laboratoire2_24
+  - first:
+      213: 9157219134473502219
+    second: Laboratoire2_25
+  - first:
+      213: 722807198229857605
+    second: Laboratoire2_26
+  - first:
+      213: -8147799021394693043
+    second: Laboratoire2_27
+  - first:
+      213: -6334669710777480071
+    second: Laboratoire2_28
+  - first:
+      213: 5122326056762697048
+    second: Laboratoire2_29
+  - first:
+      213: 2850033298474702254
+    second: Laboratoire2_30
+  - first:
+      213: -4371029918963328756
+    second: Laboratoire2_31
+  - first:
+      213: -182985554037688881
+    second: Laboratoire2_32
+  - first:
+      213: -7996274092687384087
+    second: Laboratoire2_33
+  - first:
+      213: 5685657637953047992
+    second: Laboratoire2_34
+  - first:
+      213: 8549680395318186219
+    second: Laboratoire2_35
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Laboratoire2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1161
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c01f186de7cd8cb60800000000000000
+      internalID: 7766699994723250444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_1
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 1161
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c0846a5ed2ecfcc0800000000000000
+      internalID: -3675813751214014269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_2
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 1161
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb1dc6a8f8270d0e0800000000000000
+      internalID: -2247170253229600325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_3
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 1161
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96c6952a91537c330800000000000000
+      internalID: 3731009200513969257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_4
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 1161
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0554fcbfb1ad35da0800000000000000
+      internalID: -5957178068357397168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_5
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 1161
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 802a2377fdc78afe0800000000000000
+      internalID: -1177554003338026488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 929
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7515dd8c724f96cb0800000000000000
+      internalID: -4870093070313631401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_7
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 929
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b5d71860ed32b620800000000000000
+      internalID: 2788359153324119478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_8
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 929
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d72c385b59c99510800000000000000
+      internalID: 1556496540392761301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_9
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 929
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f06f779860f9ca2f0800000000000000
+      internalID: -960217770111797745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_10
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 929
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47c4cb9ee41666420800000000000000
+      internalID: 2622890824546667636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_11
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 929
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dff53b3d7a87d300800000000000000
+      internalID: 276842172575514576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 702
+        width: 232
+        height: 227
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6954dee6287f08ed0800000000000000
+      internalID: -2413657260691733098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_13
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 697
+        width: 227
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 130a50d56e383f970800000000000000
+      internalID: 8787512323356336177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_14
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 697
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9987dcfa70f990710800000000000000
+      internalID: 1660032793025804441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_15
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 697
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9851202f6821c2400800000000000000
+      internalID: 300635645922121097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_16
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 697
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1410b6c010d09950800000000000000
+      internalID: 6453887036493403167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_17
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 697
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 499bf87c75f51dac0800000000000000
+      internalID: -3832176977300702828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 465
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a354590a274acb900800000000000000
+      internalID: 701616454190318906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_19
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 465
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 600008b3c0c0eed00800000000000000
+      internalID: 1003753013627584518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_20
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 465
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51cc06a5b315561c0800000000000000
+      internalID: -4511110136380470251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_21
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 465
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f73ce73395ffe0d0800000000000000
+      internalID: -3391221981739468807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_22
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 465
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1c7ce7a8cc7a8870800000000000000
+      internalID: 8685892032590019611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_23
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 465
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 032b0cb4fb511bae0800000000000000
+      internalID: -1535422086602771920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 233
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd62f9703a79a9ed0800000000000000
+      internalID: -2406444324412774691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_25
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 233
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0ef3b8294af41f70800000000000000
+      internalID: 9157219134473502219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_26
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 233
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5450693315de70a00800000000000000
+      internalID: 722807198229857605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_27
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 233
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d447e7c75f33dee80800000000000000
+      internalID: -8147799021394693043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_28
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 233
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97c8ea7e57bb618a0800000000000000
+      internalID: -6334669710777480071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_29
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 233
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 855611dc868261740800000000000000
+      internalID: 5122326056762697048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea59e915f2a5d8720800000000000000
+      internalID: 2850033298474702254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_31
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 1
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c091699827bf653c0800000000000000
+      internalID: -4371029918963328756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_32
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 1
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc53e8cab97e57df0800000000000000
+      internalID: -182985554037688881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_33
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 1
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e1a5ba2417870190800000000000000
+      internalID: -7996274092687384087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_34
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 1
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bd8da07f7387ee40800000000000000
+      internalID: 5685657637953047992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Laboratoire2_35
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 1
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be0df0a750196a670800000000000000
+      internalID: 8549680395318186219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 480571859a46cb242a549e425b990a2b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":232.0,"y":232.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Laboratoire2_0: 7766699994723250444
+      Laboratoire2_1: -3675813751214014269
+      Laboratoire2_10: 2622890824546667636
+      Laboratoire2_11: 276842172575514576
+      Laboratoire2_12: -2413657260691733098
+      Laboratoire2_13: 8787512323356336177
+      Laboratoire2_14: 1660032793025804441
+      Laboratoire2_15: 300635645922121097
+      Laboratoire2_16: 6453887036493403167
+      Laboratoire2_17: -3832176977300702828
+      Laboratoire2_18: 701616454190318906
+      Laboratoire2_19: 1003753013627584518
+      Laboratoire2_2: -2247170253229600325
+      Laboratoire2_20: -4511110136380470251
+      Laboratoire2_21: -3391221981739468807
+      Laboratoire2_22: 8685892032590019611
+      Laboratoire2_23: -1535422086602771920
+      Laboratoire2_24: -2406444324412774691
+      Laboratoire2_25: 9157219134473502219
+      Laboratoire2_26: 722807198229857605
+      Laboratoire2_27: -8147799021394693043
+      Laboratoire2_28: -6334669710777480071
+      Laboratoire2_29: 5122326056762697048
+      Laboratoire2_3: 3731009200513969257
+      Laboratoire2_30: 2850033298474702254
+      Laboratoire2_31: -4371029918963328756
+      Laboratoire2_32: -182985554037688881
+      Laboratoire2_33: -7996274092687384087
+      Laboratoire2_34: 5685657637953047992
+      Laboratoire2_35: 8549680395318186219
+      Laboratoire2_4: -5957178068357397168
+      Laboratoire2_5: -1177554003338026488
+      Laboratoire2_6: -4870093070313631401
+      Laboratoire2_7: 2788359153324119478
+      Laboratoire2_8: 1556496540392761301
+      Laboratoire2_9: -960217770111797745
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

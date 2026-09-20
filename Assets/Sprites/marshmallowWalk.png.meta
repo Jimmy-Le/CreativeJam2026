@@ -1,0 +1,616 @@
+fileFormatVersion: 2
+guid: c6bab38aa363bf44392aadd00103edd4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6281306253822906831
+    second: marshmallowWalk2_0
+  - first:
+      213: -3811446183142723392
+    second: marshmallowWalk2_1
+  - first:
+      213: 1628143481475131280
+    second: marshmallowWalk2_2
+  - first:
+      213: 1590658999467695922
+    second: marshmallowWalk2_3
+  - first:
+      213: -3534545502920138914
+    second: marshmallowWalk2_4
+  - first:
+      213: -5031402418661565441
+    second: marshmallowWalk2_5
+  - first:
+      213: 7508582325127270778
+    second: marshmallowWalk2_6
+  - first:
+      213: 7161214333366911360
+    second: marshmallowWalk2_7
+  - first:
+      213: 7141638526792445890
+    second: marshmallowWalk2_8
+  - first:
+      213: 6286889907644519748
+    second: marshmallowWalk2_9
+  - first:
+      213: 5833155780441201203
+    second: marshmallowWalk2_10
+  - first:
+      213: -5655807143247642244
+    second: marshmallowWalk2_11
+  - first:
+      213: -7221652498351204665
+    second: marshmallowWalk2_12
+  - first:
+      213: -3147426467500594624
+    second: marshmallowWalk2_13
+  - first:
+      213: -4289514263979849430
+    second: marshmallowWalk2_14
+  - first:
+      213: 6525325027360324892
+    second: marshmallowWalk2_15
+  - first:
+      213: 8635160292569325538
+    second: marshmallowWalk2_16
+  - first:
+      213: 96390769277725315
+    second: marshmallowWalk2_17
+  - first:
+      213: -178042882897417939
+    second: marshmallowWalk2_18
+  - first:
+      213: -1247100440118004701
+    second: marshmallowWalk2_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: marshmallowWalk2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1162
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc1dd8012ceab2750800000000000000
+      internalID: 6281306253822906831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: marshmallowWalk2_1
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 1162
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c0724de3e50b1bc0800000000000000
+      internalID: -3811446183142723392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: marshmallowWalk2_2
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 1162
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09761b0ced3589610800000000000000
+      internalID: 1628143481475131280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: marshmallowWalk2_3
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 1162
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23fdc0eaee7231610800000000000000
+      internalID: 1590658999467695922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: marshmallowWalk2_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 930
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5f9df78795c2fec0800000000000000
+      internalID: -3534545502920138914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: marshmallowWalk2_5
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 930
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffbd2a1682edc2ab0800000000000000
+      internalID: -5031402418661565441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: marshmallowWalk2_6
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 930
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a71dcffa7d7d33860800000000000000
+      internalID: 7508582325127270778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: marshmallowWalk2_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 698
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08145c49e7eb16360800000000000000
+      internalID: 7161214333366911360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: marshmallowWalk2_8
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 698
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cf25bfe6623c1360800000000000000
+      internalID: 7141638526792445890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: marshmallowWalk2_9
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 698
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 445d327cf058f3750800000000000000
+      internalID: 6286889907644519748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: marshmallowWalk2_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 466
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33ad6b4e64883f050800000000000000
+      internalID: 5833155780441201203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: marshmallowWalk2_11
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 466
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c718b947e598281b0800000000000000
+      internalID: -5655807143247642244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: marshmallowWalk2_12
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 466
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c6d670905987cb90800000000000000
+      internalID: -7221652498351204665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: marshmallowWalk2_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 234
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04ae6f7bd481254d0800000000000000
+      internalID: -3147426467500594624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: marshmallowWalk2_14
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 234
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a298284f0859874c0800000000000000
+      internalID: -4289514263979849430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: marshmallowWalk2_15
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 234
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1d37cb2a8c9e8a50800000000000000
+      internalID: 6525325027360324892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: marshmallowWalk2_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ef1729f88046d770800000000000000
+      internalID: 8635160292569325538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: marshmallowWalk2_17
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 2
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38aec6ad4e2765100800000000000000
+      internalID: 96390769277725315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: marshmallowWalk2_18
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 2
+        width: 232
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d29ec1af0f6778df0800000000000000
+      internalID: -178042882897417939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 2aa31b1e0d17dfa4881f2416e14c1398
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":232.0,"y":232.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":1,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      marshmallowWalk2_0: 6281306253822906831
+      marshmallowWalk2_1: -3811446183142723392
+      marshmallowWalk2_10: 5833155780441201203
+      marshmallowWalk2_11: -5655807143247642244
+      marshmallowWalk2_12: -7221652498351204665
+      marshmallowWalk2_13: -3147426467500594624
+      marshmallowWalk2_14: -4289514263979849430
+      marshmallowWalk2_15: 6525325027360324892
+      marshmallowWalk2_16: 8635160292569325538
+      marshmallowWalk2_17: 96390769277725315
+      marshmallowWalk2_18: -178042882897417939
+      marshmallowWalk2_2: 1628143481475131280
+      marshmallowWalk2_3: 1590658999467695922
+      marshmallowWalk2_4: -3534545502920138914
+      marshmallowWalk2_5: -5031402418661565441
+      marshmallowWalk2_6: 7508582325127270778
+      marshmallowWalk2_7: 7161214333366911360
+      marshmallowWalk2_8: 7141638526792445890
+      marshmallowWalk2_9: 6286889907644519748
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
