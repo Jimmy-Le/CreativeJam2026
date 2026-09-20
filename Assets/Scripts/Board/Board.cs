@@ -32,8 +32,10 @@ public class Board : MonoBehaviour
         boardSize = level.BoardSize;
 
         float tileScale = level.levelTilesToGenerate[0].tile.transform.localScale.x;
-        float boardArea = tileScale * boardSize + spacing * (boardSize - 1);
-        initialPosition = new Vector2(this.transform.position.x + boardArea / 4, this.transform.position.y + boardArea / 4);
+        float boardArea = tileScale * boardSize;
+        initialPosition = new Vector2(this.transform.position.x + boardArea / 2f - 0.5f, this.transform.position.y + boardArea / 2f - 0.5f);
+        Debug.Log(initialPosition);
+
 
         board = new Tile[boardSize, boardSize];
 
