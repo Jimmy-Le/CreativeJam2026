@@ -730,6 +730,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1c059f2f42d87f7458785cf31021fa16, type: 2}
   - {fileID: 11400000, guid: d0871d3aef0e8f8428d5064f7448fd6d, type: 2}
   - {fileID: 11400000, guid: d5c8007420b57d146be84336da109689, type: 2}
+  - {fileID: 11400000, guid: 26fec3feb629b0a4fa1cf422ffe9eabb, type: 2}
   - {fileID: 11400000, guid: 43d29ca772afc584d9f35a495853e077, type: 2}
   initialLevel: 0
   LevelCompleteEvent: {fileID: 11400000, guid: b811563f8932e5b4d98a1b1ff37182a2, type: 2}
@@ -2982,7 +2983,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2109847331}
   m_HandleRect: {fileID: 2109847330}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
