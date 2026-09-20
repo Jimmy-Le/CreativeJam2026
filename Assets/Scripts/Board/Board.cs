@@ -43,6 +43,7 @@ public class Board : MonoBehaviour
             {
                 GameUIScript.Instance.RestartLevel();
                 GameUIScript.Instance.DisplayStepsLeft();
+                GameUIScript.Instance.PlayMusic();
                 loadingScreen.SetActive(false);
                
             });
