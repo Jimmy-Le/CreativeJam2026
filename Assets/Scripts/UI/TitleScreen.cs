@@ -1,6 +1,4 @@
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class TitleScreen : MonoBehaviour
@@ -22,9 +20,6 @@ public class TitleScreen : MonoBehaviour
         {
             instance = this;
         }
-        
-
-
     }
 
     void Start()

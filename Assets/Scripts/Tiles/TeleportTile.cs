@@ -1,8 +1,5 @@
-using System;
 using System.Collections;
-using UnityEditor.Overlays;
 using UnityEngine;
-using static Unity.Collections.AllocatorManager;
 
 [RequireComponent (typeof(SpriteRenderer))]
 public class TeleportTile : Tile
