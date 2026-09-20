@@ -198,8 +198,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tile
   tileComponent: {fileID: 0}
-  tilePosition: {x: 0, y: 0}
-  tileIndex: {x: 0, y: 0}
+  tilePosition: {x: -2.5, y: -1.5}
+  tileIndex: {x: 1, y: 5}
 --- !u!1 &8214915244512761892
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,9 +279,9 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1409814464, guid: e65b2fac7c57e7444b85223ea9a57cb5, type: 3}
+  m_Sprite: {fileID: -5942659726450677745, guid: 2ebc014f4967e0d468420834dcdd6f92, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

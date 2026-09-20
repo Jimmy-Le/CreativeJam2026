@@ -61,6 +61,7 @@ public class TitleScreen : MonoBehaviour
         //inputActions.Player.Disable();
         //playPanel.SetActive(true);
         Play();
+
     }
 
 

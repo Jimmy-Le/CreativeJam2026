@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Level
   framePicture: {fileID: -4870093070313631401, guid: 585bcf7f8966321489e7515e9eb8ac36, type: 3}
   levelPicture: {fileID: -5668005837551725102, guid: 6e6b48208d5c5c343875d4b0c0603cf4, type: 3}
-  levelName: Level 1-2
+  levelName: Testing...
   stepsAllowed: 6
   BoardSize: 7
   levelTilesToGenerate:

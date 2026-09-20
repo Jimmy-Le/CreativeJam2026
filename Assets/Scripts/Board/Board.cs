@@ -43,6 +43,7 @@ public class Board : MonoBehaviour
                 GameUIScript.Instance.RestartLevel();
                 
                 loadingScreen.SetActive(false);
+               
             });
 
             //GameUIScript.Instance.RestartLevel();
