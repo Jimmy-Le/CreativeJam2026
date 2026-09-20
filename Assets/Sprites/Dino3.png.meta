@@ -1,31 +1,37 @@
 fileFormatVersion: 2
-guid: 2ebc014f4967e0d468420834dcdd6f92
+guid: d5ed98851d5a8104d9947498234072c3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8862547545159352364
-    second: present3_0
+      213: -3289248926033167870
+    second: Dino3_0
   - first:
-      213: -5033949295355343399
-    second: present3_1
+      213: -5099984483960518839
+    second: Dino3_1
   - first:
-      213: 880208749585048789
-    second: present3_2
+      213: 8614621830672769657
+    second: Dino3_2
   - first:
-      213: -5942659726450677745
-    second: present3_3
+      213: 8911466710529806177
+    second: Dino3_3
   - first:
-      213: -8261463954634666744
-    second: present3_4
+      213: -5176797248778369330
+    second: Dino3_4
   - first:
-      213: -7627261345010905763
-    second: present3_5
+      213: 5374927586440532839
+    second: Dino3_5
   - first:
-      213: -3613893028873514985
-    second: present3_6
+      213: 513274010956988551
+    second: Dino3_6
   - first:
-      213: -8598700830104537948
-    second: present3_7
+      213: -4645899442066489025
+    second: Dino3_7
+  - first:
+      213: -7866070052229603363
+    second: Dino3_8
+  - first:
+      213: -3574625422528748478
+    second: Dino3_9
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -121,7 +127,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: present3_0
+      name: Dino3_0
       rect:
         serializedVersion: 2
         x: 0
@@ -136,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c20cb3a59081efa70800000000000000
-      internalID: 8862547545159352364
+      spriteID: 20a35f9678d3a52d0800000000000000
+      internalID: -3289248926033167870
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: present3_1
+      name: Dino3_1
       rect:
         serializedVersion: 2
         x: 232
@@ -158,58 +164,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9dd440179c1d32ab0800000000000000
-      internalID: -5033949295355343399
+      spriteID: 9478789f1273939b0800000000000000
+      internalID: -5099984483960518839
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: present3_2
-      rect:
-        serializedVersion: 2
-        x: 696
-        y: 464
-        width: 232
-        height: 232
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5d42537b131273c00800000000000000
-      internalID: 880208749585048789
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: present3_3
-      rect:
-        serializedVersion: 2
-        x: 928
-        y: 464
-        width: 232
-        height: 232
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f0823efd67e678da0800000000000000
-      internalID: -5942659726450677745
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: present3_4
+      name: Dino3_2
       rect:
         serializedVersion: 2
         x: 0
@@ -224,14 +186,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 80d8e4bed42695d80800000000000000
-      internalID: -8261463954634666744
+      spriteID: 972639ba9e84d8770800000000000000
+      internalID: 8614621830672769657
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: present3_5
+      name: Dino3_3
       rect:
         serializedVersion: 2
         x: 232
@@ -246,102 +208,36 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d5d8e89b736862690800000000000000
-      internalID: -7627261345010905763
+      spriteID: 16f09dc12c3ebab70800000000000000
+      internalID: 8911466710529806177
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: present3_6
-      rect:
-        serializedVersion: 2
-        x: 464
-        y: 232
-        width: 232
-        height: 232
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 710dbbdff6fd8ddc0800000000000000
-      internalID: -3613893028873514985
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: present3_7
-      rect:
-        serializedVersion: 2
-        x: 696
-        y: 232
-        width: 232
-        height: 232
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4a433c327274ba880800000000000000
-      internalID: -8598700830104537948
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: present3_8
-      rect:
-        serializedVersion: 2
-        x: 928
-        y: 232
-        width: 232
-        height: 232
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a1c9cc585b94c7c4781d3a4091692b93
-      internalID: 1885376405
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: present3_9
+      name: Dino3_4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 228
-        height: 229
+        width: 232
+        height: 232
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 06fda8e2b71188f4ca4cac765b9f40c8
-      internalID: 1790665570
+      spriteID: ec6885084525828b0800000000000000
+      internalID: -5176797248778369330
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: present3_10
+      name: Dino3_5
       rect:
         serializedVersion: 2
         x: 232
@@ -354,54 +250,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 59293be2561cfbd4eaab613d5e3d1084
-      internalID: -1649703897
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: present3_11
-      rect:
-        serializedVersion: 2
-        x: 464
-        y: 0
-        width: 232
-        height: 232
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d55cbe09c8402b94b9ebc0ff0e88e886
-      internalID: 589915330
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: present3_12
-      rect:
-        serializedVersion: 2
-        x: 696
-        y: 0
-        width: 232
-        height: 232
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 720df19b7ca774d489bbdeefe1587f67
-      internalID: 904770586
+      spriteID: 7635c3b8924979a40800000000000000
+      internalID: 5374927586440532839
       vertices: []
       indices: 
       edges: []
@@ -410,7 +262,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 41147a5ffe21fb34cae5e5d1194051d8
+    spriteID: 5b6e88493ff56064da5db73197ee5eb4
     internalID: 0
     vertices: []
     indices: 
@@ -422,19 +274,12 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":232.0,"y":232.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      present3_0: 8862547545159352364
-      present3_1: -5033949295355343399
-      present3_10: -1649703897
-      present3_11: 589915330
-      present3_12: 904770586
-      present3_2: 880208749585048789
-      present3_3: -5942659726450677745
-      present3_4: -8261463954634666744
-      present3_5: -7627261345010905763
-      present3_6: -3613893028873514985
-      present3_7: -8598700830104537948
-      present3_8: 1885376405
-      present3_9: 1790665570
+      Dino3_0: -3289248926033167870
+      Dino3_1: -5099984483960518839
+      Dino3_2: 8614621830672769657
+      Dino3_3: 8911466710529806177
+      Dino3_4: -5176797248778369330
+      Dino3_5: 5374927586440532839
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

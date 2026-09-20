@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 4066912163020722310}
   - component: {fileID: 2369205349206821115}
   m_Layer: 0
-  m_Name: LampTopEmptyHouseTile
+  m_Name: LampDeskLegRightEmptyHouseTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -281,7 +281,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -5942659726450677745, guid: 2ebc014f4967e0d468420834dcdd6f92, type: 3}
+  m_Sprite: {fileID: -1460517463, guid: f34e65b6596407b40907a8020883245c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
