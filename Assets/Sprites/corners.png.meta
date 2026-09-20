@@ -1,37 +1,13 @@
 fileFormatVersion: 2
-guid: b08f0b195fd427e40ba79cdde2348a17
+guid: 9d4f7263fb5c4cf4aa4e2a86f43d0518
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2074131032069657448
-    second: present2_0
+      213: 3570940443873441829
+    second: corners_0
   - first:
-      213: -7604350523536341857
-    second: present2_1
-  - first:
-      213: -7823138640645560237
-    second: present2_2
-  - first:
-      213: 3701234631513315563
-    second: present2_3
-  - first:
-      213: -1725282959811063916
-    second: present2_4
-  - first:
-      213: -4844517686074318168
-    second: present2_5
-  - first:
-      213: -5699636262577306297
-    second: present2_6
-  - first:
-      213: -791962945164357042
-    second: present2_7
-  - first:
-      213: 1550651956322232883
-    second: present2_8
-  - first:
-      213: -8553171453045832338
-    second: present2_9
+      213: -8097042804903481803
+    second: corners_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -127,11 +103,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: present2_0
+      name: corners_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 233
+        y: 232
         width: 232
         height: 232
       alignment: 0
@@ -142,62 +118,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 86350283f2bc8cc10800000000000000
-      internalID: 2074131032069657448
+      spriteID: 528f62ff9678e8130800000000000000
+      internalID: 3570940443873441829
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: present2_1
-      rect:
-        serializedVersion: 2
-        x: 232
-        y: 233
-        width: 232
-        height: 232
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f948f090d7be77690800000000000000
-      internalID: -7604350523536341857
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: present2_2
-      rect:
-        serializedVersion: 2
-        x: 464
-        y: 233
-        width: 232
-        height: 232
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 35860b7ead0ae6390800000000000000
-      internalID: -7823138640645560237
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: present2_3
+      name: corners_1
       rect:
         serializedVersion: 2
         x: 0
-        y: 1
+        y: 0
         width: 232
         height: 232
       alignment: 0
@@ -208,52 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: be899b1994d6d5330800000000000000
-      internalID: 3701234631513315563
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: present2_4
-      rect:
-        serializedVersion: 2
-        x: 232
-        y: 1
-        width: 230
-        height: 232
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 49f4d6bf9409e08e0800000000000000
-      internalID: -1725282959811063916
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: present2_5
-      rect:
-        serializedVersion: 2
-        x: 464
-        y: 1
-        width: 232
-        height: 232
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8a26175f4d0d4ccb0800000000000000
-      internalID: -4844517686074318168
+      spriteID: 53e689a087681af80800000000000000
+      internalID: -8097042804903481803
       vertices: []
       indices: 
       edges: []
@@ -262,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f4992a7b4c0e2124a97fea663cb65091
+    spriteID: 1dc2b563191c90d428c1a04932eaa78f
     internalID: 0
     vertices: []
     indices: 
@@ -274,12 +162,8 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":232.0,"y":232.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      present2_0: 2074131032069657448
-      present2_1: -7604350523536341857
-      present2_2: -7823138640645560237
-      present2_3: 3701234631513315563
-      present2_4: -1725282959811063916
-      present2_5: -4844517686074318168
+      corners_0: 3570940443873441829
+      corners_1: -8097042804903481803
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
