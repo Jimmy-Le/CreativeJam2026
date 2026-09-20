@@ -4,7 +4,7 @@ using UnityEngine;
 public class ButtonTile : Tile
 {
     [SerializeField] private BoolEvent buttonUpdateEvent;
-    private bool isButtonPressed = false;
+    public bool isButtonPressed = false;
 
     private void Update()
     {
