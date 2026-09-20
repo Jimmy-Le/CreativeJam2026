@@ -337,10 +337,10 @@ TextureImporter:
       name: Dino1_9
       rect:
         serializedVersion: 2
-        x: 928
-        y: 465
-        width: 232
-        height: 232
+        x: 926
+        y: 463
+        width: 234
+        height: 234
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -514,9 +514,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 464
-        y: 1
-        width: 232
-        height: 232
+        y: 3
+        width: 221
+        height: 230
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
