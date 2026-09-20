@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 8614621830672769657, guid: d5ed98851d5a8104d9947498234072c3, type: 3}
+  m_Sprite: {fileID: -6340947107778117071, guid: 5ecf97a630e51a14198825cc28c7b4ce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -91,7 +91,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!1 &3172516863004950483
+--- !u!1 &2504036623099395430
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,38 +99,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4034532815900604143}
-  - component: {fileID: 5377319216124038134}
+  - component: {fileID: 4458115613676381372}
+  - component: {fileID: 8299587514237116049}
   m_Layer: 0
-  m_Name: Laboratoire2_25
+  m_Name: present1_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4034532815900604143
+--- !u!4 &4458115613676381372
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3172516863004950483}
+  m_GameObject: {fileID: 2504036623099395430}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.015, y: 0.003, z: 0}
   m_LocalScale: {x: 0.435, y: 0.435, z: 0.435}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6434518597865776285}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &5377319216124038134
+--- !u!212 &8299587514237116049
 SpriteRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3172516863004950483}
+  m_GameObject: {fileID: 2504036623099395430}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -170,9 +170,9 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 8614621830672769657, guid: d5ed98851d5a8104d9947498234072c3, type: 3}
+  m_Sprite: {fileID: 8911466710529806177, guid: d5ed98851d5a8104d9947498234072c3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -192,9 +192,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6434518597865776285}
   - component: {fileID: 4066912163020722310}
-  - component: {fileID: 484419576289991423}
+  - component: {fileID: 2369205349206821115}
   m_Layer: 0
-  m_Name: SignDoorWallDinoTile
+  m_Name: PearBushWallDinoTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -214,8 +214,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 83268807078291741}
-  - {fileID: 4034532815900604143}
-  - {fileID: 6962819715005945625}
+  - {fileID: 4458115613676381372}
+  - {fileID: 5387219012631241405}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4066912163020722310
@@ -277,7 +277,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &484419576289991423
+--- !u!114 &2369205349206821115
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -286,18 +286,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3861399046625819917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 293d0d9dbc613af498c0a03a822d0472, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f051ea60d551e64580028bccb993ad9, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DoorTile
-  tileComponent: {fileID: 0}
-  tilePosition: {x: -3.5, y: 0.5}
-  tileIndex: {x: 0, y: 3}
-  buttonUpdateEvent: {fileID: 11400000, guid: e7dcc96c3e1a133428f9bba1e770dfe9, type: 2}
-  LevelCompleteEvent: {fileID: 11400000, guid: b811563f8932e5b4d98a1b1ff37182a2, type: 2}
-  pressedButtonsRequired: 1
-  doorSpriteRenderer: {fileID: 7973684747977756568}
-  unlockOnDefault: 1
---- !u!1 &5461218265482644819
+  m_EditorClassIdentifier: Assembly-CSharp::Tile
+  tileComponent: {fileID: 417639052295603915, guid: 5a70ae8a110e81141a7e5dd91fbfc5d1, type: 3}
+  tilePosition: {x: 0, y: 0}
+  tileIndex: {x: 0, y: 0}
+--- !u!1 &4621625067333446709
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -305,39 +300,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6962819715005945625}
-  - component: {fileID: 9114252341673825278}
-  - component: {fileID: 1954282431157360344}
+  - component: {fileID: 5387219012631241405}
+  - component: {fileID: 7897251656662149064}
+  - component: {fileID: 170952926218230395}
   m_Layer: 0
-  m_Name: Laboratoire2_26
+  m_Name: Laboratoire2_30
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6962819715005945625
+--- !u!4 &5387219012631241405
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5461218265482644819}
+  m_GameObject: {fileID: 4621625067333446709}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.036, y: 0.778, z: 0}
+  m_LocalPosition: {x: 0.001, y: 0.037, z: 0}
   m_LocalScale: {x: 0.435, y: 0.435, z: 0.435}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6434518597865776285}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &9114252341673825278
+--- !u!212 &7897251656662149064
 SpriteRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5461218265482644819}
+  m_GameObject: {fileID: 4621625067333446709}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -377,9 +372,9 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 722807198229857605, guid: 585bcf7f8966321489e7515e9eb8ac36, type: 3}
+  m_Sprite: {fileID: -8598700830104537948, guid: 2ebc014f4967e0d468420834dcdd6f92, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -389,17 +384,16 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1954282431157360344
+--- !u!114 &170952926218230395
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5461218265482644819}
+  m_GameObject: {fileID: 4621625067333446709}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 619a6d8eae0589f428da92da8612f4f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 71b8512fc3531de4792560521b3bb181, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SpriteHoverer
-  moveDuration: 1
-  hoverDistance: 0.15
+  m_EditorClassIdentifier: Assembly-CSharp::SpritePulser
+  fadeDuration: 3
