@@ -1,14 +1,6 @@
-using NUnit.Framework;
 using PrimeTween;
-using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using Unity.VisualScripting;
-using UnityEditor.Overlays;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using static Unity.Collections.AllocatorManager;
-
 public class Board : MonoBehaviour
 {
     [SerializeField] public List<Level> levels;

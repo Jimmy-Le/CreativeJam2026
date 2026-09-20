@@ -1,5 +1,3 @@
-using NUnit.Framework;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -82,7 +80,6 @@ public class GameUIScript : MonoBehaviour
         board.GenerateBoard(board.levels[board.currentLevel]);
         cat = FindAnyObjectByType<CatMovement>();
         cat.currentStep = 0; 
-        DisplayStepsLeft();
 
 
     }
