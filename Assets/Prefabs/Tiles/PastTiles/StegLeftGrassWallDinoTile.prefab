@@ -197,9 +197,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f051ea60d551e64580028bccb993ad9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tile
-  tileComponent: {fileID: 0}
-  tilePosition: {x: 0, y: 0}
-  tileIndex: {x: 0, y: 0}
+  tileComponent: {fileID: 417639052295603915, guid: 5a70ae8a110e81141a7e5dd91fbfc5d1, type: 3}
+  tilePosition: {x: -0.3663001, y: -0.6336999}
+  tileIndex: {x: 4, y: 5}
 --- !u!1 &9062360585836618914
 GameObject:
   m_ObjectHideFlags: 0

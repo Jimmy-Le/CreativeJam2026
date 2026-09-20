@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.435, y: 0.435, z: 0.435}
+  m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6434518597865776285}
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f051ea60d551e64580028bccb993ad9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tile
-  tileComponent: {fileID: 0}
+  tileComponent: {fileID: 417639052295603915, guid: 5a70ae8a110e81141a7e5dd91fbfc5d1, type: 3}
   tilePosition: {x: 0, y: 0}
   tileIndex: {x: 0, y: 0}
 --- !u!1 &9062360585836618914

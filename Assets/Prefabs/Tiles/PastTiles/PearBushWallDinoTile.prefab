@@ -192,7 +192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6434518597865776285}
   - component: {fileID: 4066912163020722310}
-  - component: {fileID: 2369205349206821115}
+  - component: {fileID: 1386879621270430375}
   m_Layer: 0
   m_Name: PearBushWallDinoTile
   m_TagString: Untagged
@@ -209,7 +209,7 @@ Transform:
   m_GameObject: {fileID: 3861399046625819917}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.267, y: 0.637, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -277,7 +277,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &2369205349206821115
+--- !u!114 &1386879621270430375
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -286,12 +286,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3861399046625819917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f051ea60d551e64580028bccb993ad9, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a948ff3edcf84a42a0f5c26e2bf4864, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Tile
-  tileComponent: {fileID: 417639052295603915, guid: 5a70ae8a110e81141a7e5dd91fbfc5d1, type: 3}
+  m_EditorClassIdentifier: Assembly-CSharp::SkipTile
+  tileComponent: {fileID: 0}
   tilePosition: {x: 0, y: 0}
   tileIndex: {x: 0, y: 0}
+  skipBoostEvent: {fileID: 11400000, guid: bcfe597fc0221da459c7eed0242405d7, type: 2}
 --- !u!1 &4621625067333446709
 GameObject:
   m_ObjectHideFlags: 0
