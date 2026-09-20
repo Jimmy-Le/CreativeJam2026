@@ -20,6 +20,7 @@ public class TitleScreen : MonoBehaviour
         {
             instance = this;
         }
+        SoundManager.PlaySound(SoundManager.SoundType.MenuCat);
     }
 
     void Start()
@@ -30,6 +31,7 @@ public class TitleScreen : MonoBehaviour
 
     public void DisplayCredits()
     {
+        SoundManager.PlaySound(SoundManager.SoundType.Click);
         CloseAllPanels();
         inputActions.Player.Disable();
         creditsPanel.SetActive(true);
@@ -37,6 +39,7 @@ public class TitleScreen : MonoBehaviour
 
     public void DisplayOptions()
     {
+        SoundManager.PlaySound(SoundManager.SoundType.Click);
         CloseAllPanels();
         inputActions.Player.Disable();
         optionsPanel.SetActive(true);
@@ -45,6 +48,7 @@ public class TitleScreen : MonoBehaviour
 
     public void DisplayQuit()
     {
+        SoundManager.PlaySound(SoundManager.SoundType.Click);
         CloseAllPanels();
         inputActions.Player.Disable();
         quitPanel.SetActive(true);
@@ -52,9 +56,11 @@ public class TitleScreen : MonoBehaviour
 
     public void DisplayPlay()
     {
-        CloseAllPanels();
-        inputActions.Player.Disable();
-        playPanel.SetActive(true);
+        SoundManager.PlaySound(SoundManager.SoundType.Click);
+        //CloseAllPanels();
+        //inputActions.Player.Disable();
+        //playPanel.SetActive(true);
+        Play();
     }
 
 

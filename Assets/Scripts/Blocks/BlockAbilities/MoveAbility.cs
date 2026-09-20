@@ -10,5 +10,6 @@ public class MoveAbility : BlockAbility
         Vector2Int blockPosition = (Vector2Int)options["blockPosition"];
         Vector2Int direction = (Vector2Int)options["direction"];
         board.MoveBlock(blockPosition, direction);
+        SoundManager.PlaySound(SoundManager.SoundType.Drag);
     }
 }

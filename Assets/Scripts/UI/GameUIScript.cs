@@ -30,6 +30,8 @@ public class GameUIScript : MonoBehaviour
     void Awake()
     {
         Instance = this;
+        SoundManager.PlaySound(SoundManager.SoundType.LaboratoryTheme);
+
     }
 
 
@@ -42,6 +44,7 @@ public class GameUIScript : MonoBehaviour
         LoadLevelSelect();
         OpenLevelSelect();
         CloseAllPanels();
+
     }
 
 
@@ -92,9 +95,25 @@ public class GameUIScript : MonoBehaviour
         cat = FindAnyObjectByType<CatMovement>();
         float animationLength3 = cat.animator.GetCurrentAnimatorStateInfo(0).length;
         cat.currentStep = 0;
-
+        SoundManager.PlaySound(SoundManager.SoundType.Click);
         DisplayStepsLeft();
         CloseAllPanels();
+    }
+
+    public void PlayMusic()
+    {
+        if (board.currentLevel < 3)
+        {
+            SoundManager.PlaySound(SoundManager.SoundType.LaboratoryTheme);
+        }
+        else if (board.currentLevel >= 3 && board.currentLevel < 6)
+        {
+            SoundManager.PlaySound(SoundManager.SoundType.DinoCountdown);
+        }
+        else
+        {
+            SoundManager.PlaySound(SoundManager.SoundType.AnalogTime);
+        }
     }
 
     public void LoadLevelSelect()
