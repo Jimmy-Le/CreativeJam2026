@@ -38,10 +38,11 @@ public class Board : MonoBehaviour
         {
             loadingScreen.SetActive(true);
             GameUIScript.Instance.LoadLevel(currentLevel);
+            SoundManager.instance.audioSource.Stop();
             Tween.Delay(duration: 1f, onComplete: () =>
             {
                 GameUIScript.Instance.RestartLevel();
-                
+                GameUIScript.Instance.DisplayStepsLeft();
                 loadingScreen.SetActive(false);
                
             });

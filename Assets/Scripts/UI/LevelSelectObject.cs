@@ -25,6 +25,8 @@ public class LevelSelectObject : MonoBehaviour
 
     public void SelectLevel()
     {
+        GameUIScript.Instance.board.currentLevel = index;
         GameUIScript.Instance.LoadLevel(index);
+        //GameUIScript.Instance.board.currentLevel = index;
     }
 }

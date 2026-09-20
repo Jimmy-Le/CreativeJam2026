@@ -74,9 +74,12 @@ public class GameUIScript : MonoBehaviour
 
     public void DisplayStepsLeft()
     {
+        int stepsLeft = cat.stepCounter - cat.currentStep;
+        actionsLeftText.text = stepsLeft + "";
 
-        actionsLeftText.text = (cat.stepCounter - cat.currentStep) + "";
+
         LayoutRebuilder.ForceRebuildLayoutImmediate(actionsLeftText.transform as RectTransform);
+
         //actionsLeftText.text = (cat.stepCounter - cat.currentStep) + "";
 
     }
@@ -86,7 +89,8 @@ public class GameUIScript : MonoBehaviour
         board.GenerateBoard(board.levels[board.currentLevel]);
         levelText.text = board.levels[board.currentLevel].levelName;
         cat = FindAnyObjectByType<CatMovement>();
-        cat.currentStep = 0; 
+        cat.currentStep = 0;
+        DisplayStepsLeft();
 
 
     }
@@ -101,7 +105,6 @@ public class GameUIScript : MonoBehaviour
         cat.currentStep = 0;
         SoundManager.PlaySound(SoundManager.SoundType.Click);
         PlayMusic();
-        DisplayStepsLeft();
         CloseAllPanels();
     }
 

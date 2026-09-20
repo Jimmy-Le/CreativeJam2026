@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level3
   m_EditorClassIdentifier: Assembly-CSharp::Level
   framePicture: {fileID: -4870093070313631401, guid: 585bcf7f8966321489e7515e9eb8ac36, type: 3}
-  levelPicture: {fileID: -1971174531, guid: ba7087b9555627943851deb803a4c64e, type: 3}
+  levelPicture: {fileID: -2406444324412774691, guid: 585bcf7f8966321489e7515e9eb8ac36, type: 3}
   levelName: Escape?
   stepsAllowed: 6
   BoardSize: 7
