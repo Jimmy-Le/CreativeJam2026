@@ -118,9 +118,13 @@ public class GameUIScript : MonoBehaviour
         {
             SoundManager.PlaySound(SoundManager.SoundType.DinoCountdown);
         }
-        else
+        else if (board.currentLevel >= 6 &&  board.currentLevel < 9)
         {
             SoundManager.PlaySound(SoundManager.SoundType.AnalogTime);
+        }
+        else
+        {
+            SoundManager.PlaySound(SoundManager.SoundType.MenuCat);
         }
     }
 
