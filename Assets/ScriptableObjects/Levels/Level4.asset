@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level4
   m_EditorClassIdentifier: Assembly-CSharp::Level
   framePicture: {fileID: 232663725919867390, guid: e65b2fac7c57e7444b85223ea9a57cb5, type: 3}
-  levelPicture: {fileID: -2248273014285675650, guid: 2e49d442b0e5b2e46a7a0be31fffc78a, type: 3}
+  levelPicture: {fileID: 1398669696, guid: f34e65b6596407b40907a8020883245c, type: 3}
   levelName: Early Stages
   stepsAllowed: 8
   BoardSize: 8

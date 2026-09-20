@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameUIScript : MonoBehaviour
@@ -17,6 +18,7 @@ public class GameUIScript : MonoBehaviour
 
 
     [SerializeField] public InputSystem_Actions inputActions;
+    [SerializeField] public IntEvent updateStep;
 
 
     // Level Select
@@ -72,16 +74,16 @@ public class GameUIScript : MonoBehaviour
         inputActions.Player.Enable();
     }
 
-    public void DisplayStepsLeft()
+    public void DisplayStepsLeft(int steps = -1)
     {
-        int stepsLeft = cat.stepCounter - cat.currentStep;
-        actionsLeftText.text = stepsLeft + "";
+        if (steps == -1)
+            steps = cat.currentStep;
 
+        int stepsLeft = cat.stepCounter - steps;
+        updateStep.Raise(stepsLeft);
 
-        LayoutRebuilder.ForceRebuildLayoutImmediate(actionsLeftText.transform as RectTransform);
-
+        //LayoutRebuilder.ForceRebuildLayoutImmediate(actionsLeftText.transform as RectTransform);
         //actionsLeftText.text = (cat.stepCounter - cat.currentStep) + "";
-
     }
 
     public void RestartLevel()
@@ -89,6 +91,7 @@ public class GameUIScript : MonoBehaviour
         board.GenerateBoard(board.levels[board.currentLevel]);
         levelText.text = board.levels[board.currentLevel].levelName;
         cat = FindAnyObjectByType<CatMovement>();
+        //cat.stepCounter = board.levels[board.currentLevel].stepsAllowed;
         cat.currentStep = 0;
         DisplayStepsLeft();
 
@@ -106,6 +109,17 @@ public class GameUIScript : MonoBehaviour
         SoundManager.PlaySound(SoundManager.SoundType.Click);
         PlayMusic();
         CloseAllPanels();
+    }
+
+    public void ProperRestart(int index = -1)
+    {
+        if(index < 0)
+        {
+            index = board.currentLevel;
+        }
+
+        board.LaunchLevel(index);
+
     }
 
     public void PlayMusic()
@@ -161,6 +175,10 @@ public class GameUIScript : MonoBehaviour
         cat.animator.Play("CatIdle");
     }
 
+    public void EndGame()
+    {
+        SceneManager.LoadScene("Titlescreen");
+    }
 
 
 }

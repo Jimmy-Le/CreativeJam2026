@@ -57,6 +57,30 @@ public class Board : MonoBehaviour
 
     }
 
+    public void LaunchLevel(int levelIndex)
+    {
+        
+        if (currentLevel < levels.Count)
+        {
+            loadingScreen.SetActive(true);
+            GameUIScript.Instance.LoadLevel(levelIndex);
+            SoundManager.instance.audioSource.Stop();
+            Tween.Delay(duration: 1f, onComplete: () =>
+            {
+                GameUIScript.Instance.RestartLevel();
+                GameUIScript.Instance.DisplayStepsLeft();
+                GameUIScript.Instance.PlayMusic();
+                loadingScreen.SetActive(false);
+
+            });
+
+            //GameUIScript.Instance.RestartLevel();
+        }
+
+        else
+            Debug.Log("GameOver");
+    }
+
     public void GenerateBoard(Level level)
     {
 

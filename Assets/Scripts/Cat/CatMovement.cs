@@ -110,9 +110,10 @@ public class CatMovement : MonoBehaviour
         isMoving = false;
         SoundManager.PlaySound(SoundManager.SoundType.Walk, 0.5f);
         board.TriggerBoardAtPos(catPosition);
-        
-        currentStep++;
-        GameUIScript.Instance?.DisplayStepsLeft();
+       
+        ++currentStep;
+        GameUIScript.Instance.DisplayStepsLeft(currentStep);
+
         if (currentStep >= stepCounter)
             ExplodeEvent(Unit.Default);
     }
@@ -124,8 +125,6 @@ public class CatMovement : MonoBehaviour
         SoundManager.PlaySound(SoundManager.SoundType.Break);
         animator.SetTrigger(ExplodeHash);       // THis animation calls the RespawnCat() Function at the end of its animation frame
     }
-
-
 
     public async void Explode()
     {
@@ -146,7 +145,7 @@ public class CatMovement : MonoBehaviour
         catPosition = startPosition;
         catBody.position = startWorldPosition;
         currentStep = 0;
-        GameUIScript.Instance?.DisplayStepsLeft();
+        GameUIScript.Instance?.DisplayStepsLeft(stepCounter);
         SoundManager.PlaySound(SoundManager.SoundType.Meow);
         inputActions.Player.Enable();
     }

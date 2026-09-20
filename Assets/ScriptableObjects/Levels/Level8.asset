@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level8
   m_EditorClassIdentifier: Assembly-CSharp::Level
   framePicture: {fileID: -6340947107778117071, guid: 5ecf97a630e51a14198825cc28c7b4ce, type: 3}
-  levelPicture: {fileID: -5668005837551725102, guid: 6e6b48208d5c5c343875d4b0c0603cf4, type: 3}
+  levelPicture: {fileID: -3328670417789047576, guid: 5ecf97a630e51a14198825cc28c7b4ce, type: 3}
   levelName: Path to Freedom
   stepsAllowed: 9
   BoardSize: 9
@@ -139,7 +139,7 @@ MonoBehaviour:
   - tile: {fileID: 3861399046625819917, guid: 0e6e48bcec59a7944a1fac0321ed5b1d, type: 3}
     tileComponent: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: 3ee4161b10fa2b8439447147d37e02e6, type: 3}
-    tileComponent: {fileID: 7752738519818554307, guid: 29fab181bfa709947a3819d13345efec, type: 3}
+    tileComponent: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: 5ca08835262371947bfc3ca61bf9b37e, type: 3}
     tileComponent: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: 53898f909481ff144b64637809b4e423, type: 3}

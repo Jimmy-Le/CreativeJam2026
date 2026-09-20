@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level9
   m_EditorClassIdentifier: Assembly-CSharp::Level
   framePicture: {fileID: -6340947107778117071, guid: 5ecf97a630e51a14198825cc28c7b4ce, type: 3}
-  levelPicture: {fileID: -1592968228, guid: 5ecf97a630e51a14198825cc28c7b4ce, type: 3}
+  levelPicture: {fileID: -1507239240806778292, guid: 849a73dd4c9a9a4488203e7fb352198b, type: 3}
   levelName: The Origin Story
   stepsAllowed: 9
   BoardSize: 9

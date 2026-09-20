@@ -14,17 +14,17 @@ public class ExplodeAbility : BlockAbility
         blockBase = (BlockBase)options["blockBase"];
         blockBase.GetComponentInParent<SpriteRenderer>().enabled = false;
 
-        animator = blockBase.GetComponentInParent<Animator>();
+        //animator = blockBase.GetComponentInParent<Animator>();
 
-        if(animator == null)
-        {
-            animator = blockBase.GetComponentInChildren<Animator>();
-        }
+        //if(animator == null)
+        //{
+        //    animator = blockBase.GetComponentInChildren<Animator>();
+        //}
 
 
         SoundManager.PlaySound(SoundManager.SoundType.GlassBreak);
-        animator.Play("Poof");
-        float animationLength = animator.GetCurrentAnimatorStateInfo(0).length;
+        //animator.Play("Poof");
+        //float animationLength = animator.GetCurrentAnimatorStateInfo(0).length;
         //// when animation is done.
         Destroy(blockBase.transform.gameObject);
     }

@@ -382,13 +382,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorTile
   tileComponent: {fileID: 0}
-  tilePosition: {x: -3.5, y: 0.5}
+  tilePosition: {x: -4.3663, y: 1.3663001}
   tileIndex: {x: 0, y: 3}
   buttonUpdateEvent: {fileID: 11400000, guid: e7dcc96c3e1a133428f9bba1e770dfe9, type: 2}
   LevelCompleteEvent: {fileID: 11400000, guid: b811563f8932e5b4d98a1b1ff37182a2, type: 2}
   pressedButtonsRequired: 1
   doorSpriteRenderer: {fileID: 7973684747977756568}
-  unlockOnDefault: 1
+  unlockOnDefault: 0
 --- !u!1 &5461218265482644819
 GameObject:
   m_ObjectHideFlags: 0
