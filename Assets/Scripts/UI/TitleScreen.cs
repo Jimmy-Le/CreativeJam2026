@@ -41,9 +41,9 @@ public class TitleScreen : MonoBehaviour
 
     public void DisplayOptions()
     {
-        CloseAllPanels();
-        inputActions.Player.Disable();
-        optionsPanel.SetActive(true);
+        //CloseAllPanels();
+        //inputActions.Player.Disable();
+        //optionsPanel.SetActive(true);
     }
 
 
@@ -71,4 +71,9 @@ public class TitleScreen : MonoBehaviour
         inputActions.Player.Enable();
     }
 
+
+    public void Quit()
+    {
+       Application.Quit();
+    }
 }

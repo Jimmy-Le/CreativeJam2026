@@ -9,20 +9,20 @@ using static Unity.Collections.AllocatorManager;
 
 public class Board : MonoBehaviour
 {
-    [SerializeField] private List<Level> levels;
-    [SerializeReference] private int initialLevel = 0;
+    [SerializeField] public List<Level> levels;
+    [SerializeReference] public int initialLevel = 0;
     public float spacing = 2f;
-    private Vector2 initialPosition;
+    public Vector2 initialPosition;
 
-    private Tile[,] board;
-    private int boardSize;
+    public Tile[,] board;
+    public int boardSize;
 
     private void Start()
     {
         GenerateBoard(levels[initialLevel]);
     }
 
-    private void GenerateBoard(Level level)
+    public void GenerateBoard(Level level)
     {
         for (int i = this.gameObject.transform.childCount - 1; i >= 0; i--)
         {
@@ -68,7 +68,7 @@ public class Board : MonoBehaviour
         }
     }
 
-    private Vector2 GetTilePosition(int x, int y)
+    public Vector2 GetTilePosition(int x, int y)
     {
         return new Vector2(x * spacing - initialPosition.x, -y * spacing + initialPosition.y);
     }
@@ -165,7 +165,8 @@ public class Board : MonoBehaviour
     public void CatCleanUp(Vector2Int oldPosition, Vector2Int startPosition)
     {
         GameObject cat = board[oldPosition.x, oldPosition.y].tileComponent;
-        board[startPosition.x, startPosition.y].tileComponent = cat;
+        //board[startPosition.x, startPosition.y].tileComponent = cat;          // Moved This Down
         board[oldPosition.x, oldPosition.y].tileComponent = null;
+        board[startPosition.x, startPosition.y].tileComponent = cat;
     }
 }
