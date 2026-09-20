@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b191bad9521ab464eadb108b71dc8eb9, type: 3}
   m_Name: Level2
   m_EditorClassIdentifier: Assembly-CSharp::Level
-  stepsAllowed: 3
+  stepsAllowed: 50
   BoardSize: 8
   levelTilesToGenerate:
   - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
-    tileComponent: {fileID: 0}
+    tileComponent: {fileID: 2797812712494996239, guid: b55f6fc5508b062439569017929a4816, type: 3}
   - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
     tileComponent: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
@@ -123,7 +123,9 @@ MonoBehaviour:
     tileComponent: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
     tileComponent: {fileID: 0}
-  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
+  - tile: {fileID: 3861399046625819917, guid: e90c4653293326c4c9d2e12d98b3c8da, type: 3}
+    tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: acbd742dacf23c149865ceda9e00089d, type: 3}
     tileComponent: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
     tileComponent: {fileID: 0}
@@ -137,9 +139,7 @@ MonoBehaviour:
     tileComponent: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
     tileComponent: {fileID: 0}
-  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
+  - tile: {fileID: 3861399046625819917, guid: 261da82b4b1d65a4a98faffdba3d5713, type: 3}
     tileComponent: {fileID: 0}
-  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
-    tileComponent: {fileID: 0}
-  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
+  - tile: {fileID: 3861399046625819917, guid: 85c9e89ee8973d4469df8e129d7c9f45, type: 3}
     tileComponent: {fileID: 0}
