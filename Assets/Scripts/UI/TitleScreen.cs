@@ -20,12 +20,13 @@ public class TitleScreen : MonoBehaviour
         {
             instance = this;
         }
-        SoundManager.PlaySound(SoundManager.SoundType.MenuCat);
+        
     }
 
     void Start()
     {
         inputActions = FindAnyObjectByType<CatMovement>().inputActions;
+        SoundManager.PlaySound(SoundManager.SoundType.MenuCat);
     }
 
 

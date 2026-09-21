@@ -177,7 +177,7 @@ public class GameUIScript : MonoBehaviour
 
     public void EndGame()
     {
-        SceneManager.LoadScene("Titlescreen");
+        SceneManager.LoadScene("TitleScreen");
     }
 
 
