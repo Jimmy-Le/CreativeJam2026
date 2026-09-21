@@ -50,9 +50,10 @@ public class TitleScreen : MonoBehaviour
     public void DisplayQuit()
     {
         SoundManager.PlaySound(SoundManager.SoundType.Click);
-        CloseAllPanels();
-        inputActions.Player.Disable();
-        quitPanel.SetActive(true);
+        //CloseAllPanels();
+        //inputActions.Player.Disable();
+        //quitPanel.SetActive(true);
+        Quit();
     }
 
     public void DisplayPlay()

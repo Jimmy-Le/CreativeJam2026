@@ -22,6 +22,7 @@ public class Board : MonoBehaviour
 
     void OnEnable()
     {
+       
         LevelCompleteEvent.OnEventRaised += NextLevel;
     }
 

@@ -126,13 +126,13 @@ MonoBehaviour:
     tileComponent: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: 529abbf2ca70bda44aabc165a28d3b5c, type: 3}
     tileComponent: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 529abbf2ca70bda44aabc165a28d3b5c, type: 3}
+    tileComponent: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: 898aafa4594218e4b9e4963e6930b2ae, type: 3}
     tileComponent: {fileID: 417639052295603915, guid: fe7f48b560a9cf24caa986a0dad1ee9a, type: 3}
-  - tile: {fileID: 3861399046625819917, guid: 0fd2555082a93264ea27770ad93a0245, type: 3}
-    tileComponent: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: 53868d36177fbb644bedfc998412e520, type: 3}
     tileComponent: {fileID: 0}
-  - tile: {fileID: 3861399046625819917, guid: 529abbf2ca70bda44aabc165a28d3b5c, type: 3}
+  - tile: {fileID: 3861399046625819917, guid: 98fce0ccae70ad348a0c3236cd64238b, type: 3}
     tileComponent: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: 98fce0ccae70ad348a0c3236cd64238b, type: 3}
     tileComponent: {fileID: 0}
