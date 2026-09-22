@@ -1,5 +1,4 @@
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,6 +25,8 @@ public class LevelSelectObject : MonoBehaviour
 
     public void SelectLevel()
     {
-        GameUIScript.Instance.LoadLevel(index);
+        GameUIScript.Instance.board.currentLevel = index;
+        GameUIScript.Instance.ProperRestart(index);
+        //GameUIScript.Instance.board.currentLevel = index;
     }
 }

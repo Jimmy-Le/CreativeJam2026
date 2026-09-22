@@ -1,7 +1,6 @@
-using NUnit.Framework;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameUIScript : MonoBehaviour
@@ -19,6 +18,7 @@ public class GameUIScript : MonoBehaviour
 
 
     [SerializeField] public InputSystem_Actions inputActions;
+    [SerializeField] public IntEvent updateStep;
 
 
     // Level Select
@@ -26,11 +26,15 @@ public class GameUIScript : MonoBehaviour
     [SerializeField] public GameObject levelPrefab;
     [SerializeField] public Transform levelSpawnLocation;
 
+
     public CatMovement cat;
 
     void Awake()
     {
         Instance = this;
+        //SoundManager.PlaySound(SoundManager.SoundType.LaboratoryTheme);
+        
+
     }
 
 
@@ -43,6 +47,8 @@ public class GameUIScript : MonoBehaviour
         LoadLevelSelect();
         OpenLevelSelect();
         CloseAllPanels();
+        GameUIScript.Instance.PlayMusic();
+
     }
 
 
@@ -68,31 +74,79 @@ public class GameUIScript : MonoBehaviour
         inputActions.Player.Enable();
     }
 
-    public void DisplayStepsLeft()
+    public void DisplayStepsLeft(int steps = -1)
     {
-        actionsLeftText.text = (cat.stepCounter - cat.currentStep) + "";
+        if (steps == -1)
+            steps = cat.currentStep;
+
+        int stepsLeft = cat.stepCounter - steps;
+        updateStep.Raise(stepsLeft);
+
+        //LayoutRebuilder.ForceRebuildLayoutImmediate(actionsLeftText.transform as RectTransform);
+        //actionsLeftText.text = (cat.stepCounter - cat.currentStep) + "";
     }
 
     public void RestartLevel()
     {
-        board.GenerateBoard(board.levels[board.initialLevel]);
+        board.GenerateBoard(board.levels[board.currentLevel]);
+        levelText.text = board.levels[board.currentLevel].levelName;
         cat = FindAnyObjectByType<CatMovement>();
+        //cat.stepCounter = board.levels[board.currentLevel].stepsAllowed;
+        cat.currentStep = 0;
         DisplayStepsLeft();
+
+
     }
 
     public void LoadLevel(int levelIndex)
     {
+
         board.GenerateBoard(board.levels[levelIndex]);
-        board.currentLevel = levelIndex;
+        //board.currentLevel = levelIndex;
         cat = FindAnyObjectByType<CatMovement>();
-        
-        DisplayStepsLeft();
+        float animationLength3 = cat.animator.GetCurrentAnimatorStateInfo(0).length;
+        cat.currentStep = 0;
+        SoundManager.PlaySound(SoundManager.SoundType.Click);
+        PlayMusic();
         CloseAllPanels();
+    }
+
+    public void ProperRestart(int index = -1)
+    {
+        if(index < 0)
+        {
+            index = board.currentLevel;
+        }
+
+        board.LaunchLevel(index);
+
+    }
+
+    public void PlayMusic()
+    {
+        SoundManager.instance.audioSource.Stop();
+
+
+        if (board.currentLevel < 3)
+        {
+            SoundManager.PlaySound(SoundManager.SoundType.LaboratoryTheme);
+        }
+        else if (board.currentLevel >= 3 && board.currentLevel < 6)
+        {
+            SoundManager.PlaySound(SoundManager.SoundType.DinoCountdown);
+        }
+        else if (board.currentLevel >= 6 &&  board.currentLevel < 9)
+        {
+            SoundManager.PlaySound(SoundManager.SoundType.AnalogTime);
+        }
+        else
+        {
+            SoundManager.PlaySound(SoundManager.SoundType.MenuCat);
+        }
     }
 
     public void LoadLevelSelect()
     {
-
         ClearLevelSelector();
 
         int counter = 0;
@@ -102,6 +156,8 @@ public class GameUIScript : MonoBehaviour
             newItem.Initialize(level, counter);
             counter++;
         }
+
+        
         LayoutRebuilder.ForceRebuildLayoutImmediate(levelSpawnLocation as RectTransform);
         Canvas.ForceUpdateCanvases();
     }
@@ -114,6 +170,15 @@ public class GameUIScript : MonoBehaviour
         }
     }
 
+    public void ForceIdle()
+    {
+        cat.animator.Play("CatIdle");
+    }
+
+    public void EndGame()
+    {
+        SceneManager.LoadScene("TitleScreen");
+    }
 
 
 }

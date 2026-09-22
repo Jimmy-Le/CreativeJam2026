@@ -207,6 +207,7 @@ GameObject:
   - component: {fileID: 4774135951997723889}
   - component: {fileID: 5326895204995645402}
   - component: {fileID: 788023681151007644}
+  - component: {fileID: 3905158303769903615}
   m_Layer: 0
   m_Name: ComputerBreakableLabBlock
   m_TagString: Untagged
@@ -305,3 +306,25 @@ MonoBehaviour:
   name: BreakableBlock
   ability: {fileID: 11400000, guid: 018203e734409174e81192ffb4e5389a, type: 2}
   block: {fileID: 7752738519818554307}
+--- !u!95 &3905158303769903615
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7752738519818554307}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3530120344bd5de4a9e9d66a1b46fbc7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

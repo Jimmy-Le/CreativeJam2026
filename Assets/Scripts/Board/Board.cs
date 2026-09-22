@@ -1,20 +1,16 @@
-using NUnit.Framework;
-using System.Collections;
+using PrimeTween;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Overlays;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using static Unity.Collections.AllocatorManager;
-
 public class Board : MonoBehaviour
 {
     [SerializeField] public List<Level> levels;
     [SerializeReference] public int initialLevel = 0;
+    [SerializeField] private VoidEvent LevelCompleteEvent;
     public int currentLevel = 0;
     public float spacing = 2f;
     public Vector2 initialPosition;
 
+    [SerializeField] public GameObject loadingScreen;
     public Tile[,] board;
     public int boardSize;
 
@@ -24,8 +20,71 @@ public class Board : MonoBehaviour
         currentLevel = initialLevel;
     }
 
+    void OnEnable()
+    {
+       
+        LevelCompleteEvent.OnEventRaised += NextLevel;
+    }
+
+    void OnDisable()
+    {
+        LevelCompleteEvent.OnEventRaised -= NextLevel;
+    }
+
+    public void NextLevel(Unit data)
+    {
+        currentLevel++;
+
+        if (currentLevel < levels.Count)
+        {
+            loadingScreen.SetActive(true);
+            GameUIScript.Instance.LoadLevel(currentLevel);
+            SoundManager.instance.audioSource.Stop();
+            Tween.Delay(duration: 1f, onComplete: () =>
+            {
+                GameUIScript.Instance.RestartLevel();
+                GameUIScript.Instance.DisplayStepsLeft();
+                GameUIScript.Instance.PlayMusic();
+                loadingScreen.SetActive(false);
+               
+            });
+
+            //GameUIScript.Instance.RestartLevel();
+        }
+            
+        else
+            Debug.Log("GameOver");
+
+
+    }
+
+    public void LaunchLevel(int levelIndex)
+    {
+        
+        if (currentLevel < levels.Count)
+        {
+            loadingScreen.SetActive(true);
+            GameUIScript.Instance.LoadLevel(levelIndex);
+            SoundManager.instance.audioSource.Stop();
+            Tween.Delay(duration: 1f, onComplete: () =>
+            {
+                GameUIScript.Instance.RestartLevel();
+                GameUIScript.Instance.DisplayStepsLeft();
+                GameUIScript.Instance.PlayMusic();
+                loadingScreen.SetActive(false);
+
+            });
+
+            //GameUIScript.Instance.RestartLevel();
+        }
+
+        else
+            Debug.Log("GameOver");
+    }
+
     public void GenerateBoard(Level level)
     {
+
         for (int i = this.gameObject.transform.childCount - 1; i >= 0; i--)
         {
             Destroy(this.gameObject.transform.GetChild(i).gameObject);
@@ -94,16 +153,21 @@ public class Board : MonoBehaviour
             newCatPosition.x >= boardSize ||
             newCatPosition.y >= boardSize ||
             board[newCatPosition.x, newCatPosition.y].tileComponent != null)
-            return -Vector2.one;
-
+            return new Vector2(1000, 1000);
+        Debug.Log("herhehe");
         GameObject cat = board[catPosition.x, catPosition.y].tileComponent;
         board[newCatPosition.x, newCatPosition.y].tileComponent = cat;
         board[catPosition.x, catPosition.y].tileComponent = null;
         cat.transform.SetParent(board[newCatPosition.x, newCatPosition.y].transform);
 
         catPosition = newCatPosition;
-        board[newCatPosition.x, newCatPosition.y].OnStep();
+        
         return GetTilePosition(newCatPosition.x, newCatPosition.y);
+    }
+
+    public void TriggerBoardAtPos(Vector2Int pos)
+    {
+        board[pos.x, pos.y].OnStep();
     }
 
     public void MoveBlock(Vector2Int blockPosition, Vector2 moveDirection)
@@ -171,5 +235,15 @@ public class Board : MonoBehaviour
         //board[startPosition.x, startPosition.y].tileComponent = cat;          // Moved This Down
         board[oldPosition.x, oldPosition.y].tileComponent = null;
         board[startPosition.x, startPosition.y].tileComponent = cat;
+    }
+
+    public bool CheckIfDoor(Vector2Int playerPos)
+    {
+       if(board[playerPos.x, playerPos.y].GetComponent<DoorTile>() != null)
+        {
+            return true;
+        }
+
+       return false;
     }
 }

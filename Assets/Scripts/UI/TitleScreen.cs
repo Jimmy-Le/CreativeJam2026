@@ -1,6 +1,4 @@
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class TitleScreen : MonoBehaviour
@@ -23,18 +21,18 @@ public class TitleScreen : MonoBehaviour
             instance = this;
         }
         
-
-
     }
 
     void Start()
     {
         inputActions = FindAnyObjectByType<CatMovement>().inputActions;
+        SoundManager.PlaySound(SoundManager.SoundType.MenuCat);
     }
 
 
     public void DisplayCredits()
     {
+        SoundManager.PlaySound(SoundManager.SoundType.Click);
         CloseAllPanels();
         inputActions.Player.Disable();
         creditsPanel.SetActive(true);
@@ -42,6 +40,7 @@ public class TitleScreen : MonoBehaviour
 
     public void DisplayOptions()
     {
+        SoundManager.PlaySound(SoundManager.SoundType.Click);
         CloseAllPanels();
         inputActions.Player.Disable();
         optionsPanel.SetActive(true);
@@ -50,16 +49,21 @@ public class TitleScreen : MonoBehaviour
 
     public void DisplayQuit()
     {
-        CloseAllPanels();
-        inputActions.Player.Disable();
-        quitPanel.SetActive(true);
+        SoundManager.PlaySound(SoundManager.SoundType.Click);
+        //CloseAllPanels();
+        //inputActions.Player.Disable();
+        //quitPanel.SetActive(true);
+        Quit();
     }
 
     public void DisplayPlay()
     {
-        CloseAllPanels();
-        inputActions.Player.Disable();
-        playPanel.SetActive(true);
+        SoundManager.PlaySound(SoundManager.SoundType.Click);
+        //CloseAllPanels();
+        //inputActions.Player.Disable();
+        //playPanel.SetActive(true);
+        Play();
+
     }
 
 
@@ -73,7 +77,10 @@ public class TitleScreen : MonoBehaviour
 
     }
 
-  
+    public void Play()
+    {
+        SceneManager.LoadScene("GameScene");
+    }
 
 
     public void Quit()
