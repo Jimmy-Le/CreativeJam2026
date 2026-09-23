@@ -5,137 +5,129 @@ using UnityEngine.UI;
 
 public class GameUIScript : MonoBehaviour
 {
+    #region Singleton
     public static GameUIScript Instance;
-    [SerializeField] public TextMeshProUGUI levelText;
-    [SerializeField] public TextMeshProUGUI actionsLeftText;
+    #endregion Singleton
 
+    #region Constants
+    private const int LEVEL_GROUP_1_END = 3;
+    private const int LEVEL_GROUP_2_END = 6;
+    private const int LEVEL_GROUP_3_END = 9;
+    #endregion Constants
 
-    [SerializeField] public GameObject settingsPanel;
-    [SerializeField] public GameObject levelSelectPanel;
+    #region Editor Fields
+    [Header("Board")]
+    [SerializeField] private Board board;
 
+    [Header("Settings")]
+    [SerializeField] private GameObject settingsPanel;
 
-    [SerializeField] public Board board;
+    [Header("Level Select")]
+    [SerializeField] private GameObject levelSelectPanel;
+    [SerializeField] private GameObject levelSelectBasePrefab;
+    [SerializeField] private Transform levelPrefabBaseSpawnLocation;
+    [SerializeField] private TextMeshProUGUI levelText;
+    #endregion Editor Fields
 
-
-    [SerializeField] public InputSystem_Actions inputActions;
-    [SerializeField] public IntEvent updateStep;
-
-
-    // Level Select
-    //[SerializeField] public List<Level> allLevels;
-    [SerializeField] public GameObject levelPrefab;
-    [SerializeField] public Transform levelSpawnLocation;
-
-
-    public CatMovement cat;
-
+    #region Lifecycle Methods
     void Awake()
     {
-        Instance = this;
-        //SoundManager.PlaySound(SoundManager.SoundType.LaboratoryTheme);
-        
-
+        if(Instance == null)
+            Instance = this;
     }
+    #endregion Lifecycle Methods
 
-
-    void Start()
-    {
-        cat = FindAnyObjectByType<CatMovement>();
-        inputActions = cat.inputActions;
-        DisplayStepsLeft();
-        levelText.text = board.levels[board.currentLevel].levelName;
-        LoadLevelSelect();
-        OpenLevelSelect();
-        CloseAllPanels();
-        GameUIScript.Instance.PlayMusic();
-
-    }
-
-
+    #region Action Methods
+    /// <summary>
+    /// Opens the settings panel and disables player input.
+    /// </summary>
     public void OpenSettings()
     {
         CloseAllPanels();
-        inputActions.Player.Disable();
+        board.InputActions.Player.Disable();
         settingsPanel.SetActive(true);
     }
+
+    /// <summary>
+    /// Opens the level select panel and disables player input.
+    /// </summary>
     public void OpenLevelSelect()
     {
         CloseAllPanels();
-        inputActions.Player.Disable();
-        LoadLevelSelect();
+        board.InputActions.Player.Disable();
+        
+        for (int i = 0; i < board.levels.Count; i++)
+        {
+            LevelSelectObject newItem = Instantiate(levelSelectBasePrefab, levelPrefabBaseSpawnLocation, levelPrefabBaseSpawnLocation).GetComponent<LevelSelectObject>();
+            newItem.Initialize(board.levels[i], i);
+        }
+
         levelSelectPanel.SetActive(true);
     }
 
+    /// <summary>
+    /// Loads the specified level by regenerating the board and updating the UI.
+    /// </summary>
+    /// <param name="levelIndex">The index of the level to load.</param>
+    public void LoadLevel(int levelIndex)
+    {
+        // Board.
+        board.currentLevel = levelIndex;
+        board.GenerateBoard(board.levels[levelIndex]);
 
+        // UI.
+        levelText.text = board.levels[board.currentLevel].levelName;   
+        CloseAllPanels();
+        // TODO: Put level transition here instead of in Board.cs. (after cat spawn glitch is fixed)
+
+        // Audio.
+        PlayMusic();
+    }
+
+    /// <summary>
+    /// Restarts the current level by regenerating the board.
+    /// </summary>
+    public void RestartLevel()
+    {
+        LoadLevel(board.currentLevel);
+    }
+
+    /// <summary>
+    /// Returns to the title screen by loading the "TitleScreen" scene.
+    /// </summary>
+    public void ReturnToTitle()
+    {
+        SceneManager.LoadScene("TitleScreen");
+    }
+
+    /// <summary>
+    /// Closes all panels and enables player input.
+    /// </summary>
     public void CloseAllPanels()
     {
         settingsPanel.SetActive(false);
         levelSelectPanel.SetActive(false);
-        inputActions.Player.Enable();
+        board.InputActions.Player.Enable();
     }
+    #endregion Action Methods
 
-    public void DisplayStepsLeft(int steps = -1)
-    {
-        if (steps == -1)
-            steps = cat.currentStep;
-
-        int stepsLeft = cat.stepCounter - steps;
-        updateStep.Raise(stepsLeft);
-
-        //LayoutRebuilder.ForceRebuildLayoutImmediate(actionsLeftText.transform as RectTransform);
-        //actionsLeftText.text = (cat.stepCounter - cat.currentStep) + "";
-    }
-
-    public void RestartLevel()
-    {
-        board.GenerateBoard(board.levels[board.currentLevel]);
-        levelText.text = board.levels[board.currentLevel].levelName;
-        cat = FindAnyObjectByType<CatMovement>();
-        //cat.stepCounter = board.levels[board.currentLevel].stepsAllowed;
-        cat.currentStep = 0;
-        DisplayStepsLeft();
-
-
-    }
-
-    public void LoadLevel(int levelIndex)
-    {
-
-        board.GenerateBoard(board.levels[levelIndex]);
-        //board.currentLevel = levelIndex;
-        cat = FindAnyObjectByType<CatMovement>();
-        float animationLength3 = cat.animator.GetCurrentAnimatorStateInfo(0).length;
-        cat.currentStep = 0;
-        SoundManager.PlaySound(SoundManager.SoundType.Click);
-        PlayMusic();
-        CloseAllPanels();
-    }
-
-    public void ProperRestart(int index = -1)
-    {
-        if(index < 0)
-        {
-            index = board.currentLevel;
-        }
-
-        board.LaunchLevel(index);
-
-    }
-
-    public void PlayMusic()
+    #region Private Methods
+    /// <summary>
+    /// Plays the appropriate background music based on the current level.
+    /// </summary>
+    private void PlayMusic()
     {
         SoundManager.instance.audioSource.Stop();
 
-
-        if (board.currentLevel < 3)
+        if (board.currentLevel < LEVEL_GROUP_1_END)
         {
             SoundManager.PlaySound(SoundManager.SoundType.LaboratoryTheme);
         }
-        else if (board.currentLevel >= 3 && board.currentLevel < 6)
+        else if (board.currentLevel < LEVEL_GROUP_2_END)
         {
             SoundManager.PlaySound(SoundManager.SoundType.DinoCountdown);
         }
-        else if (board.currentLevel >= 6 &&  board.currentLevel < 9)
+        else if (board.currentLevel < LEVEL_GROUP_3_END)
         {
             SoundManager.PlaySound(SoundManager.SoundType.AnalogTime);
         }
@@ -144,41 +136,5 @@ public class GameUIScript : MonoBehaviour
             SoundManager.PlaySound(SoundManager.SoundType.MenuCat);
         }
     }
-
-    public void LoadLevelSelect()
-    {
-        ClearLevelSelector();
-
-        int counter = 0;
-        foreach (Level level in board.levels)
-        {
-            LevelSelectObject newItem = Instantiate(levelPrefab, levelSpawnLocation, levelSpawnLocation).GetComponent<LevelSelectObject>();
-            newItem.Initialize(level, counter);
-            counter++;
-        }
-
-        
-        LayoutRebuilder.ForceRebuildLayoutImmediate(levelSpawnLocation as RectTransform);
-        Canvas.ForceUpdateCanvases();
-    }
-
-    public void ClearLevelSelector()
-    {
-        for(int i = levelSpawnLocation.childCount - 1; i >= 0; i--)
-        {
-            Destroy(levelSpawnLocation.GetChild(i).gameObject);
-        }
-    }
-
-    public void ForceIdle()
-    {
-        cat.animator.Play("CatIdle");
-    }
-
-    public void EndGame()
-    {
-        SceneManager.LoadScene("TitleScreen");
-    }
-
-
+    #endregion Private Methods
 }

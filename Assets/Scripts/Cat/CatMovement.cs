@@ -5,14 +5,17 @@ using UnityEngine.InputSystem;
 
 public class CatMovement : MonoBehaviour
 {
-    [SerializeField] public InputSystem_Actions inputActions;
+    [Header("Events")]
+    [SerializeField] private IntEvent updateStepsEvent;
+
+
     [SerializeField] public Transform catBody;
     [SerializeField] public Animator animator;
     [SerializeField] private VoidEvent explodeCatEvent;
     [SerializeField] private VoidEvent skipBoostEvent;
     [SerializeField] private float moveAnimationDuration = 0.35f;
-    public int stepCounter = 0;
-    public int currentStep = 0;
+    public int maxCatSteps = 0;
+    public int currentCatStep = 0;
 
     // Cache Trigger ID For performance apparently
     private static readonly int MoveSideHash = Animator.StringToHash("MoveSide");
@@ -34,7 +37,6 @@ public class CatMovement : MonoBehaviour
 
     void Awake()
     {
-        inputActions = new InputSystem_Actions();
         board = FindAnyObjectByType<Board>();
     }
 
@@ -43,22 +45,24 @@ public class CatMovement : MonoBehaviour
         startPosition = catPosition;
         startWorldPosition = catBody.position;
         movementSteps.Add(startWorldPosition);
+
+        updateStepsEvent.Raise(maxCatSteps - currentCatStep);
     }
 
     void OnEnable()
     {
-        inputActions.Player.Enable();
-        inputActions.Player.Move.performed += MoveCat;
-        inputActions.Player.Explode.performed += Explode;
+        board.InputActions.Player.Enable();
+        board.InputActions.Player.Move.performed += MoveCat;
+        board.InputActions.Player.Explode.performed += Explode;
         explodeCatEvent.OnEventRaised += ExplodeEvent;
         skipBoostEvent.OnEventRaised += EnableBoost;
     }
 
     void OnDisable()
     {
-        inputActions.Player.Disable();
-        inputActions.Player.Move.performed -= MoveCat;
-        inputActions.Player.Explode.performed -= Explode;
+        board.InputActions.Player.Disable();
+        board.InputActions.Player.Move.performed -= MoveCat;
+        board.InputActions.Player.Explode.performed -= Explode;
         explodeCatEvent.OnEventRaised -= ExplodeEvent;
         skipBoostEvent.OnEventRaised -= EnableBoost;
     }
@@ -111,16 +115,16 @@ public class CatMovement : MonoBehaviour
         SoundManager.PlaySound(SoundManager.SoundType.Walk, 0.5f);
         board.TriggerBoardAtPos(catPosition);
        
-        ++currentStep;
-        GameUIScript.Instance.DisplayStepsLeft(currentStep);
+        ++currentCatStep;
+        updateStepsEvent.Raise(maxCatSteps - currentCatStep);
 
-        if (currentStep >= stepCounter)
+        if (currentCatStep >= maxCatSteps)
             ExplodeEvent(Unit.Default);
     }
 
     private void ExplodeEvent(Unit data)
     {
-        inputActions.Player.Disable();
+        board.InputActions.Player.Disable();
         TriggerAdjacentTiles();
         SoundManager.PlaySound(SoundManager.SoundType.Break);
         animator.SetTrigger(ExplodeHash);       // THis animation calls the RespawnCat() Function at the end of its animation frame
@@ -144,10 +148,10 @@ public class CatMovement : MonoBehaviour
         board.CatCleanUp(catPosition, startPosition);
         catPosition = startPosition;
         catBody.position = startWorldPosition;
-        currentStep = 0;
-        GameUIScript.Instance?.DisplayStepsLeft(stepCounter);
+        currentCatStep = 0;
+        updateStepsEvent.Raise(maxCatSteps - currentCatStep);
         SoundManager.PlaySound(SoundManager.SoundType.Meow);
-        inputActions.Player.Enable();
+        board.InputActions.Player.Enable();
     }
 
 

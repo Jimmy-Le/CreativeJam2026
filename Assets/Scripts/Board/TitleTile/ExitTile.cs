@@ -4,6 +4,6 @@ public class ExitTile : Tile
 {
     public override void OnStep()
     {
-        TitleScreen.instance.DisplayQuit();
+        TitleScreen.Instance.Quit();
     }
 }

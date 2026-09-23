@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Board : MonoBehaviour
 {
+    private InputSystem_Actions inputActions;
+    public InputSystem_Actions InputActions => inputActions;
     [SerializeField] public List<Level> levels;
     [SerializeReference] public int initialLevel = 0;
     [SerializeField] private VoidEvent LevelCompleteEvent;
@@ -14,10 +16,17 @@ public class Board : MonoBehaviour
     public Tile[,] board;
     public int boardSize;
 
+    public bool isOnTitle = false;
+
+    private void Awake()
+    {
+        inputActions = new InputSystem_Actions();
+    }
+
     private void Start()
     {
-        GenerateBoard(levels[initialLevel]);
         currentLevel = initialLevel;
+        LaunchLevel(currentLevel);
     }
 
     void OnEnable()
@@ -34,52 +43,38 @@ public class Board : MonoBehaviour
     public void NextLevel(Unit data)
     {
         currentLevel++;
-
-        if (currentLevel < levels.Count)
-        {
-            loadingScreen.SetActive(true);
-            GameUIScript.Instance.LoadLevel(currentLevel);
-            SoundManager.instance.audioSource.Stop();
-            Tween.Delay(duration: 1f, onComplete: () =>
-            {
-                GameUIScript.Instance.RestartLevel();
-                GameUIScript.Instance.DisplayStepsLeft();
-                GameUIScript.Instance.PlayMusic();
-                loadingScreen.SetActive(false);
-               
-            });
-
-            //GameUIScript.Instance.RestartLevel();
-        }
-            
-        else
-            Debug.Log("GameOver");
-
-
+        LaunchLevel(currentLevel);
     }
 
     public void LaunchLevel(int levelIndex)
     {
-        
-        if (currentLevel < levels.Count)
+        if (isOnTitle)
         {
-            loadingScreen.SetActive(true);
-            GameUIScript.Instance.LoadLevel(levelIndex);
-            SoundManager.instance.audioSource.Stop();
-            Tween.Delay(duration: 1f, onComplete: () =>
-            {
-                GameUIScript.Instance.RestartLevel();
-                GameUIScript.Instance.DisplayStepsLeft();
-                GameUIScript.Instance.PlayMusic();
-                loadingScreen.SetActive(false);
-
-            });
-
-            //GameUIScript.Instance.RestartLevel();
+            GenerateBoard(levels[levelIndex]);
         }
-
         else
-            Debug.Log("GameOver");
+        {
+            if (currentLevel < levels.Count)
+            {
+                loadingScreen.SetActive(true);
+                
+                GameUIScript.Instance.LoadLevel(levelIndex);
+                SoundManager.instance.audioSource.Stop();
+                
+                // TODO: make music fade out first.
+                Tween.Delay(duration: 1f, onComplete: () =>
+                {
+                    GameUIScript.Instance.RestartLevel();
+                    loadingScreen.SetActive(false);
+
+                });
+                // TODO: fade in music after delay
+            }
+
+            else
+                Debug.Log("GameOver");
+            }
+
     }
 
     public void GenerateBoard(Level level)
@@ -118,7 +113,7 @@ public class Board : MonoBehaviour
                     if (catMovement != null)
                     {
                         catMovement.catPosition = new Vector2Int(i, j);
-                        catMovement.stepCounter = level.stepsAllowed;
+                        catMovement.maxCatSteps = level.stepsAllowed;
                     }
 
                     tileObject.tileComponent = Instantiate(level.levelTilesToGenerate[i + (j * boardSize)].tileComponent, tile.tilePosition, Quaternion.identity, tileObject.transform);
@@ -154,7 +149,6 @@ public class Board : MonoBehaviour
             newCatPosition.y >= boardSize ||
             board[newCatPosition.x, newCatPosition.y].tileComponent != null)
             return new Vector2(1000, 1000);
-        Debug.Log("herhehe");
         GameObject cat = board[catPosition.x, catPosition.y].tileComponent;
         board[newCatPosition.x, newCatPosition.y].tileComponent = cat;
         board[catPosition.x, catPosition.y].tileComponent = null;

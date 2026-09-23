@@ -216,6 +216,10 @@ PrefabInstance:
       value: Board
       objectReference: {fileID: 0}
     - target: {fileID: 6415515702326999239, guid: 645fc28d68151ec438fef3d49d682306, type: 3}
+      propertyPath: isOnTitle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6415515702326999239, guid: 645fc28d68151ec438fef3d49d682306, type: 3}
       propertyPath: LevelCompleteEvent
       value: 
       objectReference: {fileID: 11400000, guid: b811563f8932e5b4d98a1b1ff37182a2, type: 2}
@@ -3084,6 +3088,17 @@ RectTransform:
   m_AnchoredPosition: {x: -100, y: 75.999985}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1566084640 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6415515702326999239, guid: 645fc28d68151ec438fef3d49d682306, type: 3}
+  m_PrefabInstance: {fileID: 47123316}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbdbbd0f265bbd74f86b213935c6d35c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Board
 --- !u!1 &1572782340
 GameObject:
   m_ObjectHideFlags: 0
@@ -3534,11 +3549,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a8f723d2bca664987c95515e1fabe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TitleScreen
+  board: {fileID: 1566084640}
   TitleScreenPanel: {fileID: 196035419}
+  playPanel: {fileID: 497804506}
+  optionsPanel: {fileID: 1873298040}
   creditsPanel: {fileID: 2084421350}
   quitPanel: {fileID: 438632401}
-  optionsPanel: {fileID: 1873298040}
-  playPanel: {fileID: 497804506}
 --- !u!1 &1790001105
 GameObject:
   m_ObjectHideFlags: 0
