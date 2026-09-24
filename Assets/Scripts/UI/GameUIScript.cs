@@ -72,8 +72,7 @@ public class GameUIScript : MonoBehaviour
     public void LoadLevel(int levelIndex)
     {
         // Board.
-        board.currentLevel = levelIndex;
-        board.GenerateBoard(board.levels[levelIndex]);
+        board.GenerateLevel(levelIndex);
 
         // UI.
         levelText.text = board.levels[board.currentLevel].levelName;   

@@ -224,6 +224,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: b811563f8932e5b4d98a1b1ff37182a2, type: 2}
     - target: {fileID: 6415515702326999239, guid: 645fc28d68151ec438fef3d49d682306, type: 3}
+      propertyPath: isBoardOnTitleScreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6415515702326999239, guid: 645fc28d68151ec438fef3d49d682306, type: 3}
       propertyPath: 'levels.Array.data[0]'
       value: 
       objectReference: {fileID: 11400000, guid: 3a102baa24e56f343bced14d0bea7f68, type: 2}
@@ -4716,7 +4720,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000061035156}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0.00024414, y: -0.00012207}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2026359980

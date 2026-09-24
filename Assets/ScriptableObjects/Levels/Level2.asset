@@ -16,7 +16,7 @@ MonoBehaviour:
   levelPicture: {fileID: 8549680395318186219, guid: 585bcf7f8966321489e7515e9eb8ac36, type: 3}
   levelName: Testing...
   stepsAllowed: 6
-  BoardSize: 7
+  BoardWidth: 7
   levelTilesToGenerate:
   - tile: {fileID: 3861399046625819917, guid: fe57f66ecca7a214bb2b96948917e08e, type: 3}
     tileComponent: {fileID: 0}

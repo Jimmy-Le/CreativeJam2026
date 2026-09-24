@@ -34,7 +34,6 @@ public class DoorTile : Tile
 
             doorSpriteRenderer.enabled = false;
             tileComponent = null;
-            Debug.Log(cache);
         }
     }
 
@@ -56,7 +55,6 @@ public class DoorTile : Tile
             tileComponent.SetActive(false);
             doorSpriteRenderer.enabled = false;
             tileComponent = null;
-            Debug.Log(cache);
         }
         else
         { 

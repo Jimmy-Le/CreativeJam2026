@@ -16,7 +16,7 @@ MonoBehaviour:
   levelPicture: {fileID: 1398669696, guid: f34e65b6596407b40907a8020883245c, type: 3}
   levelName: Early Stages
   stepsAllowed: 8
-  BoardSize: 8
+  BoardWidth: 8
   levelTilesToGenerate:
   - tile: {fileID: 3861399046625819917, guid: 7428da4860c278148be983b4ca4bed9b, type: 3}
     tileComponent: {fileID: 0}
