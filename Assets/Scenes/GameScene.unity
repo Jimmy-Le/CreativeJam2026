@@ -587,11 +587,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 43d29ca772afc584d9f35a495853e077, type: 2}
   initialLevel: 0
   LevelCompleteEvent: {fileID: 11400000, guid: b811563f8932e5b4d98a1b1ff37182a2, type: 2}
-  currentLevel: 0
-  spacing: 1
-  initialPosition: {x: 0, y: 0}
   loadingScreen: {fileID: 488941250}
-  boardSize: 0
+  isBoardOnTitleScreen: 0
+  currentLevel: 0
 --- !u!224 &468670214
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1553,12 +1551,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c0bf0ca8df3c654a94fe5d58a106a1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameUIScript
+  board: {fileID: 468670213}
   settingsPanel: {fileID: 188196816}
   levelSelectPanel: {fileID: 621238704}
   levelSelectBasePrefab: {fileID: 2552071392280072880, guid: bb646812340d33b4c92d788de78c7de0, type: 3}
   levelPrefabBaseSpawnLocation: {fileID: 558107866}
   levelText: {fileID: 1718031414}
-  board: {fileID: 468670213}
 --- !u!114 &1044571598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2699,7 +2697,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2109847330}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9980462
+  m_Size: 0.9997452
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
