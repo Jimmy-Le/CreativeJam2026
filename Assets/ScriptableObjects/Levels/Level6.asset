@@ -16,7 +16,7 @@ MonoBehaviour:
   levelPicture: {fileID: 134191631, guid: f34e65b6596407b40907a8020883245c, type: 3}
   levelName: Bedtime?
   stepsAllowed: 7
-  BoardSize: 8
+  BoardWidth: 8
   levelTilesToGenerate:
   - tile: {fileID: 3861399046625819917, guid: f0fae4d41fd64f447aeae1f7a687333b, type: 3}
     tileComponent: {fileID: 0}

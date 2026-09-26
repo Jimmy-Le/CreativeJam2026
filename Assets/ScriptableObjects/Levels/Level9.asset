@@ -16,7 +16,7 @@ MonoBehaviour:
   levelPicture: {fileID: -1507239240806778292, guid: 849a73dd4c9a9a4488203e7fb352198b, type: 3}
   levelName: The Origin Story
   stepsAllowed: 9
-  BoardSize: 9
+  BoardWidth: 9
   levelTilesToGenerate:
   - tile: {fileID: 3861399046625819917, guid: 6fe5411a43729f4478366015abc211bf, type: 3}
     tileComponent: {fileID: 0}

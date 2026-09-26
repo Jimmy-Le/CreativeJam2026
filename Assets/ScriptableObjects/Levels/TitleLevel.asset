@@ -16,7 +16,7 @@ MonoBehaviour:
   levelPicture: {fileID: -1971174531, guid: ba7087b9555627943851deb803a4c64e, type: 3}
   levelName: Title
   stepsAllowed: 9999
-  BoardSize: 3
+  BoardWidth: 3
   levelTilesToGenerate:
   - tile: {fileID: 5820070423202133586, guid: 5a22fad964514a0448710b1fd713c6c2, type: 3}
     tileComponent: {fileID: 0}

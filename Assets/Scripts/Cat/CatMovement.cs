@@ -5,164 +5,230 @@ using UnityEngine.InputSystem;
 
 public class CatMovement : MonoBehaviour
 {
-    [SerializeField] public InputSystem_Actions inputActions;
-    [SerializeField] public Transform catBody;
-    [SerializeField] public Animator animator;
-    [SerializeField] private VoidEvent explodeCatEvent;
-    [SerializeField] private VoidEvent skipBoostEvent;
-    [SerializeField] private float moveAnimationDuration = 0.35f;
-    public int stepCounter = 0;
-    public int currentStep = 0;
-
-    // Cache Trigger ID For performance apparently
+    #region Animation Hashes
     private static readonly int MoveSideHash = Animator.StringToHash("MoveSide");
     private static readonly int MoveUpHash = Animator.StringToHash("MoveUp");
     private static readonly int MoveDownHash = Animator.StringToHash("MoveDown");
     private static readonly int ExplodeHash = Animator.StringToHash("onExplode");
     private static readonly int UnExplodeHash = Animator.StringToHash("onReverse");
-
     private static readonly int MoveLeftHash = Animator.StringToHash("MoveSideLeft");
+    #endregion Animation Hashes
 
-    public Vector2Int catPosition;
-    private Board board;
-    private Vector2Int startPosition;
-    private Vector2 startWorldPosition;
-    private bool isBoosted = false;
-    private bool isMoving = false;
+    #region Editor Fields
+    [Header("Events")]
+    [SerializeField] private IntEvent updateStepsEvent;
+    [SerializeField] private VoidEvent explodeCatEvent;
+    [SerializeField] private VoidEvent skipBoostEvent;
+    [SerializeField] private VoidEvent levelCompleteEvent;
 
-    private List<Vector2> movementSteps = new();
+    [Header("UI")]
+    [SerializeField] public Transform catBody;
 
-    void Awake()
+    [Header("Animation")]
+    [SerializeField] public Animator animator;
+    [SerializeField] private float moveAnimationDuration = 0.35f;
+    #endregion Editor Fields
+
+    #region Backing Fields
+    private Vector2 _startWorldPosition;
+
+    /// <summary>
+    /// The cat's index in the Grid.
+    /// </summary>
+    public Vector2Int catGridPosition;
+    private Vector2Int _startGridPosition;
+
+    /// <summary>
+    /// The max steps allowed before an explosion.
+    /// </summary>
+    public int maxCatSteps = 0;
+    private int _currentCatStep = 0;
+
+    private Board _board;
+
+    private bool _isBoosted = false;
+    private bool _canExplode = true;
+
+    private List<Vector2> _movementSteps = new();
+    private bool _isMoving = false;
+    #endregion Backing Fields
+
+    #region Lifecycle Methods
+    private void Awake()
     {
-        inputActions = new InputSystem_Actions();
-        board = FindAnyObjectByType<Board>();
+        _board = FindAnyObjectByType<Board>();
     }
 
-    void Start()
+    private void Start()
     {
-        startPosition = catPosition;
-        startWorldPosition = catBody.position;
-        movementSteps.Add(startWorldPosition);
+        _startGridPosition = catGridPosition;
+        _startWorldPosition = catBody.position;
+        _movementSteps.Add(_startWorldPosition);
+        updateStepsEvent.Raise(maxCatSteps - _currentCatStep);
     }
 
-    void OnEnable()
+    private void OnEnable()
     {
-        inputActions.Player.Enable();
-        inputActions.Player.Move.performed += MoveCat;
-        inputActions.Player.Explode.performed += Explode;
+        _board.InputActions.Player.Enable();
+        _board.InputActions.Player.Move.performed += MoveCat;
+        _board.InputActions.Player.Explode.performed += INSExplode;
         explodeCatEvent.OnEventRaised += ExplodeEvent;
         skipBoostEvent.OnEventRaised += EnableBoost;
+        levelCompleteEvent.OnEventRaised += DisableExplosion;
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
-        inputActions.Player.Disable();
-        inputActions.Player.Move.performed -= MoveCat;
-        inputActions.Player.Explode.performed -= Explode;
+        _board.InputActions.Player.Disable();
+        _board.InputActions.Player.Move.performed -= MoveCat;
+        _board.InputActions.Player.Explode.performed -= INSExplode;
         explodeCatEvent.OnEventRaised -= ExplodeEvent;
         skipBoostEvent.OnEventRaised -= EnableBoost;
+        levelCompleteEvent.OnEventRaised -= DisableExplosion;
+    }
+    #endregion Lifecycle Methods
+
+    #region Event Methods
+    /// <summary>
+    /// Triggers the tile component for in each direction.
+    /// </summary>
+    public void TriggerAdjacentTiles()
+    {
+        _board.TriggerTileComponent(catGridPosition.x + 1, catGridPosition.y, new Vector2Int(1, 0));
+        _board.TriggerTileComponent(catGridPosition.x - 1, catGridPosition.y, new Vector2Int(-1, 0));
+        _board.TriggerTileComponent(catGridPosition.x, catGridPosition.y + 1, new Vector2Int(0, -1));
+        _board.TriggerTileComponent(catGridPosition.x, catGridPosition.y - 1, new Vector2Int(0, 1));
     }
 
+    /// <summary>
+    /// Called when a skip boost is activated via event.
+    /// </summary>
+    /// <param name="data">Empty.</param>
     private void EnableBoost(Unit data)
     {
-        isBoosted = true;
-        Debug.Log(isBoosted);
+        _isBoosted = true;
     }
 
-    private async void MoveCat(InputAction.CallbackContext context)
+    private void DisableExplosion(Unit data)
     {
-        if (board == null || isMoving) return;
+        _canExplode = false;
+    }
+
+    /// <summary>
+    /// Called when a explode is activated.
+    /// </summary>
+    /// <param name="data">Empty.</param>
+    private void ExplodeEvent(Unit data)
+    {
+        _board.InputActions.Player.Disable();
+        TriggerAdjacentTiles();
+        SoundManager.PlaySound(SoundManager.SoundType.Break);
+
+        // This animation calls the Explode() Function at the end of its animation frame.
+        animator.SetTrigger(ExplodeHash);
+    }
+    #endregion Event Methods
+
+    #region Input Methods
+    /// <summary>
+    /// Moves the cat when movement options are used.
+    /// </summary>
+    private void MoveCat(InputAction.CallbackContext context)
+    {
+        // If is animating back or board is empty.
+        if (_board == null || _isMoving) return;
+
+        // Get the movement direction and attempt to move the cat.
         Vector2 direction = context.ReadValue<Vector2>();
-        Vector2 newCatPosition = board.CatMove(ref catPosition, direction, ref isBoosted);
-        if (newCatPosition == new Vector2(1000, 1000))
+        Vector2 newCatGridPosition = _board.CatMove(ref catGridPosition, direction, ref _isBoosted);
+        
+        // If the movement action was unsuccessful, quit.
+        if (newCatGridPosition == new Vector2(1000, 1000))
         {
             SoundManager.PlaySound(SoundManager.SoundType.Error, 0.4f);
             return;
         }
-            
+        
+        // If it was successful, start by adding the position to the history
+        _movementSteps.Add(newCatGridPosition);
 
-        Debug.Log($"why {newCatPosition}, {Vector2.negativeInfinity}");
-        movementSteps.Add(newCatPosition);
-        SpriteRenderer spriteRenderer = GetComponentInParent<SpriteRenderer>();
-        isMoving = true;
+        // Stop cat from spam moving and animates movement.
+        _isMoving = true;
+
         if (direction.x < 0)
-        {
-            //spriteRenderer.flipX = true;
             animator.SetTrigger(MoveLeftHash);
-        }
         else if (direction.x > 0)
-        {
-            //spriteRenderer.flipX = false;
             animator.SetTrigger(MoveSideHash);
-        }
         else if (direction.y < 0)
-        {
             animator.SetTrigger(MoveUpHash);
-        }
         else if (direction.y > 0)
-        {
             animator.SetTrigger(MoveDownHash);
-        }
-        await Tween.Position(catBody, startValue: catBody.position, endValue: newCatPosition, duration: moveAnimationDuration, ease: Ease.Linear).OnComplete(() =>
+
+        // Play walking audio
+        SoundManager.PlaySound(SoundManager.SoundType.Walk, 0.25f);
+
+        Tween.Position(catBody, startValue: catBody.position, endValue: newCatGridPosition, duration: moveAnimationDuration, ease: Ease.Linear).OnComplete(() =>
         {
+            // Reset the state
             animator.Play("CatIdle");
+            _isMoving = false;
+
+            // Trigger events.
+            _board.TriggerTile(catGridPosition);
+
+            // Update steps;
+            ++_currentCatStep;
+            updateStepsEvent.Raise(maxCatSteps - _currentCatStep);
+
+            if (_currentCatStep >= maxCatSteps && _canExplode)
+            {
+                CatMovement[] cats = FindObjectsByType<CatMovement>(FindObjectsSortMode.None);
+
+                foreach (CatMovement cat in cats)
+                    cat.ExplodeEvent(Unit.Default);
+            }
         });
-        isMoving = false;
-        SoundManager.PlaySound(SoundManager.SoundType.Walk, 0.5f);
-        board.TriggerBoardAtPos(catPosition);
-       
-        ++currentStep;
-        GameUIScript.Instance.DisplayStepsLeft(currentStep);
-
-        if (currentStep >= stepCounter)
-            ExplodeEvent(Unit.Default);
     }
 
-    private void ExplodeEvent(Unit data)
-    {
-        inputActions.Player.Disable();
-        TriggerAdjacentTiles();
-        SoundManager.PlaySound(SoundManager.SoundType.Break);
-        animator.SetTrigger(ExplodeHash);       // THis animation calls the RespawnCat() Function at the end of its animation frame
-    }
-
-    public async void Explode()
-    {
-        animator.Play("CatIdle");
-        for (int i = movementSteps.Count - 1; i >= 0; i--) 
-        {
-            SoundManager.PlaySound(SoundManager.SoundType.Reverse,0.2f);
-            await Tween.Position(catBody, startValue: catBody.position, endValue: movementSteps[i], duration: moveAnimationDuration * 0.5f, ease: Ease.Linear);
-        }
-        movementSteps.Clear();
-        movementSteps.Add(startWorldPosition);
-        RespawnCat();  
-    }
-
-    public void RespawnCat()
-    {
-        board.CatCleanUp(catPosition, startPosition);
-        catPosition = startPosition;
-        catBody.position = startWorldPosition;
-        currentStep = 0;
-        GameUIScript.Instance?.DisplayStepsLeft(stepCounter);
-        SoundManager.PlaySound(SoundManager.SoundType.Meow);
-        inputActions.Player.Enable();
-    }
-
-
-    public void TriggerAdjacentTiles()
-    {
-        board.TriggerTile(catPosition.x + 1, catPosition.y, new Vector2Int(1, 0));
-        board.TriggerTile(catPosition.x - 1, catPosition.y, new Vector2Int(-1, 0));
-        board.TriggerTile(catPosition.x, catPosition.y + 1, new Vector2Int(0, -1));
-        board.TriggerTile(catPosition.x, catPosition.y - 1, new Vector2Int(0, 1));
-    }
-
-    
-
-    public void Explode(InputAction.CallbackContext context)
+    /// <summary>
+    /// Explode the cat when INS is pressed.
+    /// </summary>
+    private void INSExplode(InputAction.CallbackContext context)
     {
         ExplodeEvent(Unit.Default);
     }
+    #endregion Input Methods
+
+    #region End Events
+    /// <summary>
+    /// Plays the rewind sequence.
+    /// </summary>
+    public async void Explode()
+    {
+        animator.Play("CatIdle");
+        for (int i = _movementSteps.Count - 1; i >= 0; i--) 
+        {
+            SoundManager.PlaySound(SoundManager.SoundType.Reverse,0.2f);
+            await Tween.Position(catBody, startValue: catBody.position, endValue: _movementSteps[i], duration: moveAnimationDuration * 0.5f, ease: Ease.Linear);
+        }
+        _movementSteps.Clear();
+        _movementSteps.Add(_startWorldPosition);
+        RespawnCat();  
+    }
+
+    /// <summary>
+    /// Resets the cat to it's init state.
+    /// </summary>
+    public void RespawnCat()
+    {
+        _board.CatCleanUp(catGridPosition, _startGridPosition);
+        catGridPosition = _startGridPosition;
+        catBody.position = _startWorldPosition;
+        _isBoosted = false;
+        _currentCatStep = 0;
+        updateStepsEvent.Raise(maxCatSteps - _currentCatStep);
+        SoundManager.PlaySound(SoundManager.SoundType.Meow);
+        _board.InputActions.Player.Enable();
+    }
+    #endregion End Events
 }

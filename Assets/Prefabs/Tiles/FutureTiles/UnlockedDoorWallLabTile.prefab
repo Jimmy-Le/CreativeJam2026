@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 484419576289991423}
   m_Layer: 0
   m_Name: UnlockedDoorWallLabTile
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -199,8 +199,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorTile
   tileComponent: {fileID: 0}
-  tilePosition: {x: -3.5, y: 0.5}
-  tileIndex: {x: 0, y: 3}
+  tilePosition: {x: 0, y: 2}
+  tileIndex: {x: 3, y: 1}
   buttonUpdateEvent: {fileID: 11400000, guid: e7dcc96c3e1a133428f9bba1e770dfe9, type: 2}
   LevelCompleteEvent: {fileID: 11400000, guid: b811563f8932e5b4d98a1b1ff37182a2, type: 2}
   pressedButtonsRequired: 1

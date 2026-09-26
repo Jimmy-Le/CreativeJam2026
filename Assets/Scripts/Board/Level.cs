@@ -10,13 +10,13 @@ public class Level : ScriptableObject
     [SerializeField] public string levelName;
 
     public int stepsAllowed = 3;
-    public int BoardSize;
+    public int BoardWidth;
     public List<TileAndChild> levelTilesToGenerate = new();
 
     private void OnEnable()
     {
-        if (levelTilesToGenerate.Count % BoardSize != 0 || BoardSize <= 0 || levelTilesToGenerate.Count <= 0)
-            Debug.Log($"Incorrect board size for level {this.name}");
+        if (levelTilesToGenerate.Count % BoardWidth != 0 || BoardWidth <= 0 || levelTilesToGenerate.Count <= 0)
+            Debug.Log($"Incorrect board size for level {name}");
     }
 }
 

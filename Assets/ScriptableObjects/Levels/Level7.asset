@@ -16,7 +16,7 @@ MonoBehaviour:
   levelPicture: {fileID: 8614621830672769657, guid: d5ed98851d5a8104d9947498234072c3, type: 3}
   levelName: Back to the Past
   stepsAllowed: 9
-  BoardSize: 9
+  BoardWidth: 9
   levelTilesToGenerate:
   - tile: {fileID: 3861399046625819917, guid: 6fe5411a43729f4478366015abc211bf, type: 3}
     tileComponent: {fileID: 0}

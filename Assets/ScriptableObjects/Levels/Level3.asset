@@ -16,7 +16,7 @@ MonoBehaviour:
   levelPicture: {fileID: 5979978758487648588, guid: f429db7576241004293f16e25a8ef6aa, type: 3}
   levelName: Escape?
   stepsAllowed: 6
-  BoardSize: 7
+  BoardWidth: 7
   levelTilesToGenerate:
   - tile: {fileID: 3861399046625819917, guid: fe57f66ecca7a214bb2b96948917e08e, type: 3}
     tileComponent: {fileID: 0}

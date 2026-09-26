@@ -28,10 +28,12 @@ public class DoorTile : Tile
         {
             doorIsUnlocked = true;
             cache = tileComponent;
-            tileComponent.SetActive(false);
+            
+            if (tileComponent != null)
+                tileComponent.SetActive(false);
+
             doorSpriteRenderer.enabled = false;
             tileComponent = null;
-            Debug.Log(cache);
         }
     }
 
@@ -53,7 +55,6 @@ public class DoorTile : Tile
             tileComponent.SetActive(false);
             doorSpriteRenderer.enabled = false;
             tileComponent = null;
-            Debug.Log(cache);
         }
         else
         { 

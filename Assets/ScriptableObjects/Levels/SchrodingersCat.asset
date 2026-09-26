@@ -16,7 +16,7 @@ MonoBehaviour:
   levelPicture: {fileID: -2110268079, guid: e65b2fac7c57e7444b85223ea9a57cb5, type: 3}
   levelName: Schrodinger's Cat
   stepsAllowed: 50
-  BoardSize: 3
+  BoardWidth: 3
   levelTilesToGenerate:
   - tile: {fileID: 3861399046625819917, guid: fe57f66ecca7a214bb2b96948917e08e, type: 3}
     tileComponent: {fileID: 0}

@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6342779563c849147ba4b943eb1abe14, type: 3}
-  m_Name: UpdateSteps
+  m_Name: UpdateStepsEvent
   m_EditorClassIdentifier: Assembly-CSharp::IntEvent

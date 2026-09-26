@@ -16,7 +16,7 @@ MonoBehaviour:
   levelPicture: {fileID: 880208749585048789, guid: 2ebc014f4967e0d468420834dcdd6f92, type: 3}
   levelName: Binge Watching
   stepsAllowed: 8
-  BoardSize: 8
+  BoardWidth: 8
   levelTilesToGenerate:
   - tile: {fileID: 3861399046625819917, guid: 461341ae2e4d15940bcaf72894114094, type: 3}
     tileComponent: {fileID: 0}

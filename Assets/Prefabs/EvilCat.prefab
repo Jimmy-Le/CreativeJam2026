@@ -107,14 +107,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c77bb5d3121fa446b6d75f25edf14af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CatMovement
-  catBody: {fileID: 253954918312416103}
-  animator: {fileID: 6554047805415530866}
+  updateStepsEvent: {fileID: 11400000, guid: 4de07ef4130c4f24d8e91d74cc21bb2b, type: 2}
   explodeCatEvent: {fileID: 11400000, guid: 27b7570e31522ca4eb4a1277e2ca82cb, type: 2}
   skipBoostEvent: {fileID: 11400000, guid: bcfe597fc0221da459c7eed0242405d7, type: 2}
+  levelCompleteEvent: {fileID: 11400000, guid: b811563f8932e5b4d98a1b1ff37182a2, type: 2}
+  catBody: {fileID: 253954918312416103}
+  animator: {fileID: 6554047805415530866}
   moveAnimationDuration: 0.35
-  stepCounter: 0
-  currentStep: 0
-  catPosition: {x: 2, y: 1}
+  catGridPosition: {x: 0, y: 0}
+  maxCatSteps: 0
 --- !u!70 &1258880442956449631
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

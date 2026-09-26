@@ -3,88 +3,90 @@ using UnityEngine.SceneManagement;
 
 public class TitleScreen : MonoBehaviour
 {
-    public static TitleScreen instance;
+    #region Singleton
+    public static TitleScreen Instance;
+    #endregion Singleton
 
+    #region Editor Fields
+    [Header("Board")]
+    [SerializeField] private Board board;
+
+    [Header("Panels")]
     [SerializeField] private GameObject TitleScreenPanel;
-    [SerializeField] public GameObject creditsPanel;
-    [SerializeField] public GameObject quitPanel;
-    [SerializeField] public GameObject optionsPanel;
     [SerializeField] public GameObject playPanel;
-    [SerializeField] public InputSystem_Actions inputActions;
+    [SerializeField] public GameObject optionsPanel;
+    [SerializeField] public GameObject creditsPanel;
+    [SerializeField] public GameObject quitPanel;    
+    #endregion Editor Fields
 
-
-
+    #region Lifecycle Methods
     void Awake()
     {
-        if(instance == null)
-        {
-            instance = this;
-        }
-        
+        if(Instance == null)
+            Instance = this; 
     }
 
     void Start()
     {
-        inputActions = FindAnyObjectByType<CatMovement>().inputActions;
         SoundManager.PlaySound(SoundManager.SoundType.MenuCat);
     }
+    #endregion Lifecycle Methods
 
+    #region Action Methods
+    /// <summary>
+    /// Starts the game by loading the first level.
+    /// </summary>
+    public void Play()
+    {
+        SoundManager.PlaySound(SoundManager.SoundType.Click);
+        GameObject cat = GameObject.FindWithTag("Cat");
+        IrisTransition.Instance.IrisClose(cat != null ? cat.GetComponent<CatMovement>().catBody.position : Vector3.zero, () =>
+        {
+            SceneManager.LoadScene("GameScene");
+        });
+    }
 
+    /// <summary>
+    /// Quits game.
+    /// </summary>
+    public void Quit()
+    {
+       SoundManager.PlaySound(SoundManager.SoundType.Click);
+       Application.Quit();
+    }
+
+    /// <summary>
+    /// Displays the credits panel and disables player input.
+    /// </summary>
     public void DisplayCredits()
     {
         SoundManager.PlaySound(SoundManager.SoundType.Click);
         CloseAllPanels();
-        inputActions.Player.Disable();
+        board.InputActions.Player.Disable();
         creditsPanel.SetActive(true);
     }
 
+    /// <summary>
+    /// Displays the quit confirmation panel and disables player input.
+    /// </summary>
     public void DisplayOptions()
     {
         SoundManager.PlaySound(SoundManager.SoundType.Click);
         CloseAllPanels();
-        inputActions.Player.Disable();
+        board.InputActions.Player.Disable();
         optionsPanel.SetActive(true);
     }
 
-
-    public void DisplayQuit()
-    {
-        SoundManager.PlaySound(SoundManager.SoundType.Click);
-        //CloseAllPanels();
-        //inputActions.Player.Disable();
-        //quitPanel.SetActive(true);
-        Quit();
-    }
-
-    public void DisplayPlay()
-    {
-        SoundManager.PlaySound(SoundManager.SoundType.Click);
-        //CloseAllPanels();
-        //inputActions.Player.Disable();
-        //playPanel.SetActive(true);
-        Play();
-
-    }
-
-
+    /// <summary>
+    /// Closes all UI panels and re-enables player input.
+    /// </summary>
     public void CloseAllPanels()
     {
         creditsPanel.SetActive(false);
         quitPanel.SetActive(false);
         optionsPanel.SetActive(false);
         playPanel.SetActive(false);
-        inputActions.Player.Enable();
-
+        board.InputActions.Player.Enable();
     }
-
-    public void Play()
-    {
-        SceneManager.LoadScene("GameScene");
-    }
-
-
-    public void Quit()
-    {
-       Application.Quit();
-    }
+    #endregion Action Methods
 }

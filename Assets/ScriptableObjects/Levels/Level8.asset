@@ -16,7 +16,7 @@ MonoBehaviour:
   levelPicture: {fileID: -3328670417789047576, guid: 5ecf97a630e51a14198825cc28c7b4ce, type: 3}
   levelName: Path to Freedom
   stepsAllowed: 9
-  BoardSize: 9
+  BoardWidth: 9
   levelTilesToGenerate:
   - tile: {fileID: 3861399046625819917, guid: 6fe5411a43729f4478366015abc211bf, type: 3}
     tileComponent: {fileID: 0}

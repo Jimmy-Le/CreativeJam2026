@@ -4,6 +4,6 @@ public class OptionsTile : Tile
 {
     public override void OnStep()
     {
-        TitleScreen.instance.DisplayOptions();
+        TitleScreen.Instance.DisplayOptions();
     }
 }

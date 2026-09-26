@@ -4,29 +4,40 @@ using UnityEngine.UI;
 
 public class LevelSelectObject : MonoBehaviour
 {
+    #region Editor Fields
+    [Header("Level Select Object")]
     [SerializeField] public Image framePicture;
     [SerializeField] public Image frameImage;
     [SerializeField] public TextMeshProUGUI LevelText;
+    #endregion Editor Fields
 
-    [SerializeField] public Level level;
+    #region Back Fields
+    private int _levelIndex;
+    #endregion Back Fields
 
-    private int index;
-
-    public void Initialize(Level level, int index)
+    #region Initialization
+    /// <summary>
+    /// Initializes the LevelSelectObject with the provided level data and index. Sets the level name, frame picture, and level picture accordingly.
+    /// </summary>
+    /// <param name="level">The level data to initialize with.</param>
+    /// <param name="levelIndex">The index of the level.</param>
+    public void Initialize(Level level, int levelIndex)
     {
-        this.level = level;
         LevelText.text = level.levelName;
         framePicture.sprite = level.framePicture;
         frameImage.sprite = level.levelPicture;
-        this.index = index;
-
-        
+        _levelIndex = levelIndex;
     }
+    #endregion Initialization
 
+    #region Button Methods
+    /// <summary>
+    /// Called when the level select button is clicked. Loads the selected level in the GameUIScript.
+    /// </summary>
     public void SelectLevel()
     {
-        GameUIScript.Instance.board.currentLevel = index;
-        GameUIScript.Instance.ProperRestart(index);
-        //GameUIScript.Instance.board.currentLevel = index;
+        SoundManager.PlaySound(SoundManager.SoundType.Click);
+        GameUIScript.Instance.LoadLevel(_levelIndex);
     }
+    #endregion Button Methods
 }
