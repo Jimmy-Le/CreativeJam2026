@@ -39,7 +39,11 @@ public class TitleScreen : MonoBehaviour
     public void Play()
     {
         SoundManager.PlaySound(SoundManager.SoundType.Click);
-        SceneManager.LoadScene("GameScene");
+        GameObject cat = GameObject.FindWithTag("Cat");
+        IrisTransition.Instance.IrisClose(cat != null ? cat.GetComponent<CatMovement>().catBody.position : Vector3.zero, () =>
+        {
+            SceneManager.LoadScene("GameScene");
+        });
     }
 
     /// <summary>

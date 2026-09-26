@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2797812712494996239}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.56265, y: -0.05345, z: 0}
+  m_LocalPosition: {x: -2, y: -2, z: 0}
   m_LocalScale: {x: 0.45000002, y: 0.45000002, z: 0.45000002}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -114,8 +114,8 @@ MonoBehaviour:
   catBody: {fileID: 253954918312416103}
   animator: {fileID: 6554047805415530866}
   moveAnimationDuration: 0.35
-  catGridPosition: {x: 0, y: 0}
-  maxCatSteps: 0
+  catGridPosition: {x: 1, y: 5}
+  maxCatSteps: 6
 --- !u!70 &1258880442956449631
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

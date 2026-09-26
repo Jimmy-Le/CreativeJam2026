@@ -22,7 +22,7 @@ public class CatMovement : MonoBehaviour
     [SerializeField] private VoidEvent levelCompleteEvent;
 
     [Header("UI")]
-    [SerializeField] private Transform catBody;
+    [SerializeField] public Transform catBody;
 
     [Header("Animation")]
     [SerializeField] public Animator animator;
@@ -30,14 +30,6 @@ public class CatMovement : MonoBehaviour
     #endregion Editor Fields
 
     #region Backing Fields
-    /// <summary>
-    /// The cat's world position.
-    /// </summary>
-    public Vector2 CatWorldPosition
-    {
-        get => catBody.position;
-        set => catBody.position = value;
-    }
     private Vector2 _startWorldPosition;
 
     /// <summary>
@@ -70,7 +62,7 @@ public class CatMovement : MonoBehaviour
     private void Start()
     {
         _startGridPosition = catGridPosition;
-        _startWorldPosition = CatWorldPosition;
+        _startWorldPosition = catBody.position;
         _movementSteps.Add(_startWorldPosition);
         updateStepsEvent.Raise(maxCatSteps - _currentCatStep);
     }
@@ -175,7 +167,7 @@ public class CatMovement : MonoBehaviour
         // Play walking audio
         SoundManager.PlaySound(SoundManager.SoundType.Walk, 0.25f);
 
-        Tween.Position(catBody, startValue: CatWorldPosition, endValue: newCatGridPosition, duration: moveAnimationDuration, ease: Ease.Linear).OnComplete(() =>
+        Tween.Position(catBody, startValue: catBody.position, endValue: newCatGridPosition, duration: moveAnimationDuration, ease: Ease.Linear).OnComplete(() =>
         {
             // Reset the state
             animator.Play("CatIdle");
@@ -217,7 +209,7 @@ public class CatMovement : MonoBehaviour
         for (int i = _movementSteps.Count - 1; i >= 0; i--) 
         {
             SoundManager.PlaySound(SoundManager.SoundType.Reverse,0.2f);
-            await Tween.Position(catBody, startValue: CatWorldPosition, endValue: _movementSteps[i], duration: moveAnimationDuration * 0.5f, ease: Ease.Linear);
+            await Tween.Position(catBody, startValue: catBody.position, endValue: _movementSteps[i], duration: moveAnimationDuration * 0.5f, ease: Ease.Linear);
         }
         _movementSteps.Clear();
         _movementSteps.Add(_startWorldPosition);
@@ -231,7 +223,7 @@ public class CatMovement : MonoBehaviour
     {
         _board.CatCleanUp(catGridPosition, _startGridPosition);
         catGridPosition = _startGridPosition;
-        CatWorldPosition = _startWorldPosition;
+        catBody.position = _startWorldPosition;
         _isBoosted = false;
         _currentCatStep = 0;
         updateStepsEvent.Raise(maxCatSteps - _currentCatStep);

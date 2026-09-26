@@ -33,6 +33,9 @@ public class Board : MonoBehaviour
     // Tracks the state of each tile in the board.
     private Tile[,] _board;
     private int _boardWidth;
+
+    // This is solely used during the animation phase.
+    private Vector2 _initCatWorldPosition;
     #endregion Backing Fields
 
     #region Lifecycle Methods
@@ -77,9 +80,7 @@ public class Board : MonoBehaviour
     {
         GameObject cat = GameObject.FindWithTag("Cat");
         ++currentLevel;
-        
-        Debug.Log(cat.GetComponent<CatMovement>().CatWorldPosition + " 1");
-        IrisTransition.Instance.IrisClose(cat != null ? cat.GetComponent<CatMovement>().CatWorldPosition : Vector3.zero, () =>
+        IrisTransition.Instance.IrisClose(cat != null ? cat.GetComponent<CatMovement>().catBody.position : Vector3.zero, () =>
         {
             LoadLevel(currentLevel);
         });
@@ -102,13 +103,7 @@ public class Board : MonoBehaviour
         if (currentLevel < levels.Count)
         {
             GameUIScript.Instance.LoadLevel(currentLevel);
-            GameObject cat = GameObject.FindWithTag("Cat");
-            Debug.Log(cat.GetComponent<CatMovement>().CatWorldPosition + " 2");
-            Debug.Log(cat != null ? cat.GetComponent<CatMovement>().CatWorldPosition : Vector3.zero + " 2.5");
-            IrisTransition.Instance.IrisOpen(cat != null ? cat.GetComponent<CatMovement>().CatWorldPosition : Vector3.zero, () =>
-            {
-                //GameUIScript.Instance.RestartLevel();
-            });
+            IrisTransition.Instance.IrisOpen(_initCatWorldPosition, () => {});
         }
     }
 
@@ -118,7 +113,6 @@ public class Board : MonoBehaviour
     /// <param name="level">The level to generate a board for.</param>
     private void GenerateBoard(Level level)
     {
-        Debug.Log("GENERATED!");
         // Clean up old trash.
         for (int i = gameObject.transform.childCount - 1; i >= 0; i--)
         {
@@ -143,7 +137,6 @@ public class Board : MonoBehaviour
                 Tile tile = level.levelTilesToGenerate[i + (j * _boardWidth)].tile.GetComponent<Tile>();
                 if (tile == null)
                 {
-                    Debug.Log($"Tile {i + (j * _boardWidth)} is empty");
                     continue;
                 }
                 
@@ -162,8 +155,9 @@ public class Board : MonoBehaviour
                     if (catMovement != null)
                     {
                         catMovement.catGridPosition = new Vector2Int(i, j);
+                        catMovement.catBody.position = tile.tilePosition;
                         catMovement.maxCatSteps = level.stepsAllowed;
-                        Debug.Log(catMovement.CatWorldPosition + " 3");
+                        _initCatWorldPosition = tile.tilePosition;
                     }
 
                     // Spawn the component.
@@ -269,7 +263,7 @@ public class Board : MonoBehaviour
         PerformPositionSwap(initialTile.tileIndex, destinationTile.tileIndex);
 
         catMovement.catGridPosition = new Vector2Int(destinationTile.tileIndex.x, destinationTile.tileIndex.y);
-        catMovement.CatWorldPosition = destinationTile.tilePosition;
+        catMovement.catBody.position = destinationTile.tilePosition;
     }
 
     /// <summary>
