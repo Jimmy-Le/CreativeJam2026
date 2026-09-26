@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MoveBlockBan
   - Door
+  - Cat
   layers:
   - Default
   - TransparentFX

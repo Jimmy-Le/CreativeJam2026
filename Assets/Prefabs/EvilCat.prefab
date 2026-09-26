@@ -110,6 +110,7 @@ MonoBehaviour:
   updateStepsEvent: {fileID: 11400000, guid: 4de07ef4130c4f24d8e91d74cc21bb2b, type: 2}
   explodeCatEvent: {fileID: 11400000, guid: 27b7570e31522ca4eb4a1277e2ca82cb, type: 2}
   skipBoostEvent: {fileID: 11400000, guid: bcfe597fc0221da459c7eed0242405d7, type: 2}
+  levelCompleteEvent: {fileID: 11400000, guid: b811563f8932e5b4d98a1b1ff37182a2, type: 2}
   catBody: {fileID: 253954918312416103}
   animator: {fileID: 6554047805415530866}
   moveAnimationDuration: 0.35

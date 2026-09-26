@@ -77,7 +77,6 @@ public class GameUIScript : MonoBehaviour
         // UI.
         levelText.text = board.levels[board.currentLevel].levelName;   
         CloseAllPanels();
-        // TODO: Put level transition here instead of in Board.cs. (after cat spawn glitch is fixed)
 
         // Audio.
         PlayMusic();

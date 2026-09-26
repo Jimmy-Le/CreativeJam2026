@@ -1,4 +1,5 @@
 using PrimeTween;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 public class Board : MonoBehaviour
@@ -10,7 +11,6 @@ public class Board : MonoBehaviour
     [SerializeField] private VoidEvent LevelCompleteEvent;
     
     [Header("UI")]
-    [SerializeField] private GameObject loadingScreen;
     [SerializeField] private bool isBoardOnTitleScreen = false;
     #endregion Editor Fields
 
@@ -75,7 +75,14 @@ public class Board : MonoBehaviour
     /// <param name="data">Empty.</param>
     private void NextLevel(Unit data)
     {
-        LoadLevel(++currentLevel);
+        GameObject cat = GameObject.FindWithTag("Cat");
+        ++currentLevel;
+        
+        Debug.Log(cat.GetComponent<CatMovement>().CatWorldPosition + " 1");
+        IrisTransition.Instance.IrisClose(cat != null ? cat.GetComponent<CatMovement>().CatWorldPosition : Vector3.zero, () =>
+        {
+            LoadLevel(currentLevel);
+        });
     }
 
     /// <summary>
@@ -90,17 +97,17 @@ public class Board : MonoBehaviour
             GenerateLevel(levelIndex);
             return;
         }
-    
+
         // Loading screen.
         if (currentLevel < levels.Count)
         {
-            loadingScreen.SetActive(true);
-
-            Tween.Delay(duration: 0.5f, onComplete: () =>
+            GameUIScript.Instance.LoadLevel(currentLevel);
+            GameObject cat = GameObject.FindWithTag("Cat");
+            Debug.Log(cat.GetComponent<CatMovement>().CatWorldPosition + " 2");
+            Debug.Log(cat != null ? cat.GetComponent<CatMovement>().CatWorldPosition : Vector3.zero + " 2.5");
+            IrisTransition.Instance.IrisOpen(cat != null ? cat.GetComponent<CatMovement>().CatWorldPosition : Vector3.zero, () =>
             {
-                // GameUIScript has a LoadLevel that calls GenerateLevel.
-                GameUIScript.Instance.RestartLevel();
-                loadingScreen.SetActive(false);
+                //GameUIScript.Instance.RestartLevel();
             });
         }
     }
@@ -111,6 +118,7 @@ public class Board : MonoBehaviour
     /// <param name="level">The level to generate a board for.</param>
     private void GenerateBoard(Level level)
     {
+        Debug.Log("GENERATED!");
         // Clean up old trash.
         for (int i = gameObject.transform.childCount - 1; i >= 0; i--)
         {
@@ -155,6 +163,7 @@ public class Board : MonoBehaviour
                     {
                         catMovement.catGridPosition = new Vector2Int(i, j);
                         catMovement.maxCatSteps = level.stepsAllowed;
+                        Debug.Log(catMovement.CatWorldPosition + " 3");
                     }
 
                     // Spawn the component.

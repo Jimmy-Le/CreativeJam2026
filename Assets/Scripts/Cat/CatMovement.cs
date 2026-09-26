@@ -19,6 +19,7 @@ public class CatMovement : MonoBehaviour
     [SerializeField] private IntEvent updateStepsEvent;
     [SerializeField] private VoidEvent explodeCatEvent;
     [SerializeField] private VoidEvent skipBoostEvent;
+    [SerializeField] private VoidEvent levelCompleteEvent;
 
     [Header("UI")]
     [SerializeField] private Transform catBody;
@@ -54,6 +55,7 @@ public class CatMovement : MonoBehaviour
     private Board _board;
 
     private bool _isBoosted = false;
+    private bool _canExplode = true;
 
     private List<Vector2> _movementSteps = new();
     private bool _isMoving = false;
@@ -80,6 +82,7 @@ public class CatMovement : MonoBehaviour
         _board.InputActions.Player.Explode.performed += INSExplode;
         explodeCatEvent.OnEventRaised += ExplodeEvent;
         skipBoostEvent.OnEventRaised += EnableBoost;
+        levelCompleteEvent.OnEventRaised += DisableExplosion;
     }
 
     private void OnDisable()
@@ -89,6 +92,7 @@ public class CatMovement : MonoBehaviour
         _board.InputActions.Player.Explode.performed -= INSExplode;
         explodeCatEvent.OnEventRaised -= ExplodeEvent;
         skipBoostEvent.OnEventRaised -= EnableBoost;
+        levelCompleteEvent.OnEventRaised -= DisableExplosion;
     }
     #endregion Lifecycle Methods
 
@@ -111,6 +115,11 @@ public class CatMovement : MonoBehaviour
     private void EnableBoost(Unit data)
     {
         _isBoosted = true;
+    }
+
+    private void DisableExplosion(Unit data)
+    {
+        _canExplode = false;
     }
 
     /// <summary>
@@ -179,7 +188,7 @@ public class CatMovement : MonoBehaviour
             ++_currentCatStep;
             updateStepsEvent.Raise(maxCatSteps - _currentCatStep);
 
-            if (_currentCatStep >= maxCatSteps)
+            if (_currentCatStep >= maxCatSteps && _canExplode)
             {
                 CatMovement[] cats = FindObjectsByType<CatMovement>(FindObjectsSortMode.None);
 
