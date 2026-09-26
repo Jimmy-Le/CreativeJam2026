@@ -1313,7 +1313,7 @@ GameObject:
   - component: {fileID: 473899299}
   - component: {fileID: 473899298}
   m_Layer: 0
-  m_Name: titlescreeeen
+  m_Name: TitlescreenBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2960,7 +2960,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 325, y: 115}
+  m_AnchoredPosition: {x: 289, y: 115}
   m_SizeDelta: {x: 200, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1469346877
@@ -3640,7 +3640,7 @@ GameObject:
   - component: {fileID: 1785157340}
   - component: {fileID: 1785157344}
   m_Layer: 5
-  m_Name: TitleScreenCanvas
+  m_Name: TitleScreenUICanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3695,8 +3695,8 @@ Canvas:
   m_GameObject: {fileID: 1785157339}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1716766995}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -3707,7 +3707,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!224 &1785157343
 RectTransform:
@@ -4240,7 +4240,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1785157344}
         m_TargetAssemblyTypeName: TitleScreen, Assembly-CSharp
-        m_MethodName: DisplayPlay
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4717,7 +4717,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 325, y: -140}
+  m_AnchoredPosition: {x: 289, y: -140}
   m_SizeDelta: {x: 200, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1933577076
@@ -5482,7 +5482,7 @@ SceneRoots:
   - {fileID: 1716766996}
   - {fileID: 473899299}
   - {fileID: 1785157343}
-  - {fileID: 255997964}
   - {fileID: 47123316}
   - {fileID: 1839079984}
   - {fileID: 930558036}
+  - {fileID: 255997964}

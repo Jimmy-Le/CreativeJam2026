@@ -5,6 +5,13 @@ public class TitleScreen : MonoBehaviour
 {
     #region Singleton
     public static TitleScreen Instance;
+    private static bool hasSceneBeenOpenedThisSession = false;
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    private static void ResetStaticVariables()
+    {
+        hasSceneBeenOpenedThisSession = false;
+    }
     #endregion Singleton
 
     #region Editor Fields
@@ -19,11 +26,25 @@ public class TitleScreen : MonoBehaviour
     [SerializeField] public GameObject quitPanel;    
     #endregion Editor Fields
 
+    #region Backing Fields
+    private bool hasClickedPlay = false;
+    #endregion Backing Fields
+
     #region Lifecycle Methods
     void Awake()
     {
         if(Instance == null)
             Instance = this; 
+        
+        if (!hasSceneBeenOpenedThisSession)
+        {
+            hasSceneBeenOpenedThisSession = true;
+        }
+        else
+        {
+            GameObject cat = GameObject.FindWithTag("Cat");
+            IrisTransition.Instance.IrisOpen(cat != null ? cat.GetComponent<CatMovement>().catBody.position : Vector3.zero, () => {});
+        }
     }
 
     void Start()
@@ -38,6 +59,10 @@ public class TitleScreen : MonoBehaviour
     /// </summary>
     public void Play()
     {
+        if (hasClickedPlay)
+            return;
+        
+        hasClickedPlay = true;
         SoundManager.PlaySound(SoundManager.SoundType.Click);
         GameObject cat = GameObject.FindWithTag("Cat");
         IrisTransition.Instance.IrisClose(cat != null ? cat.GetComponent<CatMovement>().catBody.position : Vector3.zero, () =>

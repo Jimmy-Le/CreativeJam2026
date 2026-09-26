@@ -175,7 +175,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.5613208, g: 1, b: 0.73435146, a: 1}
+  m_Color: {r: 0.34963512, g: 0.764151, b: 0.51401216, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -197,4 +197,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayTile
   tileComponent: {fileID: 0}
-  tilePosition: {x: 0, y: 0}
+  tilePosition: {x: -1, y: 1}
+  tileIndex: {x: 0, y: 0}

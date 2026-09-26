@@ -108,7 +108,11 @@ public class GameUIScript : MonoBehaviour
     /// </summary>
     public void ReturnToTitle()
     {
-        SceneManager.LoadScene("TitleScreen");
+        GameObject cat = GameObject.FindWithTag("Cat");
+        IrisTransition.Instance.IrisClose(cat != null ? cat.GetComponent<CatMovement>().catBody.position : Vector3.zero, () =>
+        {
+            SceneManager.LoadScene("TitleScreen");
+        });
     }
 
     /// <summary>
