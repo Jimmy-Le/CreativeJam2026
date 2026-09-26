@@ -87,6 +87,18 @@ public class Board : MonoBehaviour
     }
 
     /// <summary>
+    /// Called when a level is restarted via ui.
+    /// </summary>
+    public void RestartLevel()
+    {
+        GameObject cat = GameObject.FindWithTag("Cat");
+        IrisTransition.Instance.IrisClose(cat != null ? cat.GetComponent<CatMovement>().catBody.position : Vector3.zero, () =>
+        {
+            LoadLevel(currentLevel);
+        });
+    }
+
+    /// <summary>
     /// Handles UI setup calling and board generation for the level.
     /// </summary>
     /// <param name="levelIndex">The level to generate.</param>

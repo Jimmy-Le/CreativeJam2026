@@ -187,7 +187,7 @@ public class CatMovement : MonoBehaviour
                 foreach (CatMovement cat in cats)
                     cat.ExplodeEvent(Unit.Default);
             }
-        });
+        }, warnIfTargetDestroyed: false);
     }
 
     /// <summary>
@@ -209,7 +209,16 @@ public class CatMovement : MonoBehaviour
         for (int i = _movementSteps.Count - 1; i >= 0; i--) 
         {
             SoundManager.PlaySound(SoundManager.SoundType.Reverse,0.2f);
-            await Tween.Position(catBody, startValue: catBody.position, endValue: _movementSteps[i], duration: moveAnimationDuration * 0.5f, ease: Ease.Linear);
+
+            try
+            {
+                await Tween.Position(catBody, startValue: catBody.position, endValue: _movementSteps[i], duration: moveAnimationDuration * 0.5f, ease: Ease.Linear);
+            }
+            catch
+            {
+                return;
+            }
+            
         }
         _movementSteps.Clear();
         _movementSteps.Add(_startWorldPosition);

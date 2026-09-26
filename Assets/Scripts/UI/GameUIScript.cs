@@ -1,3 +1,4 @@
+using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -28,6 +29,11 @@ public class GameUIScript : MonoBehaviour
     [SerializeField] private Transform levelPrefabBaseSpawnLocation;
     [SerializeField] private TextMeshProUGUI levelText;
     #endregion Editor Fields
+
+    #region Backing Fields
+    private float nextClickTime = 0f;
+    private float cooldownTime = 1f;
+    #endregion Backing Fields
 
     #region Lifecycle Methods
     void Awake()
@@ -87,7 +93,14 @@ public class GameUIScript : MonoBehaviour
     /// </summary>
     public void RestartLevel()
     {
-        LoadLevel(board.currentLevel);
+        if (Time.time < nextClickTime)
+        {
+            return;
+        }
+
+        nextClickTime = Time.time + cooldownTime;
+
+        board.RestartLevel();
     }
 
     /// <summary>
