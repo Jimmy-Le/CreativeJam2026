@@ -107,4 +107,4 @@ MonoBehaviour:
   tileComponent: {fileID: 0}
   tilePosition: {x: 0, y: 0}
   tileIndex: {x: 0, y: 0}
-  destinationTeleportalTile: {fileID: -9217541615648729670, guid: e14219075e6f523459daf5ad800374ff, type: 3}
+  destinationTeleportTile: {fileID: -9217541615648729670, guid: e14219075e6f523459daf5ad800374ff, type: 3}

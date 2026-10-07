@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6434518597865776285}
   - component: {fileID: 4066912163020722310}
-  - component: {fileID: 3356123006474380159}
+  - component: {fileID: 5937526539150777151}
   m_Layer: 0
   m_Name: SpawnTile
   m_TagString: MoveBlockBan
@@ -92,7 +92,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &3356123006474380159
+--- !u!114 &5937526539150777151
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,9 +101,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3861399046625819917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f051ea60d551e64580028bccb993ad9, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d187063172d34c7781702f053b27450, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Tile
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnTile
   tileComponent: {fileID: 0}
   tilePosition: {x: 0, y: 0}
   tileIndex: {x: 0, y: 0}
+  catPrefab: {fileID: 2797812712494996239, guid: b55f6fc5508b062439569017929a4816, type: 3}

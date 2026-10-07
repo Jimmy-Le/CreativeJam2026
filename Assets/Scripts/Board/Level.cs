@@ -24,5 +24,5 @@ public class Level : ScriptableObject
 public struct TileAndChild
 {
     public GameObject tile;
-    public GameObject tileComponent;
+    //public GameObject tileComponent;
 }

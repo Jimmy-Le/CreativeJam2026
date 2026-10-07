@@ -159,22 +159,20 @@ public class Board : MonoBehaviour
                 // Generates new tile visually.
                 Tile tileObject = Instantiate(tile, tile.tilePosition, Quaternion.identity, this.transform);
 
-                // If tile has a component.
-                if (level.levelTilesToGenerate[i + (j * _boardWidth)].tileComponent != null)
+                // If is a spawn tile, setup cat.
+                if (tileObject is SpawnTile spawnTile)
                 {
-                    // If is a Cat, setup cat.
-                    CatMovement catMovement = level.levelTilesToGenerate[i + (j * _boardWidth)].tileComponent.GetComponent<CatMovement>();
-                    if (catMovement != null)
-                    {
-                        catMovement.catGridPosition = new Vector2Int(i, j);
-                        catMovement.catBody.position = tile.tilePosition;
-                        catMovement.maxCatSteps = level.stepsAllowed;
-                        _initCatWorldPosition = tile.tilePosition;
-                    }
+                    CatMovement catMovement = spawnTile.catPrefab.GetComponent<CatMovement>();
+                    catMovement.catGridPosition = new Vector2Int(i, j);
+                    catMovement.catBody.position = tile.tilePosition;
+                    catMovement.maxCatSteps = level.stepsAllowed;
+                    _initCatWorldPosition = tile.tilePosition;
 
-                    // Spawn the component.
-                    tileObject.tileComponent = Instantiate(level.levelTilesToGenerate[i + (j * _boardWidth)].tileComponent, tile.tilePosition, Quaternion.identity, tileObject.transform);
+                    // Spawn cat.
+                    tileObject.tileComponent = Instantiate(spawnTile.catPrefab, tile.tilePosition, Quaternion.identity, tileObject.transform);
                 }
+
+                // TODO: init other tile component variants. e.g. door lock.
 
                 // Adds the tile to the board.
                 _board[i, j] = tileObject;
