@@ -19,6 +19,7 @@ public class CatMovement : MonoBehaviour
     [SerializeField] private IntEvent updateStepsEvent;
     [SerializeField] private VoidEvent explodeCatEvent;
     [SerializeField] private VoidEvent skipBoostEvent;
+    [SerializeField] private VoidEvent freezeStepEvent;
     [SerializeField] private VoidEvent levelCompleteEvent;
 
     [Header("UI")]
@@ -47,6 +48,7 @@ public class CatMovement : MonoBehaviour
     private Board _board;
 
     private bool _isBoosted = false;
+    private bool _isFrozenStep = false;
     private bool _canExplode = true;
 
     private List<Vector2> _movementSteps = new();
@@ -74,6 +76,7 @@ public class CatMovement : MonoBehaviour
         _board.InputActions.Player.Explode.performed += INSExplode;
         explodeCatEvent.OnEventRaised += ExplodeEvent;
         skipBoostEvent.OnEventRaised += EnableBoost;
+        freezeStepEvent.OnEventRaised += EnableStepFreeze;
         levelCompleteEvent.OnEventRaised += DisableExplosion;
     }
 
@@ -84,6 +87,7 @@ public class CatMovement : MonoBehaviour
         _board.InputActions.Player.Explode.performed -= INSExplode;
         explodeCatEvent.OnEventRaised -= ExplodeEvent;
         skipBoostEvent.OnEventRaised -= EnableBoost;
+        freezeStepEvent.OnEventRaised -= EnableStepFreeze;
         levelCompleteEvent.OnEventRaised -= DisableExplosion;
     }
     #endregion Lifecycle Methods
@@ -107,6 +111,15 @@ public class CatMovement : MonoBehaviour
     private void EnableBoost(Unit data)
     {
         _isBoosted = true;
+    }
+
+    /// <summary>
+    /// Called when a freeze step is activated via event.
+    /// </summary>
+    /// <param name="data">Empty.</param>
+    private void EnableStepFreeze(Unit data)
+    {
+        _isFrozenStep = true;
     }
 
     private void DisableExplosion(Unit data)
@@ -177,8 +190,15 @@ public class CatMovement : MonoBehaviour
             _board.TriggerTile(catGridPosition);
 
             // Update steps;
-            ++_currentCatStep;
-            updateStepsEvent.Raise(maxCatSteps - _currentCatStep);
+            if (!_isFrozenStep)
+            {
+                ++_currentCatStep;
+                updateStepsEvent.Raise(maxCatSteps - _currentCatStep);
+            }
+            else
+            {
+                _isFrozenStep = false;
+            }
 
             if (_currentCatStep >= maxCatSteps && _canExplode)
             {
@@ -234,6 +254,7 @@ public class CatMovement : MonoBehaviour
         catGridPosition = _startGridPosition;
         catBody.position = _startWorldPosition;
         _isBoosted = false;
+        _isFrozenStep = false;
         _currentCatStep = 0;
         updateStepsEvent.Raise(maxCatSteps - _currentCatStep);
         SoundManager.PlaySound(SoundManager.SoundType.Meow);

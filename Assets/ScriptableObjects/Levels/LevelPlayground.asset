@@ -20,7 +20,7 @@ MonoBehaviour:
   levelTilesToGenerate:
   - tile: {fileID: 3861399046625819917, guid: 4a77b0036f2953a418c7d2caf1d85b6a, type: 3}
     tileComponent: {fileID: 0}
-  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
+  - tile: {fileID: 3861399046625819917, guid: 2a27b553b8b534d8b90d9b10ab0dce1f, type: 3}
     tileComponent: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: b8dba4128d515420c8bbc821af63dade, type: 3}
     tileComponent: {fileID: 0}
