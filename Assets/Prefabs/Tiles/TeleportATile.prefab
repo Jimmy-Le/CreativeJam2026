@@ -213,4 +213,4 @@ MonoBehaviour:
   tileComponent: {fileID: 0}
   tilePosition: {x: 0, y: 0}
   tileIndex: {x: 0, y: 0}
-  destinationTeleportTilePrefab: {fileID: 0}
+  destinationTeleportTilePrefab: {fileID: 3861399046625819917, guid: e14219075e6f523459daf5ad800374ff, type: 3}

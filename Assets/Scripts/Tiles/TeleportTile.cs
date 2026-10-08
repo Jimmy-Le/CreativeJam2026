@@ -15,7 +15,7 @@ public class TeleportTile : Tile
         if (!destinationTeleportTilePrefab) return;
 
         TeleportTile teleportTile = FindObjectsByType<TeleportTile>(FindObjectsSortMode.None).FirstOrDefault(t => t.gameObject != this.gameObject && t.name.StartsWith(destinationTeleportTilePrefab.name));
-        
+
         if (!teleportTile || teleportTile.tileComponent) return;
 
         FindAnyObjectByType<Board>().Teleport(this, teleportTile);
