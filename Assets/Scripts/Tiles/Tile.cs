@@ -11,5 +11,6 @@ public class Tile : MonoBehaviour
 
     #region Tile Methods
     public virtual void OnStep() {}
+    public virtual void OnIdle() {}
     #endregion Tile Methods
 }

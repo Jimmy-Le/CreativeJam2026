@@ -13,8 +13,15 @@ public class ButtonTile : Tile
     private bool _isButtonPressed = false;
     #endregion Backing Fields
 
-    #region Lifecycle Methods
-    private void Update()
+    #region Tile Methods
+    public override void OnStep()
+    {
+        _isButtonPressed = true;
+        buttonUpdateEvent.Raise(true);
+        buttonIconSpriteRenderer.enabled = false;
+    }
+
+    public override void OnIdle()
     {
         if (tileComponent == null && _isButtonPressed == true)
         {
@@ -22,15 +29,6 @@ public class ButtonTile : Tile
             buttonUpdateEvent.Raise(false);
             buttonIconSpriteRenderer.enabled = true;
         }
-    }
-    #endregion Lifecycle Methods
-
-    #region Tile Methods
-    public override void OnStep()
-    {
-        _isButtonPressed = true;
-        buttonUpdateEvent.Raise(true);
-        buttonIconSpriteRenderer.enabled = false;
     }
     #endregion Tile Methods
 }

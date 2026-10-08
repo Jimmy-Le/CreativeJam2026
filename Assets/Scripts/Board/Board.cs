@@ -261,6 +261,7 @@ public class Board : MonoBehaviour
 
         // Triggers the new tile's step event.
         _board[newBlockGridPosition.x, newBlockGridPosition.y].OnStep();
+        CallOnIdle();
     }
 
     /// <summary>
@@ -308,6 +309,7 @@ public class Board : MonoBehaviour
     public bool TriggerTile(Vector2Int tileGridPosition)
     {
         _board[tileGridPosition.x, tileGridPosition.y].OnStep();
+        CallOnIdle();
 
         return _board[tileGridPosition.x, tileGridPosition.y].tag == "Door";
     }
@@ -336,6 +338,17 @@ public class Board : MonoBehaviour
             };
 
             blockBase.ability.Activate(data);
+        }
+    }
+
+    /// <summary>
+    /// Calls the idle method for each tile.
+    /// </summary>
+    private void CallOnIdle()
+    {
+        foreach(Tile tile in _board)
+        {
+            tile.OnIdle();
         }
     }
     #endregion Trigger Methods
