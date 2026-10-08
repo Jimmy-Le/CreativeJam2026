@@ -309,12 +309,12 @@ public class Board : MonoBehaviour
     /// </summary>
     /// <param name="tileGridPosition"></param>
     /// <returns>Whether the tile is a door tile.</returns>
-    public bool TriggerTile(Vector2Int tileGridPosition)
+    public Tile TriggerTile(Vector2Int tileGridPosition)
     {
         _board[tileGridPosition.x, tileGridPosition.y].OnStep();
         CallOnIdle();
 
-        return _board[tileGridPosition.x, tileGridPosition.y].tag == "Door";
+        return _board[tileGridPosition.x, tileGridPosition.y];
     }
 
     /// <summary>

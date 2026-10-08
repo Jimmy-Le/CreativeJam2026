@@ -157,6 +157,14 @@ public class CatMovement : MonoBehaviour
 
             // Trigger events.
             _board.TriggerTile(catGridPosition);
+
+            if (_currentCatStep >= maxCatSteps && _canExplode)
+            {
+                CatMovement[] cats = FindObjectsByType<CatMovement>(FindObjectsSortMode.None);
+
+                foreach (CatMovement cat in cats)
+                    cat.ExplodeEvent(Unit.Default);
+            }
         }, warnIfTargetDestroyed: false);
     }
 
@@ -244,7 +252,7 @@ public class CatMovement : MonoBehaviour
             _isMoving = false;
 
             // Trigger events.
-            _board.TriggerTile(catGridPosition);
+            Tile triggerTile = _board.TriggerTile(catGridPosition);
 
             // Update steps;
             if (!_isFrozenStep)
@@ -255,6 +263,11 @@ public class CatMovement : MonoBehaviour
             else
             {
                 _isFrozenStep = false;
+            }
+
+            if (triggerTile is PushTile || triggerTile is DoorTile)
+            {
+                return;
             }
 
             if (_currentCatStep >= maxCatSteps && _canExplode)
