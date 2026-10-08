@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent (typeof(SpriteRenderer))]
@@ -5,13 +6,20 @@ public class TeleportTile : Tile
 {
     #region Editor Fields
     [Header("Linked Teleport Tile")]
-    [SerializeField] private TeleportTile destinationTeleportTile;
+    [SerializeField] private GameObject destinationTeleportTilePrefab;
     #endregion Editor Fields
 
     #region Tile Methods
     public override void OnStep()
-    {
-        FindAnyObjectByType<Board>().Teleport(this, destinationTeleportTile);
+    {        
+        if (!destinationTeleportTilePrefab) return;
+
+        TeleportTile teleportTile = FindObjectsByType<TeleportTile>(FindObjectsSortMode.None).FirstOrDefault(t => t.gameObject != this.gameObject && t.name.StartsWith(destinationTeleportTilePrefab.name));
+        
+        if (!teleportTile || teleportTile.tileComponent) return;
+
+        Debug.Log(teleportTile.tileComponent);
+        FindAnyObjectByType<Board>().Teleport(this, teleportTile);
     }
     #endregion Tile Methods
 }
