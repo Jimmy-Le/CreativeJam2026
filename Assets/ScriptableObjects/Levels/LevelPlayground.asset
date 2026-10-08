@@ -15,14 +15,14 @@ MonoBehaviour:
   framePicture: {fileID: 0}
   levelPicture: {fileID: 0}
   levelName: 
-  stepsAllowed: 8
+  stepsAllowed: 10
   BoardWidth: 5
   levelTilesToGenerate:
   - tile: {fileID: 3861399046625819917, guid: 4a77b0036f2953a418c7d2caf1d85b6a, type: 3}
     tileComponent: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
     tileComponent: {fileID: 0}
-  - tile: {fileID: 3861399046625819917, guid: 2d5928b9f0ca4a645a891109889bc560, type: 3}
+  - tile: {fileID: 3861399046625819917, guid: b8dba4128d515420c8bbc821af63dade, type: 3}
     tileComponent: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: d08d29ef840e441f3a0e01088592a537, type: 3}
     tileComponent: {fileID: 0}
@@ -36,7 +36,7 @@ MonoBehaviour:
     tileComponent: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: 5e8e279f4fcecaf48add874539f04ef7, type: 3}
     tileComponent: {fileID: 7752738519818554307, guid: 3778c1bc88ffcb04da1569934272e1af, type: 3}
-  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
+  - tile: {fileID: 3861399046625819917, guid: 0a8f8041a470e4dc183b9766de5324ab, type: 3}
     tileComponent: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
     tileComponent: {fileID: 0}
