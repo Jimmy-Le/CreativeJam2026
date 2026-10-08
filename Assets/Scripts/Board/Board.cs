@@ -198,7 +198,7 @@ public class Board : MonoBehaviour
     /// <param name="x">The x index in the board 2d array.</param>
     /// <param name="y">The y index in the board 2d array.</param>
     /// <returns>The world position of the tile.</returns>
-    private Vector2 GetTilePosition(int x, int y)
+    public Vector2 GetTilePosition(int x, int y)
     {
         return new Vector2(x - _initialPosition.x, -y + _initialPosition.y);
     }

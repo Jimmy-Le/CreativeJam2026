@@ -21,6 +21,7 @@ public class CatMovement : MonoBehaviour
     [SerializeField] private VoidEvent skipBoostEvent;
     [SerializeField] private VoidEvent freezeStepEvent;
     [SerializeField] private Vector2IntEvent pushDirectionEvent;
+    [SerializeField] private Vector2IntEvent checkpointEvent;
     [SerializeField] private VoidEvent levelCompleteEvent;
 
     [Header("UI")]
@@ -79,6 +80,7 @@ public class CatMovement : MonoBehaviour
         skipBoostEvent.OnEventRaised += EnableBoost;
         freezeStepEvent.OnEventRaised += EnableStepFreeze;
         pushDirectionEvent.OnEventRaised += PushCat;
+        checkpointEvent.OnEventRaised += Checkpoint;
         levelCompleteEvent.OnEventRaised += DisableExplosion;
     }
 
@@ -91,6 +93,7 @@ public class CatMovement : MonoBehaviour
         skipBoostEvent.OnEventRaised -= EnableBoost;
         freezeStepEvent.OnEventRaised -= EnableStepFreeze;
         pushDirectionEvent.OnEventRaised -= PushCat;
+        checkpointEvent.OnEventRaised -= Checkpoint;
         levelCompleteEvent.OnEventRaised -= DisableExplosion;
     }
     #endregion Lifecycle Methods
@@ -125,6 +128,10 @@ public class CatMovement : MonoBehaviour
         _isFrozenStep = true;
     }
 
+    /// <summary>
+    /// Called when a push tile is activated via event.
+    /// </summary>
+    /// <param name="direction">Direction to push cat.</param>
     private void PushCat(Vector2Int direction)
     {
         // If is animating back or board is empty.
@@ -151,6 +158,20 @@ public class CatMovement : MonoBehaviour
             // Trigger events.
             _board.TriggerTile(catGridPosition);
         }, warnIfTargetDestroyed: false);
+    }
+
+    /// <summary>
+    /// Called when a checkpoint tile is activated via event.
+    /// </summary>
+    /// <param name="newSpawnIndex">New spawn location for cat.</param>
+    private void Checkpoint(Vector2Int newSpawnIndex)
+    {
+        if (catGridPosition != newSpawnIndex) return;
+
+        _startGridPosition = newSpawnIndex;
+        _startWorldPosition = _board.GetTilePosition(newSpawnIndex.x, newSpawnIndex.y);
+
+        _movementSteps.Insert(0, _startWorldPosition);
     }
 
     private void DisableExplosion(Unit data)

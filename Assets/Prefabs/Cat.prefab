@@ -112,6 +112,7 @@ MonoBehaviour:
   skipBoostEvent: {fileID: 11400000, guid: bcfe597fc0221da459c7eed0242405d7, type: 2}
   freezeStepEvent: {fileID: 11400000, guid: 9cfb27f9bdf4a46328a0de8a380f7008, type: 2}
   pushDirectionEvent: {fileID: 11400000, guid: a114caf4bd02342e1bf3a16720d75020, type: 2}
+  checkpointEvent: {fileID: 11400000, guid: 2dac0817e7bac4e23a39a5c1ad283b03, type: 2}
   levelCompleteEvent: {fileID: 11400000, guid: b811563f8932e5b4d98a1b1ff37182a2, type: 2}
   catBody: {fileID: 253954918312416103}
   animator: {fileID: 6554047805415530866}
