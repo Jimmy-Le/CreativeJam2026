@@ -587,7 +587,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 26fec3feb629b0a4fa1cf422ffe9eabb, type: 2}
   - {fileID: 11400000, guid: 43d29ca772afc584d9f35a495853e077, type: 2}
   initialLevel: 0
-  LevelCompleteEvent: {fileID: 11400000, guid: b811563f8932e5b4d98a1b1ff37182a2, type: 2}
+  levelCompleteEvent: {fileID: 11400000, guid: b811563f8932e5b4d98a1b1ff37182a2, type: 2}
   isBoardOnTitleScreen: 0
   currentLevel: 0
 --- !u!224 &468670214

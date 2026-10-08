@@ -110,7 +110,6 @@ MonoBehaviour:
   tileIndex: {x: 0, y: 0}
   buttonUpdateEvent: {fileID: 11400000, guid: e7dcc96c3e1a133428f9bba1e770dfe9, type: 2}
   buttonIconSpriteRenderer: {fileID: 2306329389829540219}
-  isButtonPressed: 0
 --- !u!1 &4834394128795571307
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,7 +190,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 5685657637953047992, guid: 585bcf7f8966321489e7515e9eb8ac36, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
