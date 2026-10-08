@@ -20,6 +20,7 @@ public class CatMovement : MonoBehaviour
     [SerializeField] private VoidEvent explodeCatEvent;
     [SerializeField] private VoidEvent skipBoostEvent;
     [SerializeField] private VoidEvent freezeStepEvent;
+    [SerializeField] private Vector2IntEvent pushDirectionEvent;
     [SerializeField] private VoidEvent levelCompleteEvent;
 
     [Header("UI")]
@@ -77,6 +78,7 @@ public class CatMovement : MonoBehaviour
         explodeCatEvent.OnEventRaised += ExplodeEvent;
         skipBoostEvent.OnEventRaised += EnableBoost;
         freezeStepEvent.OnEventRaised += EnableStepFreeze;
+        pushDirectionEvent.OnEventRaised += PushCat;
         levelCompleteEvent.OnEventRaised += DisableExplosion;
     }
 
@@ -88,6 +90,7 @@ public class CatMovement : MonoBehaviour
         explodeCatEvent.OnEventRaised -= ExplodeEvent;
         skipBoostEvent.OnEventRaised -= EnableBoost;
         freezeStepEvent.OnEventRaised -= EnableStepFreeze;
+        pushDirectionEvent.OnEventRaised -= PushCat;
         levelCompleteEvent.OnEventRaised -= DisableExplosion;
     }
     #endregion Lifecycle Methods
@@ -122,6 +125,34 @@ public class CatMovement : MonoBehaviour
         _isFrozenStep = true;
     }
 
+    private void PushCat(Vector2Int direction)
+    {
+        // If is animating back or board is empty.
+        if (_board == null || _isMoving) return;
+
+        // Get the movement direction and attempt to move the cat.
+        Vector2 newCatGridPosition = _board.CatMove(ref catGridPosition, direction, ref _isBoosted);
+        
+        // If the movement action was unsuccessful, quit.
+        if (newCatGridPosition == new Vector2(1000, 1000))
+        {
+            SoundManager.PlaySound(SoundManager.SoundType.Error, 0.4f);
+            return;
+        }
+
+        MoveCatHelper(direction, newCatGridPosition);
+
+        Tween.Position(catBody, startValue: catBody.position, endValue: newCatGridPosition, duration: moveAnimationDuration, ease: Ease.Linear).OnComplete(() =>
+        {
+            // Reset the state
+            animator.Play("CatIdle");
+            _isMoving = false;
+
+            // Trigger events.
+            _board.TriggerTile(catGridPosition);
+        }, warnIfTargetDestroyed: false);
+    }
+
     private void DisableExplosion(Unit data)
     {
         _canExplode = false;
@@ -143,25 +174,8 @@ public class CatMovement : MonoBehaviour
     #endregion Event Methods
 
     #region Input Methods
-    /// <summary>
-    /// Moves the cat when movement options are used.
-    /// </summary>
-    private void MoveCat(InputAction.CallbackContext context)
-    {
-        // If is animating back or board is empty.
-        if (_board == null || _isMoving) return;
-
-        // Get the movement direction and attempt to move the cat.
-        Vector2 direction = context.ReadValue<Vector2>();
-        Vector2 newCatGridPosition = _board.CatMove(ref catGridPosition, direction, ref _isBoosted);
-        
-        // If the movement action was unsuccessful, quit.
-        if (newCatGridPosition == new Vector2(1000, 1000))
-        {
-            SoundManager.PlaySound(SoundManager.SoundType.Error, 0.4f);
-            return;
-        }
-        
+    private void MoveCatHelper(Vector2 direction, Vector2 newCatGridPosition)
+    {        
         // If it was successful, start by adding the position to the history
         _movementSteps.Add(newCatGridPosition);
 
@@ -179,6 +193,28 @@ public class CatMovement : MonoBehaviour
 
         // Play walking audio
         SoundManager.PlaySound(SoundManager.SoundType.Walk, 0.25f);
+    }
+
+    /// <summary>
+    /// Moves the cat when movement options are used.
+    /// </summary>
+    private void MoveCat(InputAction.CallbackContext context)
+    {
+        // If is animating back or board is empty.
+        if (_board == null || _isMoving) return;
+
+        // Get the movement direction and attempt to move the cat.
+        Vector2 direction = context.ReadValue<Vector2>();
+        Vector2 newCatGridPosition = _board.CatMove(ref catGridPosition, direction, ref _isBoosted);
+
+        // If the movement action was unsuccessful, quit.
+        if (newCatGridPosition == new Vector2(1000, 1000))
+        {
+            SoundManager.PlaySound(SoundManager.SoundType.Error, 0.4f);
+            return;
+        }
+
+        MoveCatHelper(direction, newCatGridPosition);
 
         Tween.Position(catBody, startValue: catBody.position, endValue: newCatGridPosition, duration: moveAnimationDuration, ease: Ease.Linear).OnComplete(() =>
         {
