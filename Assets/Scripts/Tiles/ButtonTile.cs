@@ -5,7 +5,6 @@ public class ButtonTile : Tile
 {
     #region Editor Fields
     [SerializeField] private BoolEvent buttonUpdateEvent;
-    [SerializeField] private SpriteRenderer buttonIconSpriteRenderer;
     #endregion Editor Fields
 
     #region Backing Fields
@@ -18,7 +17,6 @@ public class ButtonTile : Tile
     {
         _isButtonPressed = true;
         buttonUpdateEvent.Raise(true);
-        buttonIconSpriteRenderer.enabled = false;
     }
 
     public override void OnIdle()
@@ -27,7 +25,6 @@ public class ButtonTile : Tile
         {
             _isButtonPressed = false;
             buttonUpdateEvent.Raise(false);
-            buttonIconSpriteRenderer.enabled = true;
         }
     }
     #endregion Tile Methods

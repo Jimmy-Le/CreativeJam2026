@@ -17,7 +17,7 @@ public class DoorTile : Tile
     {
         if(_doorIsUnlocked)
         {
-            Debug.Log("left");
+            Debug.Log("Entered door.");
             levelCompleteEvent.Raise(Unit.Default);
         }
     }

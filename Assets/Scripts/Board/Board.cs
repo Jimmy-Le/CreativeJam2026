@@ -174,8 +174,11 @@ public class Board : MonoBehaviour
                 }
                 else if (tileObject is DoorButtonTile doorButtonTile)
                 {
-                    Debug.Log(doorButtonTile.tileComponent);
                     tileObject.tileComponent = Instantiate(doorButtonTile.tileComponent, tile.tilePosition, Quaternion.identity, tileObject.transform);
+                }
+                else if (tileObject is DoorSwitchTile doorSwitchButton)
+                {
+                    tileObject.tileComponent = Instantiate(doorSwitchButton.tileComponent, tile.tilePosition, Quaternion.identity, tileObject.transform);
                 }
                 else if (tileComponent)
                 {

@@ -18,7 +18,6 @@ public class TeleportTile : Tile
         
         if (!teleportTile || teleportTile.tileComponent) return;
 
-        Debug.Log(teleportTile.tileComponent);
         FindAnyObjectByType<Board>().Teleport(this, teleportTile);
     }
     #endregion Tile Methods
