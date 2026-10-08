@@ -8,7 +8,7 @@ public class Board : MonoBehaviour
     [Header("Levels")]
     [SerializeField] public List<Level> levels;
     [SerializeReference] private int initialLevel = 0;
-    [SerializeField] private VoidEvent LevelCompleteEvent;
+    [SerializeField] private VoidEvent levelCompleteEvent;
     
     [Header("UI")]
     [SerializeField] private bool isBoardOnTitleScreen = false;
@@ -52,12 +52,12 @@ public class Board : MonoBehaviour
     private void OnEnable()
     {
        
-        LevelCompleteEvent.OnEventRaised += NextLevel;
+        levelCompleteEvent.OnEventRaised += NextLevel;
     }
 
     private void OnDisable()
     {
-        LevelCompleteEvent.OnEventRaised -= NextLevel;
+        levelCompleteEvent.OnEventRaised -= NextLevel;
     }
     #endregion Lifecycle Methods
 
@@ -147,7 +147,7 @@ public class Board : MonoBehaviour
             {
                 // Gets next tile.
                 Tile tile = level.levelTilesToGenerate[i + (j * _boardWidth)].tile.GetComponent<Tile>();
-                if (tile == null)
+                if (!tile)
                 {
                     continue;
                 }
@@ -158,6 +158,7 @@ public class Board : MonoBehaviour
 
                 // Generates new tile visually.
                 Tile tileObject = Instantiate(tile, tile.tilePosition, Quaternion.identity, this.transform);
+                GameObject tileComponent = level.levelTilesToGenerate[i + (j * _boardWidth)].tileComponent;
 
                 // If is a spawn tile, setup cat.
                 if (tileObject is SpawnTile spawnTile)
@@ -171,8 +172,15 @@ public class Board : MonoBehaviour
                     // Spawn cat.
                     tileObject.tileComponent = Instantiate(spawnTile.catPrefab, tile.tilePosition, Quaternion.identity, tileObject.transform);
                 }
-
-                // TODO: init other tile component variants. e.g. door lock.
+                else if (tileObject is DoorButtonTile doorButtonTile)
+                {
+                    Debug.Log(doorButtonTile.tileComponent);
+                    tileObject.tileComponent = Instantiate(doorButtonTile.tileComponent, tile.tilePosition, Quaternion.identity, tileObject.transform);
+                }
+                else if (tileComponent)
+                {
+                    tileObject.tileComponent = Instantiate(tileComponent, tile.tilePosition, Quaternion.identity, tileObject.transform);
+                }
 
                 // Adds the tile to the board.
                 _board[i, j] = tileObject;

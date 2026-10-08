@@ -3,73 +3,23 @@ using UnityEngine;
 [RequireComponent (typeof(SpriteRenderer))]
 public class DoorTile : Tile
 {
-    [SerializeField] private BoolEvent buttonUpdateEvent;
-    [SerializeField] private VoidEvent LevelCompleteEvent;
-    [SerializeField] private int pressedButtonsRequired = 1;
-    [SerializeField] private SpriteRenderer doorSpriteRenderer;
-    [SerializeField] private bool unlockOnDefault = false;
-    private int unlockProgress;
-    private bool doorIsUnlocked = false;
-    private GameObject cache;
-    void OnEnable()
-    {
-        cache = tileComponent;
-        buttonUpdateEvent.OnEventRaised += CheckDoorUnlock;
-    }
+    #region Editor Fields
+    [Header("Events")]
+    [SerializeField] private VoidEvent levelCompleteEvent;
+    #endregion Editor Fields
 
-    void OnDisable()
-    {
-        buttonUpdateEvent.OnEventRaised -= CheckDoorUnlock;
-    }
+    #region Backing Fields
+    protected bool _doorIsUnlocked = true;
+    #endregion Backing Fields
 
-    void Start()
-    {
-        if(unlockOnDefault)
-        {
-            doorIsUnlocked = true;
-            cache = tileComponent;
-            
-            if (tileComponent != null)
-                tileComponent.SetActive(false);
-
-            doorSpriteRenderer.enabled = false;
-            tileComponent = null;
-        }
-    }
-
-    private void CheckDoorUnlock(bool buttonUpdate)
-    {
-        if (unlockOnDefault) return;
-
-        if (buttonUpdate)
-            unlockProgress++;
-        else
-            unlockProgress--;
-
-        Debug.Log(unlockProgress);
-
-        if (unlockProgress >= pressedButtonsRequired)
-        {
-            doorIsUnlocked = true;
-            cache = tileComponent;
-            tileComponent.SetActive(false);
-            doorSpriteRenderer.enabled = false;
-            tileComponent = null;
-        }
-        else
-        { 
-            tileComponent = cache;
-            tileComponent.SetActive(true);
-            doorSpriteRenderer.enabled = true;
-        }
-    }
-
+    #region Tile Methods
     public override void OnStep()
     {
-        if(doorIsUnlocked)
+        if(_doorIsUnlocked)
         {
             Debug.Log("left");
-            LevelCompleteEvent.Raise(Unit.Default);
+            levelCompleteEvent.Raise(Unit.Default);
         }
     }
+    #endregion Tile Methods
 }

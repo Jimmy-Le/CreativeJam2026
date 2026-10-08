@@ -3,25 +3,34 @@ using UnityEngine;
 [RequireComponent (typeof(SpriteRenderer))]
 public class ButtonTile : Tile
 {
+    #region Editor Fields
     [SerializeField] private BoolEvent buttonUpdateEvent;
-    public bool isButtonPressed = false;
+    [SerializeField] private SpriteRenderer buttonIconSpriteRenderer;
+    #endregion Editor Fields
 
-    [SerializeField] private SpriteRenderer iconSpriteRenderer;
+    #region Backing Fields
+    // This is needed, ensures unselect trigger happens once.
+    private bool _isButtonPressed = false;
+    #endregion Backing Fields
 
+    #region Lifecycle Methods
     private void Update()
     {
-        if (tileComponent == null && isButtonPressed == true)
+        if (tileComponent == null && _isButtonPressed == true)
         {
+            _isButtonPressed = false;
             buttonUpdateEvent.Raise(false);
-            isButtonPressed = false;
-            iconSpriteRenderer.enabled = true;
+            buttonIconSpriteRenderer.enabled = true;
         }
     }
+    #endregion Lifecycle Methods
 
+    #region Tile Methods
     public override void OnStep()
     {
-        isButtonPressed = true;
+        _isButtonPressed = true;
         buttonUpdateEvent.Raise(true);
-        iconSpriteRenderer.enabled = false;
+        buttonIconSpriteRenderer.enabled = false;
     }
+    #endregion Tile Methods
 }
