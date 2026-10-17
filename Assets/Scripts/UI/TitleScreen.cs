@@ -49,7 +49,7 @@ public class TitleScreen : MonoBehaviour
 
     void Start()
     {
-        SoundManager.PlaySound(SoundManager.SoundType.MenuCat);
+        MusicManager.PlaySound(MusicManager.MusicType.MenuCat);
     }
     #endregion Lifecycle Methods
 

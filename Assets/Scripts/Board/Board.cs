@@ -51,7 +51,6 @@ public class Board : MonoBehaviour
 
     private void OnEnable()
     {
-       
         levelCompleteEvent.OnEventRaised += NextLevel;
     }
 

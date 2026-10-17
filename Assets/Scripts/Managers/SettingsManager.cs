@@ -13,6 +13,7 @@ public class SettingsManager : MonoBehaviour
     {
         PlayerPrefs.SetFloat("masterVolume", masterVolumeSlider.value);
         PlayerPrefs.Save();
+        MusicManager.UpdateVolume();
     }
 
     void OnEnable()

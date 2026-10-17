@@ -132,24 +132,24 @@ public class GameUIScript : MonoBehaviour
     /// </summary>
     private void PlayMusic()
     {
-        SoundManager.instance.audioSource.Stop();
+        MusicManager.instance.audioSource.Stop();
 
-        if (board.currentLevel < LEVEL_GROUP_1_END)
-        {
-            SoundManager.PlaySound(SoundManager.SoundType.LaboratoryTheme);
-        }
-        else if (board.currentLevel < LEVEL_GROUP_2_END)
-        {
-            SoundManager.PlaySound(SoundManager.SoundType.DinoCountdown);
-        }
-        else if (board.currentLevel < LEVEL_GROUP_3_END)
-        {
-            SoundManager.PlaySound(SoundManager.SoundType.AnalogTime);
-        }
-        else
-        {
-            SoundManager.PlaySound(SoundManager.SoundType.MenuCat);
-        }
+        //if (board.currentLevel < LEVEL_GROUP_1_END)
+        //{
+        //    MusicManager.PlaySound(MusicManager.MusicType.LaboratoryTheme);
+        //}
+        //else if (board.currentLevel < LEVEL_GROUP_2_END)
+        //{
+        //    MusicManager.PlaySound(MusicManager.MusicType.DinoCountdown);
+        //}
+        //else if (board.currentLevel < LEVEL_GROUP_3_END)
+        //{
+        //    MusicManager.PlaySound(MusicManager.MusicType.AnalogTime);
+        //}
+        //else
+        //{
+        //    MusicManager.PlaySound(MusicManager.MusicType.MenuCat);
+        //}
     }
     #endregion Private Methods
 }
