@@ -1,0 +1,110 @@
+{
+    "levelName": "Test",
+    "levelSelectBackgroundPicturePath": "Laboratoire2_6",
+    "levelSelectForegroundPicturePath": "Laboratoire2_8",
+    "levelMusic": 1,
+    "stepsAllowed": 8,
+    "BoardWidth": 5,
+    "levelTilesToGenerate": [
+        {
+            "tile": "SpawnTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "DoorTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "SkipTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        }
+    ]
+}

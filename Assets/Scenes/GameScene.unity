@@ -727,6 +727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Board
   levels:
+  - {fileID: 11400000, guid: c1892e338076f174aaafaa3877811d30, type: 2}
   - {fileID: 11400000, guid: bd640a660098f4dc3bc30a8b9031daef, type: 2}
   - {fileID: 11400000, guid: 9665accbc3bcee84a98981a1ece827ba, type: 2}
   - {fileID: 11400000, guid: 6291aa345bfa44641821ddd97c948be8, type: 2}
@@ -3550,7 +3551,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2109847330}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9999395
+  m_Size: 0.9999949
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

@@ -24,8 +24,8 @@ public class LevelSelectObject : MonoBehaviour
     public void Initialize(Level level, int levelIndex)
     {
         LevelText.text = level.levelName;
-        framePicture.sprite = level.framePicture;
-        frameImage.sprite = level.levelPicture;
+        framePicture.sprite = level.levelSelectBackgroundPicture;
+        frameImage.sprite = level.levelSelectForegroundPicture;
         _levelIndex = levelIndex;
     }
     #endregion Initialization
