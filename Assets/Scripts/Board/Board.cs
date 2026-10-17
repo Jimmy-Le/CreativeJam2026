@@ -304,12 +304,56 @@ public class Board : MonoBehaviour
         CatMovement catMovement = tpItem.GetComponent<CatMovement>();   
         if (catMovement == null) return;
 
-        // Performs all the required actions to move the cat.
-        PerformPositionSwap(initialTile.tileIndex, destinationTile.tileIndex);
-
-        catMovement.catGridPosition = new Vector2Int(destinationTile.tileIndex.x, destinationTile.tileIndex.y);
-        catMovement.catBody.position = destinationTile.tilePosition;
+        // Play Teleport animation
+        StartCoroutine(PlayTeleportAnimation(catMovement, initialTile, destinationTile));
     }
+
+    /// <summary>
+    /// Teleportation Animation
+    /// </summary>
+    /// <param name="catMovement"></param>
+    /// <param name="initialTile"></param>
+    /// <param name="destinationTile"></param>
+    /// <returns></returns>
+    private IEnumerator PlayTeleportAnimation(CatMovement catMovement, TeleportTile initialTile, TeleportTile destinationTile)
+    {
+
+        catMovement.isMoving = true;
+        catMovement.animator.Play("CatTeleport");
+
+        // Wait for the initial animation to finish
+        yield return new WaitForSeconds(
+            catMovement.animator.GetCurrentAnimatorStateInfo(0).length
+        );
+
+        // Variables
+        Transform catBody = catMovement.catBody;
+        float moveAnimationDuration = 0.5f;
+        float yPosition = 7.5f;
+        Vector2 initialUp = new Vector2(catBody.position.x, yPosition);
+        Vector2 secondUp = new Vector2(destinationTile.tilePosition.x, yPosition);
+
+        // Fly Upwards
+        Tween.Position(catBody, startValue: catBody.position, endValue: initialUp, duration: moveAnimationDuration, ease: Ease.InOutCubic).OnComplete(() =>
+        {
+            catBody.position = secondUp;
+
+            // Fly Down to tile
+            Tween.Position(catBody, startValue: catBody.position, endValue: destinationTile.tilePosition, duration: moveAnimationDuration, ease: Ease.InCubic).OnComplete(() =>
+            {
+                // Performs all the required actions to move the cat.
+                PerformPositionSwap(initialTile.tileIndex, destinationTile.tileIndex);
+
+                catMovement.catGridPosition = new Vector2Int(destinationTile.tileIndex.x, destinationTile.tileIndex.y);
+                catMovement.catBody.position = destinationTile.tilePosition;
+                catMovement.animator.Play("CatTeleport");
+                catMovement.isMoving = false;
+
+            }, warnIfTargetDestroyed: false);
+
+        }, warnIfTargetDestroyed: false);
+    }
+
 
     /// <summary>
     /// Swaps the tile component from 1 grid position to another.

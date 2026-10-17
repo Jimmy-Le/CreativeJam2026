@@ -54,7 +54,7 @@ public class CatMovement : MonoBehaviour
     private bool _canExplode = true;
 
     private List<Vector2> _movementSteps = new();
-    private bool _isMoving = false;
+    public bool isMoving = false;
     #endregion Backing Fields
 
     #region Lifecycle Methods
@@ -135,7 +135,7 @@ public class CatMovement : MonoBehaviour
     private void PushCat(Vector2Int direction)
     {
         // If is animating back or board is empty.
-        if (_board == null || _isMoving) return;
+        if (_board == null || isMoving) return;
 
         // Get the movement direction and attempt to move the cat.
         Vector2 newCatGridPosition = _board.CatMove(ref catGridPosition, direction, ref _isBoosted);
@@ -153,7 +153,7 @@ public class CatMovement : MonoBehaviour
         {
             // Reset the state
             animator.Play("CatIdle");
-            _isMoving = false;
+            isMoving = false;
 
             // Trigger events.
             _board.TriggerTile(catGridPosition);
@@ -199,6 +199,8 @@ public class CatMovement : MonoBehaviour
 
         // This animation calls the Explode() Function at the end of its animation frame.
         animator.SetTrigger(ExplodeHash);
+        animator.SetBool("isBall", true);
+ 
     }
     #endregion Event Methods
 
@@ -209,7 +211,7 @@ public class CatMovement : MonoBehaviour
         _movementSteps.Add(newCatGridPosition);
 
         // Stop cat from spam moving and animates movement.
-        _isMoving = true;
+        isMoving = true;
 
         if (direction.x < 0)
             animator.SetTrigger(MoveLeftHash);
@@ -230,7 +232,7 @@ public class CatMovement : MonoBehaviour
     private void MoveCat(InputAction.CallbackContext context)
     {
         // If is animating back or board is empty.
-        if (_board == null || _isMoving) return;
+        if (_board == null || isMoving) return;
 
         // Get the movement direction and attempt to move the cat.
         Vector2 direction = context.ReadValue<Vector2>();
@@ -249,7 +251,7 @@ public class CatMovement : MonoBehaviour
         {
             // Reset the state
             animator.Play("CatIdle");
-            _isMoving = false;
+            isMoving = false;
 
             // Trigger events.
             Tile triggerTile = _board.TriggerTile(catGridPosition);
@@ -295,7 +297,7 @@ public class CatMovement : MonoBehaviour
     /// </summary>
     public async void Explode()
     {
-        animator.Play("CatIdle");
+        animator.Play("CatBall");
         for (int i = _movementSteps.Count - 1; i >= 0; i--) 
         {
             SoundManager.PlaySound(SoundManager.SoundType.Reverse,0.2f);
@@ -310,8 +312,10 @@ public class CatMovement : MonoBehaviour
             }
             
         }
+
         _movementSteps.Clear();
         _movementSteps.Add(_startWorldPosition);
+        animator.SetBool("isBall", false);
         RespawnCat();  
     }
 
@@ -328,7 +332,9 @@ public class CatMovement : MonoBehaviour
         _currentCatStep = 0;
         updateStepsEvent.Raise(maxCatSteps - _currentCatStep);
         SoundManager.PlaySound(SoundManager.SoundType.Meow);
+        //animator.Play("CatExplosionReverse");
         _board.InputActions.Player.Enable();
+        
     }
     #endregion End Events
 }
