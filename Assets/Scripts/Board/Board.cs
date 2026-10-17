@@ -1,6 +1,7 @@
 using PrimeTween;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 public class Board : MonoBehaviour
 {
@@ -159,6 +160,22 @@ public class Board : MonoBehaviour
                 Tile tileObject = Instantiate(tile, tile.tilePosition, Quaternion.identity, this.transform);
                 GameObject tileComponent = level.levelTilesToGenerate[i + (j * _boardWidth)].tileComponent;
 
+                if (level.levelTilesToGenerate[i + (j * _boardWidth)].tileBackgroundSprite)
+                {
+                    SpriteRenderer tileBackgroundRenderer = tileObject.GetComponentsInChildren<SpriteRenderer>().FirstOrDefault(c => c.CompareTag("BackgroundSprite"));
+                    tileBackgroundRenderer.sprite = level.levelTilesToGenerate[i + (j * _boardWidth)].tileBackgroundSprite;
+                    tileBackgroundRenderer.color = Color.white;
+                    tileBackgroundRenderer.gameObject.transform.localScale = new Vector3(0.435f, 0.435f, 0.435f);
+                }
+                
+                if (level.levelTilesToGenerate[i + (j * _boardWidth)].tileForegroundSprite)
+                {
+                    SpriteRenderer tileForegroundRenderer = tileObject.GetComponentsInChildren<SpriteRenderer>().FirstOrDefault(c => c.CompareTag("ForegroundSprite"));
+                    tileForegroundRenderer.sprite = level.levelTilesToGenerate[i + (j * _boardWidth)].tileForegroundSprite;
+                    tileForegroundRenderer.color = Color.white;
+                    tileForegroundRenderer.gameObject.transform.localScale = new Vector3(0.435f, 0.435f, 0.435f);
+                }
+
                 // If is a spawn tile, setup cat.
                 if (tileObject is SpawnTile spawnTile)
                 {
@@ -182,13 +199,20 @@ public class Board : MonoBehaviour
                 else if (tileComponent)
                 {
                     tileObject.tileComponent = Instantiate(tileComponent, tile.tilePosition, Quaternion.identity, tileObject.transform);
+
+                    if (level.levelTilesToGenerate[i + (j * _boardWidth)].tileComponentForegroundSprite)
+                    {
+                        SpriteRenderer tileComponentForegroundRenderer = tileObject.tileComponent.GetComponentsInChildren<SpriteRenderer>().FirstOrDefault(c => c.CompareTag("ForegroundSprite"));
+                        tileComponentForegroundRenderer.sprite = level.levelTilesToGenerate[i + (j * _boardWidth)].tileComponentForegroundSprite;
+                        tileComponentForegroundRenderer.color = Color.white;
+                        tileComponentForegroundRenderer.gameObject.transform.localScale = new Vector3(0.435f, 0.435f, 0.435f);
+                    }
                 }
 
                 // Adds the tile to the board.
                 _board[i, j] = tileObject;
             }
         }
-
     }
 
     /// <summary>

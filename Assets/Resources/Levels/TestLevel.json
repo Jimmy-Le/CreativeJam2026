@@ -1,14 +1,16 @@
 {
     "levelName": "Test",
-    "levelSelectBackgroundPicturePath": "Laboratoire2_6",
-    "levelSelectForegroundPicturePath": "Laboratoire2_8",
+    "levelSelectBackgroundSpritePath": "Laboratoire2_6",
+    "levelSelectForegroundSpritePath": "Laboratoire2_8",
     "levelMusic": 1,
     "stepsAllowed": 8,
     "BoardWidth": 5,
     "levelTilesToGenerate": [
         {
             "tile": "SpawnTile",
-            "tileComponent": ""
+            "tileComponent": "",
+            "tileBackgroundSpritePath": "Laboratoire2_6",
+            "tileForegroundSpritePath": "Laboratoire2_7"
         },
         {
             "tile": "EmptyTile",
@@ -31,7 +33,7 @@
             "tileComponent": ""
         },
         {
-            "tile": "DoorTile",
+            "tile": "DoorSwitchTile",
             "tileComponent": ""
         },
         {
@@ -51,8 +53,9 @@
             "tileComponent": ""
         },
         {
-            "tile": "EmptyTile",
-            "tileComponent": ""
+            "tile": "SwitchTile",
+            "tileComponent": "BreakableBlock",
+            "tileComponentForegroundSpritePath": "Laboratoire2_5"
         },
         {
             "tile": "EmptyTile",
@@ -84,7 +87,9 @@
         },
         {
             "tile": "EmptyTile",
-            "tileComponent": ""
+            "tileComponent": "",
+            "tileBackgroundSpritePath": "Laboratoire2_10",
+            "tileForegroundSpritePath": "Laboratoire2_12"
         },
         {
             "tile": "EmptyTile",

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using static MusicManager;
 
@@ -28,18 +29,18 @@ public class Level : ScriptableObject
         stepsAllowed = data.stepsAllowed;
         BoardWidth = data.BoardWidth;
 
-        if (!string.IsNullOrEmpty(data.levelSelectBackgroundPicturePath))
+        if (!string.IsNullOrEmpty(data.levelSelectBackgroundSpritePath))
         {
-            levelSelectBackgroundPicture = LoadSprite("Sprites", data.levelSelectBackgroundPicturePath);
+            levelSelectBackgroundPicture = LoadSprite("Sprites", data.levelSelectBackgroundSpritePath);
             if (levelSelectBackgroundPicture == null)
-                Debug.LogError($"[Level Import] Could not find Sprite: '{data.levelSelectBackgroundPicturePath}'");
+                Debug.LogError($"[Level Import] Could not find Sprite: '{data.levelSelectBackgroundSpritePath}'");
         }
 
-        if (!string.IsNullOrEmpty(data.levelSelectForegroundPicturePath))
+        if (!string.IsNullOrEmpty(data.levelSelectForegroundSpritePath))
         {
-            levelSelectForegroundPicture = LoadSprite("Sprites", data.levelSelectForegroundPicturePath);
+            levelSelectForegroundPicture = LoadSprite("Sprites", data.levelSelectForegroundSpritePath);
             if (levelSelectForegroundPicture == null)
-                Debug.LogError($"[Level Import] Could not find Sprite: '{data.levelSelectForegroundPicturePath}'");
+                Debug.LogError($"[Level Import] Could not find Sprite: '{data.levelSelectForegroundSpritePath}'");
         }
 
         levelTilesToGenerate.Clear();
@@ -58,15 +59,48 @@ public class Level : ScriptableObject
             if (!string.IsNullOrEmpty(tileData.tileComponent))
             {
                 string cleanCompName = System.IO.Path.GetFileNameWithoutExtension(tileData.tileComponent);
-                loadedComponent = Resources.Load<GameObject>("Prefabs/Components/" + cleanCompName);
+                loadedComponent = Resources.Load<GameObject>("Prefabs/Blocks/" + cleanCompName);
                 if (loadedComponent == null)
                     Debug.LogError($"[Level Import] Could not find Component GameObject: '{tileData.tileComponent}'");
+            }
+
+            if (loadedTile == null)
+                return;
+
+            Sprite loadedTileBackgroundSprite = null;
+            if (!string.IsNullOrEmpty(tileData.tileBackgroundSpritePath))
+            {
+                loadedTileBackgroundSprite = LoadSprite("Sprites", tileData.tileBackgroundSpritePath);
+
+                if (loadedTileBackgroundSprite == null)
+                    Debug.LogError($"[Level Import] Could not find Sprite: '{tileData.tileBackgroundSpritePath}'");
+            }
+
+            Sprite loadedTileForegroundSprite = null;
+            if (!string.IsNullOrEmpty(tileData.tileForegroundSpritePath))
+            {
+                loadedTileForegroundSprite = LoadSprite("Sprites", tileData.tileForegroundSpritePath);
+
+                if (loadedTileForegroundSprite == null)
+                    Debug.LogError($"[Level Import] Could not find Sprite: '{tileData.tileForegroundSpritePath}'");
+            }
+
+            Sprite loadedComponentForegroundSprite = null;
+            if (!string.IsNullOrEmpty(tileData.tileComponentForegroundSpritePath) && loadedComponent != null)
+            {
+                loadedComponentForegroundSprite = LoadSprite("Sprites", tileData.tileComponentForegroundSpritePath);
+
+                if (loadedComponentForegroundSprite == null)
+                    Debug.LogError($"[Level Import] Could not find Sprite: '{tileData.tileComponentForegroundSpritePath}'");
             }
 
             levelTilesToGenerate.Add(new TileAndChild
             {
                 tile = loadedTile,
-                tileComponent = loadedComponent
+                tileComponent = loadedComponent,
+                tileBackgroundSprite = loadedTileBackgroundSprite,
+                tileForegroundSprite = loadedTileForegroundSprite,
+                tileComponentForegroundSprite = loadedComponentForegroundSprite
             });
         }
     }
@@ -110,8 +144,8 @@ public class Level : ScriptableObject
             BoardWidth = BoardWidth
         };
 
-        data.levelSelectBackgroundPicturePath = levelSelectBackgroundPicture != null ? levelSelectBackgroundPicture.name : string.Empty;
-        data.levelSelectForegroundPicturePath = levelSelectForegroundPicture != null ? levelSelectForegroundPicture.name : string.Empty;
+        data.levelSelectBackgroundSpritePath = levelSelectBackgroundPicture != null ? levelSelectBackgroundPicture.name : string.Empty;
+        data.levelSelectForegroundSpritePath = levelSelectForegroundPicture != null ? levelSelectForegroundPicture.name : string.Empty;
 
         data.levelTilesToGenerate.Clear();
         foreach (var item in levelTilesToGenerate)
@@ -145,8 +179,8 @@ public class Level : ScriptableObject
 public class LevelData
 {
     public string levelName;
-    public string levelSelectBackgroundPicturePath;
-    public string levelSelectForegroundPicturePath;
+    public string levelSelectBackgroundSpritePath;
+    public string levelSelectForegroundSpritePath;
     public MusicType levelMusic;
     public int stepsAllowed = 3;
     public int BoardWidth;
@@ -158,6 +192,9 @@ public struct TileDataPath
 {
     public string tile;
     public string tileComponent;
+    public string tileBackgroundSpritePath;
+    public string tileForegroundSpritePath;
+    public string tileComponentForegroundSpritePath;
 }
 
 [Serializable]
@@ -165,4 +202,7 @@ public struct TileAndChild
 {
     public GameObject tile;
     public GameObject tileComponent;
+    public Sprite tileBackgroundSprite;
+    public Sprite tileForegroundSprite;
+    public Sprite tileComponentForegroundSprite;
 }
