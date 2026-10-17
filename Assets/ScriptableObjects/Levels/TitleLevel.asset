@@ -12,27 +12,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b191bad9521ab464eadb108b71dc8eb9, type: 3}
   m_Name: TitleLevel
   m_EditorClassIdentifier: Assembly-CSharp::Level
-  framePicture: {fileID: -4870093070313631401, guid: 585bcf7f8966321489e7515e9eb8ac36, type: 3}
-  levelPicture: {fileID: -1971174531, guid: ba7087b9555627943851deb803a4c64e, type: 3}
   levelName: Title
+  levelSelectBackgroundPicture: {fileID: 0}
+  levelSelectForegroundPicture: {fileID: 0}
+  levelMusic: 0
   stepsAllowed: 9999
   BoardWidth: 3
   levelTilesToGenerate:
   - tile: {fileID: 5820070423202133586, guid: 5a22fad964514a0448710b1fd713c6c2, type: 3}
     tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
     tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
   - tile: {fileID: 5820070423202133586, guid: cd7234a447a46f84a9e814882f85063e, type: 3}
     tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
     tileComponent: {fileID: 0}
-  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
-    tileComponent: {fileID: 2797812712494996239, guid: b55f6fc5508b062439569017929a4816, type: 3}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 4a77b0036f2953a418c7d2caf1d85b6a, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
     tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
   - tile: {fileID: 5820070423202133586, guid: 3abab929fa73ee2469257c549a43c15d, type: 3}
     tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
     tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
   - tile: {fileID: 5820070423202133586, guid: c60edf072a0b3cb42907d9e4b926d9d6, type: 3}
     tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
