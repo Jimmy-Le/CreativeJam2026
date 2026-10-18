@@ -931,7 +931,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -517.9934, y: 78}
+  m_AnchoredPosition: {x: -517.99365, y: 78}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &558107867
@@ -3551,7 +3551,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2109847330}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9999949
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3993,22 +3993,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: OptionsPanel
       objectReference: {fileID: 0}
-    - target: {fileID: 1659820414214691854, guid: 14e85da3226a293499d3f27c8ce034f7, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3001539616805896543, guid: 14e85da3226a293499d3f27c8ce034f7, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3001539616805896543, guid: 14e85da3226a293499d3f27c8ce034f7, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3001539616805896543, guid: 14e85da3226a293499d3f27c8ce034f7, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3811893166803510295, guid: 14e85da3226a293499d3f27c8ce034f7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -4021,14 +4005,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1044571597}
-    - target: {fileID: 9049683429003202795, guid: 14e85da3226a293499d3f27c8ce034f7, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9049683429003202795, guid: 14e85da3226a293499d3f27c8ce034f7, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4315,7 +4291,7 @@ SceneRoots:
   - {fileID: 468670214}
   - {fileID: 621238708}
   - {fileID: 1044571601}
+  - {fileID: 2126968189}
   - {fileID: 1588839903}
   - {fileID: 685743828}
-  - {fileID: 2126968189}
   - {fileID: 1127777323}

@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class CreditsTile : Tile
+public class LeaveTile : Tile
 {
     #region Tile Methods
     public override void OnStep()
     {
-        TitleScreen.Instance.DisplayCredits();
+        LevelEditor.Instance.Leave();
     }
     #endregion Tile Methods
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8851766896687589622}
   - component: {fileID: 2734246307654123876}
   m_Layer: 0
-  m_Name: CreditsTile
+  m_Name: LevelEditorTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
