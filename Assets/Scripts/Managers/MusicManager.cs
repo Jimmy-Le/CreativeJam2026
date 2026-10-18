@@ -32,13 +32,13 @@ public class MusicManager : MonoBehaviour
         AudioClip randomClip = clips[UnityEngine.Random.Range(0, clips.Length)];
 
         instance.audioSource.clip = randomClip;
-        instance.audioSource.volume = volume * PlayerPrefs.GetFloat("masterVolume", 0.8f);
+        instance.audioSource.volume = volume * PlayerPrefs.GetFloat("masterVolume", 0.8f) * PlayerPrefs.GetFloat("musicVolume", 1);
         instance.audioSource.Play();
     }
 
     public static void UpdateVolume(float volume = 1)
     {
-        instance.audioSource.volume = volume * PlayerPrefs.GetFloat("masterVolume", 0.8f);
+        instance.audioSource.volume = volume * PlayerPrefs.GetFloat("masterVolume", 0.8f) * PlayerPrefs.GetFloat("musicVolume", 1);
     }
 
 #if UNITY_EDITOR
