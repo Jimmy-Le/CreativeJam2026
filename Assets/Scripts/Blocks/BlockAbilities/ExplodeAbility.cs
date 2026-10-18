@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,26 +13,38 @@ public class ExplodeAbility : BlockAbility
         // play poof animation
         
         blockBase = (BlockBase)options["blockBase"];
-        blockBase.GetComponentInParent<SpriteRenderer>().enabled = false;
+        animator = blockBase.GetComponent<Animator>();
 
-        //animator = blockBase.GetComponentInParent<Animator>();
+        foreach(Transform child in blockBase.transform)
+        {
+            if(child.CompareTag("ForegroundSprite"))
+            {
+                child.GetComponent<SpriteRenderer>().enabled = false;
+            }    
+        }
 
-        //if(animator == null)
-        //{
-        //    animator = blockBase.GetComponentInChildren<Animator>();
-        //}
+        blockBase.StartCoroutine(ExplodeAnim());
+        //Destruction();
 
-
-        SoundManager.PlaySound(SoundManager.SoundType.GlassBreak);
-        //animator.Play("Poof");
-        //float animationLength = animator.GetCurrentAnimatorStateInfo(0).length;
-        //// when animation is done.
-        Destroy(blockBase.transform.gameObject);
     }
 
     public void Destruction()
     {
         Destroy(blockBase.transform.gameObject);
+    }
+
+    private IEnumerator ExplodeAnim()
+    {
+        SoundManager.PlaySound(SoundManager.SoundType.GlassBreak);
+        animator.Play("Poof");
+
+        yield return null;
+
+        AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
+        float explosionLength = state.length / Mathf.Max(state.speedMultiplier, 0.01f);
+
+        yield return new WaitForSeconds(explosionLength);
+        //blockBase.Destruction();
     }
 
 
