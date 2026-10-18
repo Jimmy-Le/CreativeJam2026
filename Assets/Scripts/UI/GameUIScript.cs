@@ -60,6 +60,13 @@ public class GameUIScript : MonoBehaviour
     public void OpenLevelSelect()
     {
         CloseAllPanels();
+
+        for (int i = levelPrefabBaseSpawnLocation.childCount - 1; i >= 0; i--)
+        {
+            Destroy(levelPrefabBaseSpawnLocation.GetChild(i).gameObject);
+        }
+
+
         board.InputActions.Player.Disable();
         
         for (int i = 0; i < board.levels.Count; i++)

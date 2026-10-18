@@ -11,14 +11,13 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] Slider musicVolumeSlider;
     [SerializeField] Slider soundVolumeSlider;
 
-    
-    //TODO: Uncomment out the music and sounds stuff when the Settings UI is ready
+   
 
     public void SaveSettings()
     {
         PlayerPrefs.SetFloat("masterVolume", masterVolumeSlider.value);
-        //PlayerPrefs.SetFloat("musicVolume", musicVolumeSlider.value);
-        //PlayerPrefs.SetFloat("soundVolume", soundVolumeSlider.value);
+        PlayerPrefs.SetFloat("musicVolume", musicVolumeSlider.value);
+        PlayerPrefs.SetFloat("soundVolume", soundVolumeSlider.value);
         PlayerPrefs.Save();
         MusicManager.UpdateVolume();
     }
@@ -26,8 +25,8 @@ public class SettingsManager : MonoBehaviour
     void OnEnable()
     {
         masterVolumeSlider.value = PlayerPrefs.GetFloat("masterVolume", 0.8f);
-        //musicVolumeSlider.value = PlayerPrefs.GetFloat("musicVolume", 1f);
-        //soundVolumeSlider.value = PlayerPrefs.GetFloat("soundVolume", 1f);
+        musicVolumeSlider.value = PlayerPrefs.GetFloat("musicVolume", 1f);
+        soundVolumeSlider.value = PlayerPrefs.GetFloat("soundVolume", 1f);
 
     }
 }
