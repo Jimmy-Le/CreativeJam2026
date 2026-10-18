@@ -19,11 +19,7 @@ public class TitleScreen : MonoBehaviour
     [SerializeField] private Board board;
 
     [Header("Panels")]
-    [SerializeField] private GameObject TitleScreenPanel;
-    [SerializeField] public GameObject playPanel;
-    [SerializeField] public GameObject optionsPanel;
-    [SerializeField] public GameObject creditsPanel;
-    [SerializeField] public GameObject quitPanel;    
+    [SerializeField] public GameObject optionsPanel; 
     #endregion Editor Fields
 
     #region Backing Fields
@@ -81,14 +77,20 @@ public class TitleScreen : MonoBehaviour
     }
 
     /// <summary>
-    /// Displays the credits panel and disables player input.
+    /// Opens level editor.
     /// </summary>
-    public void DisplayCredits()
+    public void LevelEditor()
     {
+        if (hasClickedPlay)
+            return;
+        
+        hasClickedPlay = true;
         SoundManager.PlaySound(SoundManager.SoundType.Click);
-        CloseAllPanels();
-        board.InputActions.Player.Disable();
-        creditsPanel.SetActive(true);
+        GameObject cat = GameObject.FindWithTag("Cat");
+        IrisTransition.Instance.IrisClose(cat != null ? cat.GetComponent<CatMovement>().catBody.position : Vector3.zero, () =>
+        {
+            SceneManager.LoadScene("LevelEditorScene");
+        });
     }
 
     /// <summary>
@@ -107,10 +109,7 @@ public class TitleScreen : MonoBehaviour
     /// </summary>
     public void CloseAllPanels()
     {
-        creditsPanel.SetActive(false);
-        quitPanel.SetActive(false);
         optionsPanel.SetActive(false);
-        playPanel.SetActive(false);
         board.InputActions.Player.Enable();
     }
     #endregion Action Methods

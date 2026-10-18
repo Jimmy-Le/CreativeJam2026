@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class OptionsTile : Tile
+public class LevelOptionsTile : Tile
 {
     #region Tile Methods
     public override void OnStep()
     {
-        TitleScreen.Instance.DisplayOptions();
+        LevelEditor.Instance.DisplayOptions();
     }
     #endregion Tile Methods
 }

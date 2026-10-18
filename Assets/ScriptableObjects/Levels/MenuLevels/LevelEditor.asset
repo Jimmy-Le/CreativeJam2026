@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b191bad9521ab464eadb108b71dc8eb9, type: 3}
-  m_Name: TitleLevel
+  m_Name: LevelEditor
   m_EditorClassIdentifier: Assembly-CSharp::Level
   levelName: Title
   levelSelectBackgroundPicture: {fileID: 0}
@@ -19,7 +19,7 @@ MonoBehaviour:
   stepsAllowed: 9999
   BoardWidth: 3
   levelTilesToGenerate:
-  - tile: {fileID: 5820070423202133586, guid: 5a22fad964514a0448710b1fd713c6c2, type: 3}
+  - tile: {fileID: 5820070423202133586, guid: a6c47be7fdf692aa597fff9bb45f4c0f, type: 3}
     tileComponent: {fileID: 0}
     tileBackgroundSprite: {fileID: 0}
     tileForegroundSprite: {fileID: 0}
@@ -29,7 +29,7 @@ MonoBehaviour:
     tileBackgroundSprite: {fileID: 0}
     tileForegroundSprite: {fileID: 0}
     tileComponentForegroundSprite: {fileID: 0}
-  - tile: {fileID: 5820070423202133586, guid: cd7234a447a46f84a9e814882f85063e, type: 3}
+  - tile: {fileID: 5820070423202133586, guid: 1e8002dfb90f104129a6a85dd93be104, type: 3}
     tileComponent: {fileID: 0}
     tileBackgroundSprite: {fileID: 0}
     tileForegroundSprite: {fileID: 0}
@@ -39,7 +39,7 @@ MonoBehaviour:
     tileBackgroundSprite: {fileID: 0}
     tileForegroundSprite: {fileID: 0}
     tileComponentForegroundSprite: {fileID: 0}
-  - tile: {fileID: 3861399046625819917, guid: 4a77b0036f2953a418c7d2caf1d85b6a, type: 3}
+  - tile: {fileID: 3861399046625819917, guid: 86d2c166da59162a599911f6ca659130, type: 3}
     tileComponent: {fileID: 0}
     tileBackgroundSprite: {fileID: 0}
     tileForegroundSprite: {fileID: 0}
@@ -49,7 +49,7 @@ MonoBehaviour:
     tileBackgroundSprite: {fileID: 0}
     tileForegroundSprite: {fileID: 0}
     tileComponentForegroundSprite: {fileID: 0}
-  - tile: {fileID: 5820070423202133586, guid: 3abab929fa73ee2469257c549a43c15d, type: 3}
+  - tile: {fileID: 5820070423202133586, guid: 03d23ddf9ec86f42eb1482d2207a4a7d, type: 3}
     tileComponent: {fileID: 0}
     tileBackgroundSprite: {fileID: 0}
     tileForegroundSprite: {fileID: 0}
@@ -59,7 +59,7 @@ MonoBehaviour:
     tileBackgroundSprite: {fileID: 0}
     tileForegroundSprite: {fileID: 0}
     tileComponentForegroundSprite: {fileID: 0}
-  - tile: {fileID: 5820070423202133586, guid: c60edf072a0b3cb42907d9e4b926d9d6, type: 3}
+  - tile: {fileID: 5820070423202133586, guid: 77e7b94de3dc8d808b8f6110d56b85e8, type: 3}
     tileComponent: {fileID: 0}
     tileBackgroundSprite: {fileID: 0}
     tileForegroundSprite: {fileID: 0}
