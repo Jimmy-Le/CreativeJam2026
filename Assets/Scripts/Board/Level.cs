@@ -1,23 +1,200 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using static MusicManager;
 
 [CreateAssetMenu(fileName = "Level", menuName = "Scriptable Objects/Level")]
 public class Level : ScriptableObject
 {
-    [SerializeField] public Sprite framePicture;
-    [SerializeField] public Sprite levelPicture;
     [SerializeField] public string levelName;
+    [SerializeField] public Sprite levelSelectBackgroundPicture;
+    [SerializeField] public Sprite levelSelectForegroundPicture;
+    [SerializeField] public MusicType levelMusic;
+    [SerializeField] public int stepsAllowed = 3;
+    [SerializeField] public int BoardWidth;
+    [SerializeField] public List<TileAndChild> levelTilesToGenerate = new();
 
+    #region JSON Methods
+    /// <summary>
+    /// Loads the level data from a JSON string representation.
+    /// </summary>
+    /// <param name="jsonString">The JSON string representing the level data.</param>
+    public void LoadFromJson(string jsonString)
+    {
+        LevelData data = JsonUtility.FromJson<LevelData>(jsonString);
+
+        levelName = data.levelName;
+        levelMusic = data.levelMusic;
+        stepsAllowed = data.stepsAllowed;
+        BoardWidth = data.BoardWidth;
+
+        if (!string.IsNullOrEmpty(data.levelSelectBackgroundSpritePath))
+        {
+            levelSelectBackgroundPicture = LoadSprite("Sprites", data.levelSelectBackgroundSpritePath);
+            if (levelSelectBackgroundPicture == null)
+                Debug.LogError($"[Level Import] Could not find Sprite: '{data.levelSelectBackgroundSpritePath}'");
+        }
+
+        if (!string.IsNullOrEmpty(data.levelSelectForegroundSpritePath))
+        {
+            levelSelectForegroundPicture = LoadSprite("Sprites", data.levelSelectForegroundSpritePath);
+            if (levelSelectForegroundPicture == null)
+                Debug.LogError($"[Level Import] Could not find Sprite: '{data.levelSelectForegroundSpritePath}'");
+        }
+
+        levelTilesToGenerate.Clear();
+        foreach (var tileData in data.levelTilesToGenerate)
+        {
+            GameObject loadedTile = null;
+            if (!string.IsNullOrEmpty(tileData.tile))
+            {
+                string cleanTileName = System.IO.Path.GetFileNameWithoutExtension(tileData.tile);
+                loadedTile = Resources.Load<GameObject>("Prefabs/Tiles/" + cleanTileName);
+                if (loadedTile == null)
+                    Debug.LogError($"[Level Import] Could not find Tile GameObject: '{tileData.tile}'");
+            }
+
+            GameObject loadedComponent = null;
+            if (!string.IsNullOrEmpty(tileData.tileComponent))
+            {
+                string cleanCompName = System.IO.Path.GetFileNameWithoutExtension(tileData.tileComponent);
+                loadedComponent = Resources.Load<GameObject>("Prefabs/Blocks/" + cleanCompName);
+                if (loadedComponent == null)
+                    Debug.LogError($"[Level Import] Could not find Component GameObject: '{tileData.tileComponent}'");
+            }
+
+            if (loadedTile == null)
+                return;
+
+            Sprite loadedTileBackgroundSprite = null;
+            if (!string.IsNullOrEmpty(tileData.tileBackgroundSpritePath))
+            {
+                loadedTileBackgroundSprite = LoadSprite("Sprites", tileData.tileBackgroundSpritePath);
+
+                if (loadedTileBackgroundSprite == null)
+                    Debug.LogError($"[Level Import] Could not find Sprite: '{tileData.tileBackgroundSpritePath}'");
+            }
+
+            Sprite loadedTileForegroundSprite = null;
+            if (!string.IsNullOrEmpty(tileData.tileForegroundSpritePath))
+            {
+                loadedTileForegroundSprite = LoadSprite("Sprites", tileData.tileForegroundSpritePath);
+
+                if (loadedTileForegroundSprite == null)
+                    Debug.LogError($"[Level Import] Could not find Sprite: '{tileData.tileForegroundSpritePath}'");
+            }
+
+            Sprite loadedComponentForegroundSprite = null;
+            if (!string.IsNullOrEmpty(tileData.tileComponentForegroundSpritePath) && loadedComponent != null)
+            {
+                loadedComponentForegroundSprite = LoadSprite("Sprites", tileData.tileComponentForegroundSpritePath);
+
+                if (loadedComponentForegroundSprite == null)
+                    Debug.LogError($"[Level Import] Could not find Sprite: '{tileData.tileComponentForegroundSpritePath}'");
+            }
+
+            levelTilesToGenerate.Add(new TileAndChild
+            {
+                tile = loadedTile,
+                tileComponent = loadedComponent,
+                tileBackgroundSprite = loadedTileBackgroundSprite,
+                tileForegroundSprite = loadedTileForegroundSprite,
+                tileComponentForegroundSprite = loadedComponentForegroundSprite
+            });
+        }
+    }
+
+    /// <summary>
+    /// Helper method to load a sprite, supporting both standalone files and sliced sprite sheets.
+    /// </summary>
+    /// <param name="folderPath">The path to the folder containing the sprite.</param>
+    /// <param name="spriteName">The name of the sprite to load.</param>
+    /// <returns>The loaded sprite, or null if not found.</returns>
+    private Sprite LoadSprite(string folderPath, string spriteName)
+    {
+        spriteName = System.IO.Path.GetFileNameWithoutExtension(spriteName);
+
+        Sprite s = Resources.Load<Sprite>(folderPath + "/" + spriteName);
+        if (s != null) return s;
+
+        Sprite[] allSprites = Resources.LoadAll<Sprite>(folderPath);
+        foreach (var sprite in allSprites)
+        {
+            if (sprite.name == spriteName)
+            {
+                return sprite;
+            }
+        }
+
+        return null;
+    }
+
+    /// <summary>
+    /// Saves the level data to a JSON string representation. 
+    /// </summary>
+    /// <returns>The JSON string representing the level data.</returns>
+    public string SaveToJson()
+    {
+        LevelData data = new LevelData
+        {
+            levelName = levelName,
+            levelMusic = levelMusic,
+            stepsAllowed = stepsAllowed,
+            BoardWidth = BoardWidth
+        };
+
+        data.levelSelectBackgroundSpritePath = levelSelectBackgroundPicture != null ? levelSelectBackgroundPicture.name : string.Empty;
+        data.levelSelectForegroundSpritePath = levelSelectForegroundPicture != null ? levelSelectForegroundPicture.name : string.Empty;
+
+        data.levelTilesToGenerate.Clear();
+        foreach (var item in levelTilesToGenerate)
+        {
+            data.levelTilesToGenerate.Add(new TileDataPath
+            {
+                tile = item.tile != null ? item.tile.name : string.Empty,
+                tileComponent = item.tileComponent != null ? item.tileComponent.name : string.Empty
+            });
+        }
+
+        return JsonUtility.ToJson(data, true);
+    }
+
+    /// <summary>
+    /// Exports the level data to a JSON file with the specified file name in the persistent data path.
+    /// </summary>
+    /// <param name="fileName">The name of the file to export the level data to.</param>
+    public void ExportLevelToFile(string fileName)
+    {
+        string json = SaveToJson();
+        string path = System.IO.Path.Combine(Application.persistentDataPath, fileName + ".json");
+        
+        System.IO.File.WriteAllText(path, json);
+        Debug.Log($"Level exported to: {path}");
+    }
+    #endregion JSON Methods
+}
+
+[Serializable]
+public class LevelData
+{
+    public string levelName;
+    public string levelSelectBackgroundSpritePath;
+    public string levelSelectForegroundSpritePath;
+    public MusicType levelMusic;
     public int stepsAllowed = 3;
     public int BoardWidth;
-    public List<TileAndChild> levelTilesToGenerate = new();
+    public List<TileDataPath> levelTilesToGenerate = new();
+}
 
-    private void OnEnable()
-    {
-        if (levelTilesToGenerate.Count % BoardWidth != 0 || BoardWidth <= 0 || levelTilesToGenerate.Count <= 0)
-            Debug.Log($"Incorrect board size for level {name}");
-    }
+[Serializable]
+public struct TileDataPath
+{
+    public string tile;
+    public string tileComponent;
+    public string tileBackgroundSpritePath;
+    public string tileForegroundSpritePath;
+    public string tileComponentForegroundSpritePath;
 }
 
 [Serializable]
@@ -25,4 +202,7 @@ public struct TileAndChild
 {
     public GameObject tile;
     public GameObject tileComponent;
+    public Sprite tileBackgroundSprite;
+    public Sprite tileForegroundSprite;
+    public Sprite tileComponentForegroundSprite;
 }

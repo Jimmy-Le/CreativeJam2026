@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2797812712494996239}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: -2, z: 0}
+  m_LocalPosition: {x: -2, y: 2, z: 0}
   m_LocalScale: {x: 0.45000002, y: 0.45000002, z: 0.45000002}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -110,12 +110,16 @@ MonoBehaviour:
   updateStepsEvent: {fileID: 11400000, guid: 4de07ef4130c4f24d8e91d74cc21bb2b, type: 2}
   explodeCatEvent: {fileID: 11400000, guid: 27b7570e31522ca4eb4a1277e2ca82cb, type: 2}
   skipBoostEvent: {fileID: 11400000, guid: bcfe597fc0221da459c7eed0242405d7, type: 2}
+  freezeStepEvent: {fileID: 11400000, guid: 9cfb27f9bdf4a46328a0de8a380f7008, type: 2}
+  pushDirectionEvent: {fileID: 11400000, guid: a114caf4bd02342e1bf3a16720d75020, type: 2}
+  checkpointEvent: {fileID: 11400000, guid: 2dac0817e7bac4e23a39a5c1ad283b03, type: 2}
   levelCompleteEvent: {fileID: 11400000, guid: b811563f8932e5b4d98a1b1ff37182a2, type: 2}
   catBody: {fileID: 253954918312416103}
   animator: {fileID: 6554047805415530866}
   moveAnimationDuration: 0.35
-  catGridPosition: {x: 1, y: 5}
-  maxCatSteps: 6
+  catGridPosition: {x: 0, y: 0}
+  maxCatSteps: 8
+  isMoving: 0
 --- !u!70 &1258880442956449631
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

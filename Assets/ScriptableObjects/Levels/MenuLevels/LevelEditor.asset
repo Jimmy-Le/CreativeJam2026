@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b191bad9521ab464eadb108b71dc8eb9, type: 3}
+  m_Name: LevelEditor
+  m_EditorClassIdentifier: Assembly-CSharp::Level
+  levelName: Title
+  levelSelectBackgroundPicture: {fileID: 0}
+  levelSelectForegroundPicture: {fileID: 0}
+  levelMusic: 0
+  stepsAllowed: 9999
+  BoardWidth: 3
+  levelTilesToGenerate:
+  - tile: {fileID: 5820070423202133586, guid: a6c47be7fdf692aa597fff9bb45f4c0f, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 5820070423202133586, guid: 1e8002dfb90f104129a6a85dd93be104, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 86d2c166da59162a599911f6ca659130, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 5820070423202133586, guid: 03d23ddf9ec86f42eb1482d2207a4a7d, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 5820070423202133586, guid: 77e7b94de3dc8d808b8f6110d56b85e8, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}

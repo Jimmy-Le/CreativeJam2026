@@ -1,24 +1,26 @@
-using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent (typeof(SpriteRenderer))]
 public class TeleportTile : Tile
 {
-    [SerializeField] private TeleportTile destinationTeleportalTile;
+    #region Editor Fields
+    [Header("Linked Teleport Tile")]
+    [SerializeField] private GameObject destinationTeleportTilePrefab;
+    #endregion Editor Fields
 
+    #region Tile Methods
     public override void OnStep()
-    {
-        StartCoroutine(WaitOneFrameCoroutine());
-        Debug.Log("here");
-    }
+    {        
+        if (!destinationTeleportTilePrefab) return;
 
-    IEnumerator WaitOneFrameCoroutine()
-    {
-        Debug.Log("Current Frame: " + Time.frameCount);
+        TeleportTile teleportTile = FindObjectsByType<TeleportTile>(FindObjectsSortMode.None).FirstOrDefault(t => t.gameObject != this.gameObject && t.name.StartsWith(destinationTeleportTilePrefab.name));
 
-        yield return null;
-        FindAnyObjectByType<Board>().Teleport(this, destinationTeleportalTile);
+        if (!teleportTile || teleportTile.tileComponent) return;
+
+        FindAnyObjectByType<Board>().Teleport(this, teleportTile);
     }
+    #endregion Tile Methods
 }
 
 

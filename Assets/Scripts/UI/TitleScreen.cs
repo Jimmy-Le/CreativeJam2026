@@ -5,6 +5,13 @@ public class TitleScreen : MonoBehaviour
 {
     #region Singleton
     public static TitleScreen Instance;
+    private static bool hasSceneBeenOpenedThisSession = false;
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    private static void ResetStaticVariables()
+    {
+        hasSceneBeenOpenedThisSession = false;
+    }
     #endregion Singleton
 
     #region Editor Fields
@@ -12,23 +19,33 @@ public class TitleScreen : MonoBehaviour
     [SerializeField] private Board board;
 
     [Header("Panels")]
-    [SerializeField] private GameObject TitleScreenPanel;
-    [SerializeField] public GameObject playPanel;
-    [SerializeField] public GameObject optionsPanel;
-    [SerializeField] public GameObject creditsPanel;
-    [SerializeField] public GameObject quitPanel;    
+    [SerializeField] public GameObject optionsPanel; 
     #endregion Editor Fields
+
+    #region Backing Fields
+    private bool hasClickedPlay = false;
+    #endregion Backing Fields
 
     #region Lifecycle Methods
     void Awake()
     {
         if(Instance == null)
             Instance = this; 
+        
+        if (!hasSceneBeenOpenedThisSession)
+        {
+            hasSceneBeenOpenedThisSession = true;
+        }
+        else
+        {
+            GameObject cat = GameObject.FindWithTag("Cat");
+            IrisTransition.Instance.IrisOpen(cat != null ? cat.GetComponent<CatMovement>().catBody.position : Vector3.zero, () => {});
+        }
     }
 
     void Start()
     {
-        SoundManager.PlaySound(SoundManager.SoundType.MenuCat);
+        MusicManager.PlaySound(MusicManager.MusicType.MenuCat);
     }
     #endregion Lifecycle Methods
 
@@ -38,6 +55,10 @@ public class TitleScreen : MonoBehaviour
     /// </summary>
     public void Play()
     {
+        if (hasClickedPlay)
+            return;
+        
+        hasClickedPlay = true;
         SoundManager.PlaySound(SoundManager.SoundType.Click);
         GameObject cat = GameObject.FindWithTag("Cat");
         IrisTransition.Instance.IrisClose(cat != null ? cat.GetComponent<CatMovement>().catBody.position : Vector3.zero, () =>
@@ -56,14 +77,20 @@ public class TitleScreen : MonoBehaviour
     }
 
     /// <summary>
-    /// Displays the credits panel and disables player input.
+    /// Opens level editor.
     /// </summary>
-    public void DisplayCredits()
+    public void LevelEditor()
     {
+        if (hasClickedPlay)
+            return;
+        
+        hasClickedPlay = true;
         SoundManager.PlaySound(SoundManager.SoundType.Click);
-        CloseAllPanels();
-        board.InputActions.Player.Disable();
-        creditsPanel.SetActive(true);
+        GameObject cat = GameObject.FindWithTag("Cat");
+        IrisTransition.Instance.IrisClose(cat != null ? cat.GetComponent<CatMovement>().catBody.position : Vector3.zero, () =>
+        {
+            SceneManager.LoadScene("LevelEditorScene");
+        });
     }
 
     /// <summary>
@@ -82,10 +109,7 @@ public class TitleScreen : MonoBehaviour
     /// </summary>
     public void CloseAllPanels()
     {
-        creditsPanel.SetActive(false);
-        quitPanel.SetActive(false);
         optionsPanel.SetActive(false);
-        playPanel.SetActive(false);
         board.InputActions.Player.Enable();
     }
     #endregion Action Methods

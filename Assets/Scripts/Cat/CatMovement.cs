@@ -19,6 +19,9 @@ public class CatMovement : MonoBehaviour
     [SerializeField] private IntEvent updateStepsEvent;
     [SerializeField] private VoidEvent explodeCatEvent;
     [SerializeField] private VoidEvent skipBoostEvent;
+    [SerializeField] private VoidEvent freezeStepEvent;
+    [SerializeField] private Vector2IntEvent pushDirectionEvent;
+    [SerializeField] private Vector2IntEvent checkpointEvent;
     [SerializeField] private VoidEvent levelCompleteEvent;
 
     [Header("UI")]
@@ -47,10 +50,11 @@ public class CatMovement : MonoBehaviour
     private Board _board;
 
     private bool _isBoosted = false;
+    private bool _isFrozenStep = false;
     private bool _canExplode = true;
 
     private List<Vector2> _movementSteps = new();
-    private bool _isMoving = false;
+    public bool isMoving = false;
     #endregion Backing Fields
 
     #region Lifecycle Methods
@@ -74,6 +78,9 @@ public class CatMovement : MonoBehaviour
         _board.InputActions.Player.Explode.performed += INSExplode;
         explodeCatEvent.OnEventRaised += ExplodeEvent;
         skipBoostEvent.OnEventRaised += EnableBoost;
+        freezeStepEvent.OnEventRaised += EnableStepFreeze;
+        pushDirectionEvent.OnEventRaised += PushCat;
+        checkpointEvent.OnEventRaised += Checkpoint;
         levelCompleteEvent.OnEventRaised += DisableExplosion;
     }
 
@@ -84,6 +91,9 @@ public class CatMovement : MonoBehaviour
         _board.InputActions.Player.Explode.performed -= INSExplode;
         explodeCatEvent.OnEventRaised -= ExplodeEvent;
         skipBoostEvent.OnEventRaised -= EnableBoost;
+        freezeStepEvent.OnEventRaised -= EnableStepFreeze;
+        pushDirectionEvent.OnEventRaised -= PushCat;
+        checkpointEvent.OnEventRaised -= Checkpoint;
         levelCompleteEvent.OnEventRaised -= DisableExplosion;
     }
     #endregion Lifecycle Methods
@@ -109,6 +119,69 @@ public class CatMovement : MonoBehaviour
         _isBoosted = true;
     }
 
+    /// <summary>
+    /// Called when a freeze step is activated via event.
+    /// </summary>
+    /// <param name="data">Empty.</param>
+    private void EnableStepFreeze(Unit data)
+    {
+        _isFrozenStep = true;
+    }
+
+    /// <summary>
+    /// Called when a push tile is activated via event.
+    /// </summary>
+    /// <param name="direction">Direction to push cat.</param>
+    private void PushCat(Vector2Int direction)
+    {
+        // If is animating back or board is empty.
+        if (_board == null || isMoving) return;
+
+        // Get the movement direction and attempt to move the cat.
+        Vector2 newCatGridPosition = _board.CatMove(ref catGridPosition, direction, ref _isBoosted);
+        
+        // If the movement action was unsuccessful, quit.
+        if (newCatGridPosition == new Vector2(1000, 1000))
+        {
+            SoundManager.PlaySound(SoundManager.SoundType.Error, 0.4f);
+            return;
+        }
+
+        MoveCatHelper(direction, newCatGridPosition);
+
+        Tween.Position(catBody, startValue: catBody.position, endValue: newCatGridPosition, duration: moveAnimationDuration, ease: Ease.Linear).OnComplete(() =>
+        {
+            // Reset the state
+            animator.Play("CatIdle");
+            isMoving = false;
+
+            // Trigger events.
+            _board.TriggerTile(catGridPosition);
+
+            if (_currentCatStep >= maxCatSteps && _canExplode)
+            {
+                CatMovement[] cats = FindObjectsByType<CatMovement>(FindObjectsSortMode.None);
+
+                foreach (CatMovement cat in cats)
+                    cat.ExplodeEvent(Unit.Default);
+            }
+        }, warnIfTargetDestroyed: false);
+    }
+
+    /// <summary>
+    /// Called when a checkpoint tile is activated via event.
+    /// </summary>
+    /// <param name="newSpawnIndex">New spawn location for cat.</param>
+    private void Checkpoint(Vector2Int newSpawnIndex)
+    {
+        if (catGridPosition != newSpawnIndex) return;
+
+        _startGridPosition = newSpawnIndex;
+        _startWorldPosition = _board.GetTilePosition(newSpawnIndex.x, newSpawnIndex.y);
+
+        _movementSteps.Insert(0, _startWorldPosition);
+    }
+
     private void DisableExplosion(Unit data)
     {
         _canExplode = false;
@@ -126,34 +199,19 @@ public class CatMovement : MonoBehaviour
 
         // This animation calls the Explode() Function at the end of its animation frame.
         animator.SetTrigger(ExplodeHash);
+        animator.SetBool("isBall", true);
+ 
     }
     #endregion Event Methods
 
     #region Input Methods
-    /// <summary>
-    /// Moves the cat when movement options are used.
-    /// </summary>
-    private void MoveCat(InputAction.CallbackContext context)
-    {
-        // If is animating back or board is empty.
-        if (_board == null || _isMoving) return;
-
-        // Get the movement direction and attempt to move the cat.
-        Vector2 direction = context.ReadValue<Vector2>();
-        Vector2 newCatGridPosition = _board.CatMove(ref catGridPosition, direction, ref _isBoosted);
-        
-        // If the movement action was unsuccessful, quit.
-        if (newCatGridPosition == new Vector2(1000, 1000))
-        {
-            SoundManager.PlaySound(SoundManager.SoundType.Error, 0.4f);
-            return;
-        }
-        
+    private void MoveCatHelper(Vector2 direction, Vector2 newCatGridPosition)
+    {        
         // If it was successful, start by adding the position to the history
         _movementSteps.Add(newCatGridPosition);
 
         // Stop cat from spam moving and animates movement.
-        _isMoving = true;
+        isMoving = true;
 
         if (direction.x < 0)
             animator.SetTrigger(MoveLeftHash);
@@ -166,19 +224,53 @@ public class CatMovement : MonoBehaviour
 
         // Play walking audio
         SoundManager.PlaySound(SoundManager.SoundType.Walk, 0.25f);
+    }
+
+    /// <summary>
+    /// Moves the cat when movement options are used.
+    /// </summary>
+    private void MoveCat(InputAction.CallbackContext context)
+    {
+        // If is animating back or board is empty.
+        if (_board == null || isMoving) return;
+
+        // Get the movement direction and attempt to move the cat.
+        Vector2 direction = context.ReadValue<Vector2>();
+        Vector2 newCatGridPosition = _board.CatMove(ref catGridPosition, direction, ref _isBoosted);
+
+        // If the movement action was unsuccessful, quit.
+        if (newCatGridPosition == new Vector2(1000, 1000))
+        {
+            SoundManager.PlaySound(SoundManager.SoundType.Error, 0.4f);
+            return;
+        }
+
+        MoveCatHelper(direction, newCatGridPosition);
 
         Tween.Position(catBody, startValue: catBody.position, endValue: newCatGridPosition, duration: moveAnimationDuration, ease: Ease.Linear).OnComplete(() =>
         {
             // Reset the state
             animator.Play("CatIdle");
-            _isMoving = false;
+            isMoving = false;
 
             // Trigger events.
-            _board.TriggerTile(catGridPosition);
+            Tile triggerTile = _board.TriggerTile(catGridPosition);
 
             // Update steps;
-            ++_currentCatStep;
-            updateStepsEvent.Raise(maxCatSteps - _currentCatStep);
+            if (!_isFrozenStep)
+            {
+                ++_currentCatStep;
+                updateStepsEvent.Raise(maxCatSteps - _currentCatStep);
+            }
+            else
+            {
+                _isFrozenStep = false;
+            }
+
+            if (triggerTile is PushTile || triggerTile is DoorTile)
+            {
+                return;
+            }
 
             if (_currentCatStep >= maxCatSteps && _canExplode)
             {
@@ -187,7 +279,7 @@ public class CatMovement : MonoBehaviour
                 foreach (CatMovement cat in cats)
                     cat.ExplodeEvent(Unit.Default);
             }
-        });
+        }, warnIfTargetDestroyed: false);
     }
 
     /// <summary>
@@ -205,14 +297,25 @@ public class CatMovement : MonoBehaviour
     /// </summary>
     public async void Explode()
     {
-        animator.Play("CatIdle");
+        animator.Play("CatBall");
         for (int i = _movementSteps.Count - 1; i >= 0; i--) 
         {
             SoundManager.PlaySound(SoundManager.SoundType.Reverse,0.2f);
-            await Tween.Position(catBody, startValue: catBody.position, endValue: _movementSteps[i], duration: moveAnimationDuration * 0.5f, ease: Ease.Linear);
+
+            try
+            {
+                await Tween.Position(catBody, startValue: catBody.position, endValue: _movementSteps[i], duration: moveAnimationDuration * 0.5f, ease: Ease.Linear);
+            }
+            catch
+            {
+                return;
+            }
+            
         }
+
         _movementSteps.Clear();
         _movementSteps.Add(_startWorldPosition);
+        animator.SetBool("isBall", false);
         RespawnCat();  
     }
 
@@ -225,10 +328,13 @@ public class CatMovement : MonoBehaviour
         catGridPosition = _startGridPosition;
         catBody.position = _startWorldPosition;
         _isBoosted = false;
+        _isFrozenStep = false;
         _currentCatStep = 0;
         updateStepsEvent.Raise(maxCatSteps - _currentCatStep);
         SoundManager.PlaySound(SoundManager.SoundType.Meow);
+        //animator.Play("CatExplosionReverse");
         _board.InputActions.Player.Enable();
+        
     }
     #endregion End Events
 }

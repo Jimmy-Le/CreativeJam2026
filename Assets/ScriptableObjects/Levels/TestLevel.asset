@@ -1,0 +1,146 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b191bad9521ab464eadb108b71dc8eb9, type: 3}
+  m_Name: TestLevel
+  m_EditorClassIdentifier: Assembly-CSharp::Level
+  levelName: Test
+  levelSelectBackgroundPicture: {fileID: -4870093070313631401, guid: 585bcf7f8966321489e7515e9eb8ac36, type: 3}
+  levelSelectForegroundPicture: {fileID: 1556496540392761301, guid: 585bcf7f8966321489e7515e9eb8ac36, type: 3}
+  levelMusic: 1
+  stepsAllowed: 8
+  BoardWidth: 5
+  levelTilesToGenerate:
+  - tile: {fileID: 3861399046625819917, guid: 4a77b0036f2953a418c7d2caf1d85b6a, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: -4870093070313631401, guid: 585bcf7f8966321489e7515e9eb8ac36, type: 3}
+    tileForegroundSprite: {fileID: 2788359153324119478, guid: 585bcf7f8966321489e7515e9eb8ac36, type: 3}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 0a8f8041a470e4dc183b9766de5324ab, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: 5c83b29a48b59bc478c08a2e683fb9d3, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: b8dba4128d515420c8bbc821af63dade, type: 3}
+    tileComponent: {fileID: 7752738519818554307, guid: 3778c1bc88ffcb04da1569934272e1af, type: 3}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: -1177554003338026488, guid: 585bcf7f8966321489e7515e9eb8ac36, type: 3}
+  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 2622890824546667636, guid: 585bcf7f8966321489e7515e9eb8ac36, type: 3}
+    tileForegroundSprite: {fileID: -2413657260691733098, guid: 585bcf7f8966321489e7515e9eb8ac36, type: 3}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}
+  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
+    tileComponent: {fileID: 0}
+    tileBackgroundSprite: {fileID: 0}
+    tileForegroundSprite: {fileID: 0}
+    tileComponentForegroundSprite: {fileID: 0}

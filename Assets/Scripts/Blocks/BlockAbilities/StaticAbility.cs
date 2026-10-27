@@ -6,6 +6,6 @@ public class StaticAbility : BlockAbility
 {
     public override void Activate(Dictionary<string, object> options)
     {
-        Debug.Log("NOT MOVING");
+        Debug.Log("Static ability.");
     }
 }

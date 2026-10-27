@@ -1,6 +1,7 @@
 using PrimeTween;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 public class Board : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class Board : MonoBehaviour
     [Header("Levels")]
     [SerializeField] public List<Level> levels;
     [SerializeReference] private int initialLevel = 0;
-    [SerializeField] private VoidEvent LevelCompleteEvent;
+    [SerializeField] private VoidEvent levelCompleteEvent;
     
     [Header("UI")]
     [SerializeField] private bool isBoardOnTitleScreen = false;
@@ -51,13 +52,12 @@ public class Board : MonoBehaviour
 
     private void OnEnable()
     {
-       
-        LevelCompleteEvent.OnEventRaised += NextLevel;
+        levelCompleteEvent.OnEventRaised += NextLevel;
     }
 
     private void OnDisable()
     {
-        LevelCompleteEvent.OnEventRaised -= NextLevel;
+        levelCompleteEvent.OnEventRaised -= NextLevel;
     }
     #endregion Lifecycle Methods
 
@@ -80,6 +80,18 @@ public class Board : MonoBehaviour
     {
         GameObject cat = GameObject.FindWithTag("Cat");
         ++currentLevel;
+        IrisTransition.Instance.IrisClose(cat != null ? cat.GetComponent<CatMovement>().catBody.position : Vector3.zero, () =>
+        {
+            LoadLevel(currentLevel);
+        });
+    }
+
+    /// <summary>
+    /// Called when a level is restarted via ui.
+    /// </summary>
+    public void RestartLevel()
+    {
+        GameObject cat = GameObject.FindWithTag("Cat");
         IrisTransition.Instance.IrisClose(cat != null ? cat.GetComponent<CatMovement>().catBody.position : Vector3.zero, () =>
         {
             LoadLevel(currentLevel);
@@ -135,7 +147,7 @@ public class Board : MonoBehaviour
             {
                 // Gets next tile.
                 Tile tile = level.levelTilesToGenerate[i + (j * _boardWidth)].tile.GetComponent<Tile>();
-                if (tile == null)
+                if (!tile)
                 {
                     continue;
                 }
@@ -146,29 +158,61 @@ public class Board : MonoBehaviour
 
                 // Generates new tile visually.
                 Tile tileObject = Instantiate(tile, tile.tilePosition, Quaternion.identity, this.transform);
+                GameObject tileComponent = level.levelTilesToGenerate[i + (j * _boardWidth)].tileComponent;
 
-                // If tile has a component.
-                if (level.levelTilesToGenerate[i + (j * _boardWidth)].tileComponent != null)
+                if (level.levelTilesToGenerate[i + (j * _boardWidth)].tileBackgroundSprite)
                 {
-                    // If is a Cat, setup cat.
-                    CatMovement catMovement = level.levelTilesToGenerate[i + (j * _boardWidth)].tileComponent.GetComponent<CatMovement>();
-                    if (catMovement != null)
-                    {
-                        catMovement.catGridPosition = new Vector2Int(i, j);
-                        catMovement.catBody.position = tile.tilePosition;
-                        catMovement.maxCatSteps = level.stepsAllowed;
-                        _initCatWorldPosition = tile.tilePosition;
-                    }
+                    SpriteRenderer tileBackgroundRenderer = tileObject.GetComponentsInChildren<SpriteRenderer>().FirstOrDefault(c => c.CompareTag("BackgroundSprite"));
+                    tileBackgroundRenderer.sprite = level.levelTilesToGenerate[i + (j * _boardWidth)].tileBackgroundSprite;
+                    tileBackgroundRenderer.color = Color.white;
+                    tileBackgroundRenderer.gameObject.transform.localScale = new Vector3(0.435f, 0.435f, 0.435f);
+                }
+                
+                if (level.levelTilesToGenerate[i + (j * _boardWidth)].tileForegroundSprite)
+                {
+                    SpriteRenderer tileForegroundRenderer = tileObject.GetComponentsInChildren<SpriteRenderer>().FirstOrDefault(c => c.CompareTag("ForegroundSprite"));
+                    tileForegroundRenderer.sprite = level.levelTilesToGenerate[i + (j * _boardWidth)].tileForegroundSprite;
+                    tileForegroundRenderer.color = Color.white;
+                    tileForegroundRenderer.gameObject.transform.localScale = new Vector3(0.435f, 0.435f, 0.435f);
+                }
 
-                    // Spawn the component.
-                    tileObject.tileComponent = Instantiate(level.levelTilesToGenerate[i + (j * _boardWidth)].tileComponent, tile.tilePosition, Quaternion.identity, tileObject.transform);
+                // If is a spawn tile, setup cat.
+                if (tileObject is SpawnTile spawnTile)
+                {
+                    CatMovement catMovement = spawnTile.catPrefab.GetComponent<CatMovement>();
+                    catMovement.catGridPosition = new Vector2Int(i, j);
+                    catMovement.catBody.position = tile.tilePosition;
+                    catMovement.maxCatSteps = level.stepsAllowed;
+                    _initCatWorldPosition = tile.tilePosition;
+
+                    // Spawn cat.
+                    tileObject.tileComponent = Instantiate(spawnTile.catPrefab, tile.tilePosition, Quaternion.identity, tileObject.transform);
+                }
+                else if (tileObject is DoorButtonTile doorButtonTile)
+                {
+                    tileObject.tileComponent = Instantiate(doorButtonTile.tileComponent, tile.tilePosition, Quaternion.identity, tileObject.transform);
+                }
+                else if (tileObject is DoorSwitchTile doorSwitchButton)
+                {
+                    tileObject.tileComponent = Instantiate(doorSwitchButton.tileComponent, tile.tilePosition, Quaternion.identity, tileObject.transform);
+                }
+                else if (tileComponent)
+                {
+                    tileObject.tileComponent = Instantiate(tileComponent, tile.tilePosition, Quaternion.identity, tileObject.transform);
+
+                    if (level.levelTilesToGenerate[i + (j * _boardWidth)].tileComponentForegroundSprite)
+                    {
+                        SpriteRenderer tileComponentForegroundRenderer = tileObject.tileComponent.GetComponentsInChildren<SpriteRenderer>().FirstOrDefault(c => c.CompareTag("ForegroundSprite"));
+                        tileComponentForegroundRenderer.sprite = level.levelTilesToGenerate[i + (j * _boardWidth)].tileComponentForegroundSprite;
+                        tileComponentForegroundRenderer.color = Color.white;
+                        tileComponentForegroundRenderer.gameObject.transform.localScale = new Vector3(0.435f, 0.435f, 0.435f);
+                    }
                 }
 
                 // Adds the tile to the board.
                 _board[i, j] = tileObject;
             }
         }
-
     }
 
     /// <summary>
@@ -177,7 +221,7 @@ public class Board : MonoBehaviour
     /// <param name="x">The x index in the board 2d array.</param>
     /// <param name="y">The y index in the board 2d array.</param>
     /// <returns>The world position of the tile.</returns>
-    private Vector2 GetTilePosition(int x, int y)
+    public Vector2 GetTilePosition(int x, int y)
     {
         return new Vector2(x - _initialPosition.x, -y + _initialPosition.y);
     }
@@ -243,6 +287,7 @@ public class Board : MonoBehaviour
 
         // Triggers the new tile's step event.
         _board[newBlockGridPosition.x, newBlockGridPosition.y].OnStep();
+        CallOnIdle();
     }
 
     /// <summary>
@@ -259,12 +304,56 @@ public class Board : MonoBehaviour
         CatMovement catMovement = tpItem.GetComponent<CatMovement>();   
         if (catMovement == null) return;
 
-        // Performs all the required actions to move the cat.
-        PerformPositionSwap(initialTile.tileIndex, destinationTile.tileIndex);
-
-        catMovement.catGridPosition = new Vector2Int(destinationTile.tileIndex.x, destinationTile.tileIndex.y);
-        catMovement.catBody.position = destinationTile.tilePosition;
+        // Play Teleport animation
+        StartCoroutine(PlayTeleportAnimation(catMovement, initialTile, destinationTile));
     }
+
+    /// <summary>
+    /// Teleportation Animation
+    /// </summary>
+    /// <param name="catMovement"></param>
+    /// <param name="initialTile"></param>
+    /// <param name="destinationTile"></param>
+    /// <returns></returns>
+    private IEnumerator PlayTeleportAnimation(CatMovement catMovement, TeleportTile initialTile, TeleportTile destinationTile)
+    {
+
+        catMovement.isMoving = true;
+        catMovement.animator.Play("CatTeleport");
+
+        // Wait for the initial animation to finish
+        yield return new WaitForSeconds(
+            catMovement.animator.GetCurrentAnimatorStateInfo(0).length
+        );
+
+        // Variables
+        Transform catBody = catMovement.catBody;
+        float moveAnimationDuration = 0.5f;
+        float yPosition = 7.5f;
+        Vector2 initialUp = new Vector2(catBody.position.x, yPosition);
+        Vector2 secondUp = new Vector2(destinationTile.tilePosition.x, yPosition);
+
+        // Fly Upwards
+        Tween.Position(catBody, startValue: catBody.position, endValue: initialUp, duration: moveAnimationDuration, ease: Ease.InOutCubic).OnComplete(() =>
+        {
+            catBody.position = secondUp;
+
+            // Fly Down to tile
+            Tween.Position(catBody, startValue: catBody.position, endValue: destinationTile.tilePosition, duration: moveAnimationDuration, ease: Ease.InCubic).OnComplete(() =>
+            {
+                // Performs all the required actions to move the cat.
+                PerformPositionSwap(initialTile.tileIndex, destinationTile.tileIndex);
+
+                catMovement.catGridPosition = new Vector2Int(destinationTile.tileIndex.x, destinationTile.tileIndex.y);
+                catMovement.catBody.position = destinationTile.tilePosition;
+                catMovement.animator.Play("CatTeleport");
+                catMovement.isMoving = false;
+
+            }, warnIfTargetDestroyed: false);
+
+        }, warnIfTargetDestroyed: false);
+    }
+
 
     /// <summary>
     /// Swaps the tile component from 1 grid position to another.
@@ -287,11 +376,12 @@ public class Board : MonoBehaviour
     /// </summary>
     /// <param name="tileGridPosition"></param>
     /// <returns>Whether the tile is a door tile.</returns>
-    public bool TriggerTile(Vector2Int tileGridPosition)
+    public Tile TriggerTile(Vector2Int tileGridPosition)
     {
         _board[tileGridPosition.x, tileGridPosition.y].OnStep();
+        CallOnIdle();
 
-        return _board[tileGridPosition.x, tileGridPosition.y].tag == "Door";
+        return _board[tileGridPosition.x, tileGridPosition.y];
     }
 
     /// <summary>
@@ -318,6 +408,17 @@ public class Board : MonoBehaviour
             };
 
             blockBase.ability.Activate(data);
+        }
+    }
+
+    /// <summary>
+    /// Calls the idle method for each tile.
+    /// </summary>
+    private void CallOnIdle()
+    {
+        foreach(Tile tile in _board)
+        {
+            tile.OnIdle();
         }
     }
     #endregion Trigger Methods

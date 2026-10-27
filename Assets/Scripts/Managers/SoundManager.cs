@@ -10,10 +10,6 @@ public class SoundManager : MonoBehaviour
         Drag,
         Error,
         GlassBreak,
-        AnalogTime,
-        DinoCountdown,
-        LaboratoryTheme,
-        MenuCat,
         Walk,
         Click,
         Clock,
@@ -32,7 +28,7 @@ public class SoundManager : MonoBehaviour
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        //audioSource = GetComponent<AudioSource>();
     }
 
     public static void PlaySound(SoundType sound, float volume = 1)
@@ -40,7 +36,7 @@ public class SoundManager : MonoBehaviour
         AudioClip[] clips = instance.soundList[(int)sound].sounds;
         AudioClip randomClip = clips[UnityEngine.Random.Range(0,clips.Length)];
        
-        instance.audioSource.PlayOneShot(randomClip, volume * PlayerPrefs.GetFloat("masterVolume", 0.8f));
+        instance.audioSource.PlayOneShot(randomClip, volume * PlayerPrefs.GetFloat("masterVolume", 0.8f) * PlayerPrefs.GetFloat("soundVolume", 1));
     }
 
 #if UNITY_EDITOR

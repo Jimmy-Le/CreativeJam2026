@@ -3,18 +3,14 @@ using UnityEngine;
 [RequireComponent (typeof(SpriteRenderer))]
 public class Tile : MonoBehaviour
 {
-    public GameObject tileComponent;
-    public Vector2 tilePosition;
-    public Vector2Int tileIndex;
+    #region Tile Properties
+    [HideInInspector] public GameObject tileComponent;
+    [HideInInspector] public Vector2 tilePosition;
+    [HideInInspector] public Vector2Int tileIndex;
+    #endregion Tile Properties
 
-    void Awake()
-    {
-        if (tileComponent != null)
-            Instantiate(tileComponent, this.transform.position, Quaternion.identity, this.transform);
-    }
-
-    public virtual void OnStep() 
-    {
-        Debug.Log("step");
-    }
+    #region Tile Methods
+    public virtual void OnStep() {}
+    public virtual void OnIdle() {}
+    #endregion Tile Methods
 }

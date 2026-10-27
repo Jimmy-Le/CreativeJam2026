@@ -1,0 +1,115 @@
+{
+    "levelName": "Test",
+    "levelSelectBackgroundSpritePath": "Laboratoire2_6",
+    "levelSelectForegroundSpritePath": "Laboratoire2_8",
+    "levelMusic": 1,
+    "stepsAllowed": 8,
+    "BoardWidth": 5,
+    "levelTilesToGenerate": [
+        {
+            "tile": "SpawnTile",
+            "tileComponent": "",
+            "tileBackgroundSpritePath": "Laboratoire2_6",
+            "tileForegroundSpritePath": "Laboratoire2_7"
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "DoorSwitchTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "SkipTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "SwitchTile",
+            "tileComponent": "BreakableBlock",
+            "tileComponentForegroundSpritePath": "Laboratoire2_5"
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": "",
+            "tileBackgroundSpritePath": "Laboratoire2_10",
+            "tileForegroundSpritePath": "Laboratoire2_12"
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        },
+        {
+            "tile": "EmptyTile",
+            "tileComponent": ""
+        }
+    ]
+}

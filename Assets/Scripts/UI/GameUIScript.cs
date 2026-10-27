@@ -1,3 +1,4 @@
+using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -29,6 +30,11 @@ public class GameUIScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI levelText;
     #endregion Editor Fields
 
+    #region Backing Fields
+    private float nextClickTime = 0f;
+    private float cooldownTime = 1f;
+    #endregion Backing Fields
+
     #region Lifecycle Methods
     void Awake()
     {
@@ -54,6 +60,13 @@ public class GameUIScript : MonoBehaviour
     public void OpenLevelSelect()
     {
         CloseAllPanels();
+
+        for (int i = levelPrefabBaseSpawnLocation.childCount - 1; i >= 0; i--)
+        {
+            Destroy(levelPrefabBaseSpawnLocation.GetChild(i).gameObject);
+        }
+
+
         board.InputActions.Player.Disable();
         
         for (int i = 0; i < board.levels.Count; i++)
@@ -87,7 +100,14 @@ public class GameUIScript : MonoBehaviour
     /// </summary>
     public void RestartLevel()
     {
-        LoadLevel(board.currentLevel);
+        if (Time.time < nextClickTime)
+        {
+            return;
+        }
+
+        nextClickTime = Time.time + cooldownTime;
+
+        board.RestartLevel();
     }
 
     /// <summary>
@@ -95,7 +115,11 @@ public class GameUIScript : MonoBehaviour
     /// </summary>
     public void ReturnToTitle()
     {
-        SceneManager.LoadScene("TitleScreen");
+        GameObject cat = GameObject.FindWithTag("Cat");
+        IrisTransition.Instance.IrisClose(cat != null ? cat.GetComponent<CatMovement>().catBody.position : Vector3.zero, () =>
+        {
+            SceneManager.LoadScene("TitleScreen");
+        });
     }
 
     /// <summary>
@@ -115,23 +139,23 @@ public class GameUIScript : MonoBehaviour
     /// </summary>
     private void PlayMusic()
     {
-        SoundManager.instance.audioSource.Stop();
+        MusicManager.instance.audioSource.Stop();
 
         if (board.currentLevel < LEVEL_GROUP_1_END)
         {
-            SoundManager.PlaySound(SoundManager.SoundType.LaboratoryTheme);
+            MusicManager.PlaySound(MusicManager.MusicType.LaboratoryTheme);
         }
         else if (board.currentLevel < LEVEL_GROUP_2_END)
         {
-            SoundManager.PlaySound(SoundManager.SoundType.DinoCountdown);
+            MusicManager.PlaySound(MusicManager.MusicType.DinoCountdown);
         }
         else if (board.currentLevel < LEVEL_GROUP_3_END)
         {
-            SoundManager.PlaySound(SoundManager.SoundType.AnalogTime);
+            MusicManager.PlaySound(MusicManager.MusicType.AnalogTime);
         }
         else
         {
-            SoundManager.PlaySound(SoundManager.SoundType.MenuCat);
+            MusicManager.PlaySound(MusicManager.MusicType.MenuCat);
         }
     }
     #endregion Private Methods
