@@ -24,8 +24,6 @@ public class ExplodeAbility : BlockAbility
         }
 
         blockBase.StartCoroutine(ExplodeAnim());
-        //Destruction();
-
     }
 
     public void Destruction()
@@ -44,8 +42,5 @@ public class ExplodeAbility : BlockAbility
         float explosionLength = state.length / Mathf.Max(state.speedMultiplier, 0.01f);
 
         yield return new WaitForSeconds(explosionLength);
-        //blockBase.Destruction();
     }
-
-
 }

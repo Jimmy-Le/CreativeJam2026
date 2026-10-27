@@ -9,6 +9,8 @@ TagManager:
   - Cat
   - ForegroundSprite
   - BackgroundSprite
+  - VaseBlockBan
+  - CatMoveBan
   layers:
   - Default
   - TransparentFX

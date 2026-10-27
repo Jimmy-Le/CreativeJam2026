@@ -1,4 +1,5 @@
 using PrimeTween;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -249,7 +250,8 @@ public class Board : MonoBehaviour
             newCatGridPosition.y <= -1 ||
             newCatGridPosition.x >= _boardWidth ||
             newCatGridPosition.y >= _boardWidth ||
-            _board[newCatGridPosition.x, newCatGridPosition.y].tileComponent != null)
+            (_board[newCatGridPosition.x, newCatGridPosition.y].tileComponent 
+                && _board[newCatGridPosition.x, newCatGridPosition.y].tileComponent.CompareTag("CatMoveBan")))
             return new Vector2(1000, 1000);
 
         // Performs all the required actions to move the cat.
@@ -278,7 +280,8 @@ public class Board : MonoBehaviour
             newBlockGridPosition.y <= -1 ||
             newBlockGridPosition.x >= _boardWidth ||
             newBlockGridPosition.y >= _boardWidth ||
-            _board[newBlockGridPosition.x, newBlockGridPosition.y].tileComponent != null ||
+            (_board[newBlockGridPosition.x, newBlockGridPosition.y].tileComponent 
+                && _board[newBlockGridPosition.x, newBlockGridPosition.y].tileComponent.CompareTag("CatMoveBan")) ||
             _board[newBlockGridPosition.x, newBlockGridPosition.y].gameObject.CompareTag("MoveBlockBan"))
                 return;
 
