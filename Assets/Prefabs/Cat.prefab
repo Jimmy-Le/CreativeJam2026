@@ -111,6 +111,7 @@ MonoBehaviour:
   explodeCatEvent: {fileID: 11400000, guid: 27b7570e31522ca4eb4a1277e2ca82cb, type: 2}
   skipBoostEvent: {fileID: 11400000, guid: bcfe597fc0221da459c7eed0242405d7, type: 2}
   freezeStepEvent: {fileID: 11400000, guid: 9cfb27f9bdf4a46328a0de8a380f7008, type: 2}
+  stickyStepEvent: {fileID: 11400000, guid: 5adc189e152a547dfb4be065360caeab, type: 2}
   pushDirectionEvent: {fileID: 11400000, guid: a114caf4bd02342e1bf3a16720d75020, type: 2}
   checkpointEvent: {fileID: 11400000, guid: 2dac0817e7bac4e23a39a5c1ad283b03, type: 2}
   levelCompleteEvent: {fileID: 11400000, guid: b811563f8932e5b4d98a1b1ff37182a2, type: 2}

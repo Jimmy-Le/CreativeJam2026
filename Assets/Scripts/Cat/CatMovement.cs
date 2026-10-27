@@ -20,6 +20,7 @@ public class CatMovement : MonoBehaviour
     [SerializeField] private VoidEvent explodeCatEvent;
     [SerializeField] private VoidEvent skipBoostEvent;
     [SerializeField] private VoidEvent freezeStepEvent;
+    [SerializeField] private VoidEvent stickyStepEvent;
     [SerializeField] private Vector2IntEvent pushDirectionEvent;
     [SerializeField] private Vector2IntEvent checkpointEvent;
     [SerializeField] private VoidEvent levelCompleteEvent;
@@ -51,9 +52,10 @@ public class CatMovement : MonoBehaviour
 
     private bool _isBoosted = false;
     private bool _isFrozenStep = false;
+    private bool _isStickyStep = false;
     private bool _canExplode = true;
 
-    private List<Vector2> _movementSteps = new();
+    private List<Vector2> _movementSteps = new(); 
     public bool isMoving = false;
     #endregion Backing Fields
 
@@ -78,7 +80,8 @@ public class CatMovement : MonoBehaviour
         _board.InputActions.Player.Explode.performed += INSExplode;
         explodeCatEvent.OnEventRaised += ExplodeEvent;
         skipBoostEvent.OnEventRaised += EnableBoost;
-        freezeStepEvent.OnEventRaised += EnableStepFreeze;
+        freezeStepEvent.OnEventRaised += EnableFreezeStep;
+        stickyStepEvent.OnEventRaised += EnableStickyStep;
         pushDirectionEvent.OnEventRaised += PushCat;
         checkpointEvent.OnEventRaised += Checkpoint;
         levelCompleteEvent.OnEventRaised += DisableExplosion;
@@ -91,7 +94,8 @@ public class CatMovement : MonoBehaviour
         _board.InputActions.Player.Explode.performed -= INSExplode;
         explodeCatEvent.OnEventRaised -= ExplodeEvent;
         skipBoostEvent.OnEventRaised -= EnableBoost;
-        freezeStepEvent.OnEventRaised -= EnableStepFreeze;
+        freezeStepEvent.OnEventRaised -= EnableFreezeStep;
+        stickyStepEvent.OnEventRaised -= EnableStickyStep;
         pushDirectionEvent.OnEventRaised -= PushCat;
         checkpointEvent.OnEventRaised -= Checkpoint;
         levelCompleteEvent.OnEventRaised -= DisableExplosion;
@@ -123,9 +127,18 @@ public class CatMovement : MonoBehaviour
     /// Called when a freeze step is activated via event.
     /// </summary>
     /// <param name="data">Empty.</param>
-    private void EnableStepFreeze(Unit data)
+    private void EnableFreezeStep(Unit data)
     {
         _isFrozenStep = true;
+    }
+    
+    /// <summary>
+    /// Called when a sticky step is activated via event.
+    /// </summary>
+    /// <param name="data">Empty.</param>
+    private void EnableStickyStep(Unit data)
+    {
+        _isStickyStep = true;
     }
 
     /// <summary>
@@ -259,8 +272,14 @@ public class CatMovement : MonoBehaviour
             // Update steps;
             if (!_isFrozenStep)
             {
+                if (_isStickyStep)
+                {
+                    ++_currentCatStep;
+                    _isStickyStep = false;
+                }
+
                 ++_currentCatStep;
-                updateStepsEvent.Raise(maxCatSteps - _currentCatStep);
+                updateStepsEvent.Raise(maxCatSteps - _currentCatStep < 0 ? 0 : maxCatSteps - _currentCatStep);
             }
             else
             {
