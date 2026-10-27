@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 5573520593468583653}
   - component: {fileID: 2484055876323621915}
   m_Layer: 0
-  m_Name: FreezeIcon
+  m_Name: StickyIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -21,6 +21,7 @@ public class CatMovement : MonoBehaviour
     [SerializeField] private VoidEvent skipBoostEvent;
     [SerializeField] private VoidEvent freezeStepEvent;
     [SerializeField] private VoidEvent stickyStepEvent;
+    [SerializeField] private IntEvent curseStepEvent;
     [SerializeField] private Vector2IntEvent pushDirectionEvent;
     [SerializeField] private Vector2IntEvent checkpointEvent;
     [SerializeField] private VoidEvent levelCompleteEvent;
@@ -82,6 +83,7 @@ public class CatMovement : MonoBehaviour
         skipBoostEvent.OnEventRaised += EnableBoost;
         freezeStepEvent.OnEventRaised += EnableFreezeStep;
         stickyStepEvent.OnEventRaised += EnableStickyStep;
+        curseStepEvent.OnEventRaised += EnableCurseStep;
         pushDirectionEvent.OnEventRaised += PushCat;
         checkpointEvent.OnEventRaised += Checkpoint;
         levelCompleteEvent.OnEventRaised += DisableExplosion;
@@ -96,6 +98,7 @@ public class CatMovement : MonoBehaviour
         skipBoostEvent.OnEventRaised -= EnableBoost;
         freezeStepEvent.OnEventRaised -= EnableFreezeStep;
         stickyStepEvent.OnEventRaised -= EnableStickyStep;
+        curseStepEvent.OnEventRaised -= EnableCurseStep;
         pushDirectionEvent.OnEventRaised -= PushCat;
         checkpointEvent.OnEventRaised -= Checkpoint;
         levelCompleteEvent.OnEventRaised -= DisableExplosion;
@@ -139,6 +142,16 @@ public class CatMovement : MonoBehaviour
     private void EnableStickyStep(Unit data)
     {
         _isStickyStep = true;
+    }
+
+    /// <summary>
+    /// Called when a curse step is activated via event.
+    /// </summary>
+    /// <param name="steps">Number of steps remaining..</param>
+    private void EnableCurseStep(int steps)
+    {
+        _currentCatStep = maxCatSteps - steps - 1;
+        updateStepsEvent.Raise(maxCatSteps - _currentCatStep);
     }
 
     /// <summary>
