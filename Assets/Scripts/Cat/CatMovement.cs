@@ -23,6 +23,7 @@ public class CatMovement : MonoBehaviour
     [SerializeField] private VoidEvent stickyStepEvent;
     [SerializeField] private IntEvent curseStepEvent;
     [SerializeField] private Vector2IntEvent pushDirectionEvent;
+    [SerializeField] private Vector2IntEvent cannonDirectionEvent;
     [SerializeField] private Vector2IntEvent checkpointEvent;
     [SerializeField] private VoidEvent levelCompleteEvent;
 
@@ -85,6 +86,7 @@ public class CatMovement : MonoBehaviour
         stickyStepEvent.OnEventRaised += EnableStickyStep;
         curseStepEvent.OnEventRaised += EnableCurseStep;
         pushDirectionEvent.OnEventRaised += PushCat;
+        cannonDirectionEvent.OnEventRaised += CannonBallCat;
         checkpointEvent.OnEventRaised += Checkpoint;
         levelCompleteEvent.OnEventRaised += DisableExplosion;
     }
@@ -100,6 +102,7 @@ public class CatMovement : MonoBehaviour
         stickyStepEvent.OnEventRaised -= EnableStickyStep;
         curseStepEvent.OnEventRaised -= EnableCurseStep;
         pushDirectionEvent.OnEventRaised -= PushCat;
+        cannonDirectionEvent.OnEventRaised -= CannonBallCat;
         checkpointEvent.OnEventRaised -= Checkpoint;
         levelCompleteEvent.OnEventRaised -= DisableExplosion;
     }
@@ -192,6 +195,51 @@ public class CatMovement : MonoBehaviour
                     cat.ExplodeEvent(Unit.Default);
             }
         }, warnIfTargetDestroyed: false);
+    }
+
+    /// <summary>
+    /// Called when a cannon tile is activated via event.
+    /// </summary>
+    /// <param name="direction">Direction to push cat.</param>
+    private async void CannonBallCat(Vector2Int direction)
+    {
+        // If is animating back or board is empty.
+        if (_board == null) return;
+
+        int i = 0;
+        while (i != 3)
+        {
+            // Get the movement direction and attempt to move the cat.
+            Vector2 newCatGridPosition = _board.CatMove(ref catGridPosition, direction, ref _isBoosted);
+
+            // If the movement action was unsuccessful, quit.
+            if (newCatGridPosition == new Vector2(1000, 1000))
+            {
+                // Trigger events.
+                _board.TriggerTile(catGridPosition);
+
+                SoundManager.PlaySound(SoundManager.SoundType.Error, 0.4f);
+                break;
+            }
+
+            MoveCatHelper(direction, newCatGridPosition);
+
+            await Tween.Position(catBody, startValue: catBody.position, endValue: newCatGridPosition, duration: moveAnimationDuration * 0.5f, ease: Ease.Linear).OnComplete(() =>
+            {
+                // Reset the state
+                animator.Play("CatIdle");
+            }, warnIfTargetDestroyed: false);            
+        }
+
+        isMoving = false;
+
+        if (_currentCatStep >= maxCatSteps && _canExplode)
+        {
+            CatMovement[] cats = FindObjectsByType<CatMovement>(FindObjectsSortMode.None);
+
+            foreach (CatMovement cat in cats)
+                cat.ExplodeEvent(Unit.Default);
+        }
     }
 
     /// <summary>
@@ -299,7 +347,7 @@ public class CatMovement : MonoBehaviour
                 _isFrozenStep = false;
             }
 
-            if (triggerTile is PushTile || triggerTile is DoorTile)
+            if (triggerTile is PushTile || triggerTile is CannonTile || triggerTile is DoorTile)
             {
                 return;
             }
@@ -342,7 +390,6 @@ public class CatMovement : MonoBehaviour
             {
                 return;
             }
-            
         }
 
         _movementSteps.Clear();
