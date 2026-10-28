@@ -214,6 +214,8 @@ public class Board : MonoBehaviour
                 _board[i, j] = tileObject;
             }
         }
+
+        TriggerStartTileComponent();
     }
 
     /// <summary>
@@ -435,6 +437,31 @@ public class Board : MonoBehaviour
                 };
 
                 blockBase.ability.Activate(data);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Triggers the tile's component's event if global.
+    /// <summary>
+    public void TriggerStartTileComponent()
+    {
+        foreach (Tile tile in _board)
+        {
+            if (!tile.tileComponent)
+                continue;
+            
+            BlockBase blockBase = tile.tileComponent.GetComponent<BlockBase>();
+
+            if (blockBase != null)
+            {
+                var data = new Dictionary<string, object>
+                {
+                    { "blockBase", blockBase },
+                    { "board", this },
+                };
+
+                blockBase.ability.OnStart(data);
             }
         }
     }

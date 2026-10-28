@@ -24,10 +24,12 @@ public class GhostAbility : BlockAbility
         else
         {
             blockBase.gameObject.tag = "CatMoveBan";
-            Color color = sprites[0].color;
-            color.a = 1f;
             foreach (SpriteRenderer sprite in sprites)
+            {
+                Color color = sprite.color;
+                color.a = 1f;
                 sprite.color = color;
+            }
         }
     }
 }

@@ -29,7 +29,6 @@ public class DoorButtonTile : DoorTile
         _doorIsUnlocked = false;
         tileComponent.SetActive(true);
         _pressedButtonsRequired = FindObjectsByType<GameObject>(FindObjectsSortMode.None).Count(c => c.CompareTag("Door"));
-        Debug.Log(_pressedButtonsRequired + "ok");
     }
     
     private void OnEnable()
