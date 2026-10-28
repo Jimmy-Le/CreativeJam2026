@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 
-[RequireComponent (typeof(SpriteRenderer))]
 public class CannonTile : Tile
 {
     #region Editor Fields

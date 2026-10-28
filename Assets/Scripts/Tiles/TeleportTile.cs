@@ -1,7 +1,6 @@
 using System.Linq;
 using UnityEngine;
 
-[RequireComponent (typeof(SpriteRenderer))]
 public class TeleportTile : Tile
 {
     #region Editor Fields

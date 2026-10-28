@@ -118,6 +118,7 @@ public class CatMovement : MonoBehaviour
         _board.TriggerTileComponent(catGridPosition.x - 1, catGridPosition.y, new Vector2Int(-1, 0));
         _board.TriggerTileComponent(catGridPosition.x, catGridPosition.y + 1, new Vector2Int(0, -1));
         _board.TriggerTileComponent(catGridPosition.x, catGridPosition.y - 1, new Vector2Int(0, 1));
+        _board.TriggerGlobalTileComponent();
     }
 
     /// <summary>

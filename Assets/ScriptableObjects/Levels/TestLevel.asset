@@ -16,7 +16,7 @@ MonoBehaviour:
   levelSelectBackgroundPicture: {fileID: -4870093070313631401, guid: 585bcf7f8966321489e7515e9eb8ac36, type: 3}
   levelSelectForegroundPicture: {fileID: 1556496540392761301, guid: 585bcf7f8966321489e7515e9eb8ac36, type: 3}
   levelMusic: 1
-  stepsAllowed: 8
+  stepsAllowed: 3
   BoardWidth: 5
   levelTilesToGenerate:
   - tile: {fileID: 3861399046625819917, guid: 4a77b0036f2953a418c7d2caf1d85b6a, type: 3}
@@ -100,7 +100,7 @@ MonoBehaviour:
     tileForegroundSprite: {fileID: 0}
     tileComponentForegroundSprite: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: 1d6711c5d170e499a949d000aca6aebf, type: 3}
-    tileComponent: {fileID: 0}
+    tileComponent: {fileID: 7752738519818554307, guid: 17afa5ebbc87e4bba94d892bf7ad7dbb, type: 3}
     tileBackgroundSprite: {fileID: 0}
     tileForegroundSprite: {fileID: 0}
     tileComponentForegroundSprite: {fileID: 0}
@@ -114,10 +114,10 @@ MonoBehaviour:
     tileBackgroundSprite: {fileID: 0}
     tileForegroundSprite: {fileID: 0}
     tileComponentForegroundSprite: {fileID: 0}
-  - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
-    tileComponent: {fileID: 0}
-    tileBackgroundSprite: {fileID: 2622890824546667636, guid: 585bcf7f8966321489e7515e9eb8ac36, type: 3}
-    tileForegroundSprite: {fileID: -2413657260691733098, guid: 585bcf7f8966321489e7515e9eb8ac36, type: 3}
+  - tile: {fileID: 3861399046625819917, guid: 5e8e279f4fcecaf48add874539f04ef7, type: 3}
+    tileComponent: {fileID: 7752738519818554307, guid: 17afa5ebbc87e4bba94d892bf7ad7dbb, type: 3}
+    tileBackgroundSprite: {fileID: -1507239240806778292, guid: 849a73dd4c9a9a4488203e7fb352198b, type: 3}
+    tileForegroundSprite: {fileID: -2485291922391288313, guid: 5ecf97a630e51a14198825cc28c7b4ce, type: 3}
     tileComponentForegroundSprite: {fileID: 0}
   - tile: {fileID: 3861399046625819917, guid: ef7f544c843bd814ba108f41024e057c, type: 3}
     tileComponent: {fileID: 0}

@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent (typeof(SpriteRenderer))]
 public class ButtonTile : Tile
 {
     #region Editor Fields

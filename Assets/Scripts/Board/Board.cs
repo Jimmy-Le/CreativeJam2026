@@ -415,6 +415,31 @@ public class Board : MonoBehaviour
     }
 
     /// <summary>
+    /// Triggers the tile's component's event if global.
+    /// <summary>
+    public void TriggerGlobalTileComponent()
+    {
+        foreach (Tile tile in _board)
+        {
+            if (!tile.tileComponent)
+                continue;
+            
+            BlockBase blockBase = tile.tileComponent.GetComponent<BlockBase>();
+
+            if (blockBase != null && blockBase.ability is GhostAbility)
+            {
+                var data = new Dictionary<string, object>
+                {
+                    { "blockBase", blockBase },
+                    { "board", this },
+                };
+
+                blockBase.ability.Activate(data);
+            }
+        }
+    }
+
+    /// <summary>
     /// Calls the idle method for each tile.
     /// </summary>
     private void CallOnIdle()

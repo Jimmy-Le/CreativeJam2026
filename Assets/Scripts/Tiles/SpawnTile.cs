@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent (typeof(SpriteRenderer))]
 public class SpawnTile : Tile
 {
     #region Editor Fields

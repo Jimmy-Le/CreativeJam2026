@@ -5,13 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ExplodeAbility", menuName = "BlockAbilities/ExplodeAbility")]
 public class ExplodeAbility : BlockAbility
 {
-    public Animator animator;
-    public BlockBase blockBase;
+    private Animator animator;
+    private BlockBase blockBase;
 
     public override void Activate(Dictionary<string, object> options)
     {
         // play poof animation
-        
         blockBase = (BlockBase)options["blockBase"];
         animator = blockBase.GetComponent<Animator>();
 

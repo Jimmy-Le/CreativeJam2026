@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent (typeof(SpriteRenderer))]
 public class DoorButtonTile : DoorTile
 {
     #region Editor Fields
