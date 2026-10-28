@@ -4,7 +4,7 @@ public class DoorSwitchTile : DoorTile
 {
     #region Editor Fields
     [Header("Buttons")]
-    [SerializeField] private VoidEvent switchUpdateEvent;
+    [SerializeField] private VoidEvent doorSwitchUpdateEvent;
 
     [Header("Door")]
     [SerializeField] protected SpriteRenderer lockedDoorSpriteRenderer;
@@ -29,12 +29,12 @@ public class DoorSwitchTile : DoorTile
 
     private void OnEnable()
     {
-        switchUpdateEvent.OnEventRaised += CheckDoorUnlock;
+        doorSwitchUpdateEvent.OnEventRaised += CheckDoorUnlock;
     }
 
     private void OnDisable()
     {
-        switchUpdateEvent.OnEventRaised -= CheckDoorUnlock;
+        doorSwitchUpdateEvent.OnEventRaised -= CheckDoorUnlock;
     }
     #endregion Lifecycle Methods
 

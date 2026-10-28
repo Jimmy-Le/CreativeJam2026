@@ -4,7 +4,7 @@ public class DoorButtonTile : DoorTile
 {
     #region Editor Fields
     [Header("Buttons")]
-    [SerializeField] private BoolEvent buttonUpdateEvent;
+    [SerializeField] private BoolEvent doorButtonUpdateEvent;
     [SerializeField] private int pressedButtonsRequired = 1;
 
     [Header("Door")]
@@ -31,12 +31,12 @@ public class DoorButtonTile : DoorTile
 
     private void OnEnable()
     {
-        buttonUpdateEvent.OnEventRaised += CheckDoorUnlock;
+        doorButtonUpdateEvent.OnEventRaised += CheckDoorUnlock;
     }
 
     private void OnDisable()
     {
-        buttonUpdateEvent.OnEventRaised -= CheckDoorUnlock;
+        doorButtonUpdateEvent.OnEventRaised -= CheckDoorUnlock;
     }
     #endregion Lifecycle Methods
 

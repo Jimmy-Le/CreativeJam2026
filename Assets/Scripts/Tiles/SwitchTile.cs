@@ -11,6 +11,11 @@ public class SwitchTile : Tile
     public override void OnStep()
     {
         switchUpdateEvent.Raise(Unit.Default);
+
+        if (switchIconSpriteRenderer.color == Color.white)
+            switchIconSpriteRenderer.color = Color.black;
+        else
+            switchIconSpriteRenderer.color = Color.white;
     }
     #endregion Tile Methods
 }

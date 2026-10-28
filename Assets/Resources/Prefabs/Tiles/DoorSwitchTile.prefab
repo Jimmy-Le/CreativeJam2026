@@ -248,7 +248,7 @@ MonoBehaviour:
   tilePosition: {x: 0, y: 0}
   tileIndex: {x: 0, y: 0}
   levelCompleteEvent: {fileID: 11400000, guid: b811563f8932e5b4d98a1b1ff37182a2, type: 2}
-  switchUpdateEvent: {fileID: 11400000, guid: 7137c902f1cea4345930eb0e25423aa0, type: 2}
+  doorSwitchUpdateEvent: {fileID: 11400000, guid: 7137c902f1cea4345930eb0e25423aa0, type: 2}
   lockedDoorSpriteRenderer: {fileID: 143050613397807071}
   doorLock: {fileID: 417639052295603915, guid: fe7f48b560a9cf24caa986a0dad1ee9a, type: 3}
 --- !u!1 &4943175014868357053
