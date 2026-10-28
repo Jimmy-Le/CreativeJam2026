@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6434518597865776285}
   - component: {fileID: -4591378220201575184}
   m_Layer: 0
-  m_Name: ButtonTile
-  m_TagString: Untagged
+  m_Name: ButtonDoorTile
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

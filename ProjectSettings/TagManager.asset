@@ -11,6 +11,13 @@ TagManager:
   - BackgroundSprite
   - VaseBlockBan
   - CatMoveBan
+  - Red
+  - Green
+  - Blue
+  - SDoor
+  - SRed
+  - SGreen
+  - SBlue
   layers:
   - Default
   - TransparentFX

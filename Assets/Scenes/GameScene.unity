@@ -727,10 +727,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Board
   levels:
+  - {fileID: 11400000, guid: 52cf319ccdcef48feb06775f7c7a3cb4, type: 2}
   - {fileID: 11400000, guid: c1892e338076f174aaafaa3877811d30, type: 2}
   - {fileID: 11400000, guid: bd640a660098f4dc3bc30a8b9031daef, type: 2}
   - {fileID: 11400000, guid: 9665accbc3bcee84a98981a1ece827ba, type: 2}
-  - {fileID: 11400000, guid: 6291aa345bfa44641821ddd97c948be8, type: 2}
   - {fileID: 11400000, guid: 6cdffcc8d22fdc648b10fa296dffe8bc, type: 2}
   - {fileID: 11400000, guid: 3092696f56c37e242b4b16e1e7658bb3, type: 2}
   - {fileID: 11400000, guid: 94ba52ce56a51ea4db06e58bbbaac66e, type: 2}
@@ -931,7 +931,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -820.3004, y: 78}
+  m_AnchoredPosition: {x: -820.3798, y: 78}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &558107867
@@ -3550,8 +3550,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2109847331}
   m_HandleRect: {fileID: 2109847330}
   m_Direction: 0
-  m_Value: 1
-  m_Size: 1
+  m_Value: 0
+  m_Size: 0.9996892
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

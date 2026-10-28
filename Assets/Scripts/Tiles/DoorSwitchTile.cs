@@ -1,10 +1,11 @@
+using System.Linq;
 using UnityEngine;
 
 public class DoorSwitchTile : DoorTile
 {
     #region Editor Fields
     [Header("Buttons")]
-    [SerializeField] private VoidEvent doorSwitchUpdateEvent;
+    [SerializeField] private BoolEvent doorSwitchUpdateEvent;
 
     [Header("Door")]
     [SerializeField] protected SpriteRenderer lockedDoorSpriteRenderer;
@@ -12,6 +13,8 @@ public class DoorSwitchTile : DoorTile
     #endregion Editor Fields
 
     #region Backing Fields
+    private int _pressedSwitchesRequired;
+    private int _unlockProgress;
     private GameObject _tileComponentCache;
     #endregion Backing Fields
 
@@ -25,6 +28,7 @@ public class DoorSwitchTile : DoorTile
     {
         _doorIsUnlocked = false;
         tileComponent.SetActive(true);
+        _pressedSwitchesRequired = FindObjectsByType<GameObject>(FindObjectsSortMode.None).Count(c => c.CompareTag("SDoor"));
     }
 
     private void OnEnable()
@@ -39,19 +43,21 @@ public class DoorSwitchTile : DoorTile
     #endregion Lifecycle Methods
 
     #region Tile Methods
-    private void CheckDoorUnlock(Unit unit)
+    private void CheckDoorUnlock(bool switchUpdate)
     {
-        _doorIsUnlocked = !_doorIsUnlocked;
+        _unlockProgress += switchUpdate ? 1 : -1;
 
-        if (_doorIsUnlocked)
+        if (_unlockProgress >= _pressedSwitchesRequired)
         {
+            _doorIsUnlocked = true;
             tileComponent.SetActive(false);
             lockedDoorSpriteRenderer.enabled = false;
             _tileComponentCache = tileComponent; // Needed, refreshes the ref.
             tileComponent = null;
         }
-        else
+        else if (_doorIsUnlocked)
         { 
+            _doorIsUnlocked = false;
             tileComponent = _tileComponentCache;
             tileComponent.SetActive(true);
             lockedDoorSpriteRenderer.enabled = true;

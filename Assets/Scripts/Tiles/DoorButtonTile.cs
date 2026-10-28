@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class DoorButtonTile : DoorTile
@@ -5,7 +6,6 @@ public class DoorButtonTile : DoorTile
     #region Editor Fields
     [Header("Buttons")]
     [SerializeField] private BoolEvent doorButtonUpdateEvent;
-    [SerializeField] private int pressedButtonsRequired = 1;
 
     [Header("Door")]
     [SerializeField] protected SpriteRenderer lockedDoorSpriteRenderer;
@@ -13,6 +13,7 @@ public class DoorButtonTile : DoorTile
     #endregion Editor Fields
 
     #region Backing Fields
+    private int _pressedButtonsRequired;
     private int _unlockProgress;
     private GameObject _tileComponentCache;
     #endregion Backing Fields
@@ -27,8 +28,10 @@ public class DoorButtonTile : DoorTile
     {
         _doorIsUnlocked = false;
         tileComponent.SetActive(true);
+        _pressedButtonsRequired = FindObjectsByType<GameObject>(FindObjectsSortMode.None).Count(c => c.CompareTag("Door"));
+        Debug.Log(_pressedButtonsRequired + "ok");
     }
-
+    
     private void OnEnable()
     {
         doorButtonUpdateEvent.OnEventRaised += CheckDoorUnlock;
@@ -43,20 +46,18 @@ public class DoorButtonTile : DoorTile
     #region Tile Methods
     private void CheckDoorUnlock(bool buttonUpdate)
     {
-        if (buttonUpdate)
-            _unlockProgress++;
-        else
-            _unlockProgress--;
+        _unlockProgress += buttonUpdate ? 1 : -1;
 
-        if (_unlockProgress >= pressedButtonsRequired)
+        if (_unlockProgress >= _pressedButtonsRequired)
         {
             _doorIsUnlocked = true;
             tileComponent.SetActive(false);
+
             lockedDoorSpriteRenderer.enabled = false;
             _tileComponentCache = tileComponent; // Needed, refreshes the ref.
             tileComponent = null;
         }
-        else
+        else if (_doorIsUnlocked)
         { 
             _doorIsUnlocked = false;
             tileComponent = _tileComponentCache;

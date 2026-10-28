@@ -233,6 +233,7 @@ MonoBehaviour:
   tilePosition: {x: -2, y: 2}
   tileIndex: {x: 0, y: 0}
   catPrefab: {fileID: 2797812712494996239, guid: b55f6fc5508b062439569017929a4816, type: 3}
+  checkpointEvent: {fileID: 11400000, guid: 2dac0817e7bac4e23a39a5c1ad283b03, type: 2}
 --- !u!1 &5734827655145990382
 GameObject:
   m_ObjectHideFlags: 0

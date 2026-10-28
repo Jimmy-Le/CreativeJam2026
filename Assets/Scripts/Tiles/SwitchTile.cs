@@ -3,19 +3,22 @@ using UnityEngine;
 public class SwitchTile : Tile
 {
     #region Editor Fields
-    [SerializeField] private VoidEvent switchUpdateEvent;
+    [SerializeField] private BoolEvent switchUpdateEvent;
     [SerializeField] private SpriteRenderer switchIconSpriteRenderer;
     #endregion Editor Fields
+
+    #region Backing Fields
+    // This is needed, ensures unselect trigger happens once.
+    private bool _isSwitchPressed = false;
+    #endregion Backing Fields
 
     #region Tile Methods
     public override void OnStep()
     {
-        switchUpdateEvent.Raise(Unit.Default);
+        _isSwitchPressed = !_isSwitchPressed;
+        switchUpdateEvent.Raise(_isSwitchPressed);
 
-        if (switchIconSpriteRenderer.color == Color.white)
-            switchIconSpriteRenderer.color = Color.black;
-        else
-            switchIconSpriteRenderer.color = Color.white;
+        switchIconSpriteRenderer.color = _isSwitchPressed ? Color.black : Color.white;
     }
     #endregion Tile Methods
 }
