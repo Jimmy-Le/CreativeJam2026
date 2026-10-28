@@ -1,10 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ButtonBlockAbility", menuName = "BlockAbilities/ButtonBlockAbility")]
-public class ButtonBlockAbility : BlockAbility
+[CreateAssetMenu(fileName = "ToggleBlockAbility", menuName = "BlockAbilities/ToggleBlockAbility")]
+public class ToggleBlockAbility : BlockAbility
 {
     #region Editor Fields
     [Header("Events")]
@@ -19,8 +18,9 @@ public class ButtonBlockAbility : BlockAbility
     #region Backing Fields
     private BlockBase blockBase;
     private SpriteRenderer[] sprites;
-    private int _pressedButtonsRequired;
+    private int _pressesRequired;
     private int _unlockProgress = 0;
+    private int _raceTimeCounter = 0;
     private bool _isUnlocked = false;
     #endregion Backing Fields
 
@@ -42,28 +42,26 @@ public class ButtonBlockAbility : BlockAbility
     {
         blockBase = (BlockBase)options["blockBase"];
         sprites = blockBase.gameObject.GetComponentsInChildren<SpriteRenderer>();
-        _pressedButtonsRequired = FindObjectsByType<GameObject>(FindObjectsSortMode.None).Count(c => c.CompareTag(tag));
+        _pressesRequired = FindObjectsByType<GameObject>(FindObjectsSortMode.None).Count(c => c.CompareTag(tag));
     
         if (isReverse) DisableBlock();
     }
 
     private void CheckBlockUnlock(bool isUnlocked)
     {
-        Debug.Log("here");
-
         _unlockProgress += isUnlocked ? 1 : -1;
 
-        Debug.Log(_unlockProgress);        
-        if (_unlockProgress >= _pressedButtonsRequired)
+        if (!blockBase) return;
+
+        if (_unlockProgress >= _pressesRequired)
         {
-            Debug.Log("a");
+            _raceTimeCounter++;
             _isUnlocked = true;
             if (isReverse) EnableBlock();
             else DisableBlock();
         }
         else if (_isUnlocked)
         { 
-            Debug.Log("b");
             _isUnlocked = false;
             if (isReverse) DisableBlock();
             else EnableBlock();

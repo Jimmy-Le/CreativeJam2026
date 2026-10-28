@@ -7,5 +7,10 @@ public class BlockBase : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
+
+    private void Start()
+    {
+        ability = Instantiate(ability);
+    }
 }
  

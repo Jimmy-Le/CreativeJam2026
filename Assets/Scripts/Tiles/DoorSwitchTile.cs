@@ -15,6 +15,7 @@ public class DoorSwitchTile : DoorTile
     #region Backing Fields
     private int _pressedSwitchesRequired;
     private int _unlockProgress;
+    
     private GameObject _tileComponentCache;
     #endregion Backing Fields
 
